@@ -13,7 +13,7 @@ public function welcome_page($name,$data)
     $CI->load->view('welcome/'.$name.'_view', $data);
     $CI->load->view('welcome/footer_view');
 } 
-public function user_page($data)
+public function user_page()
 {
     $CI =& get_instance ();
 	
@@ -23,7 +23,7 @@ public function user_page($data)
 	$CI->load->view('user/content_left_view');
 	$CI->load->view('user/news_view');
 	$CI->load->view('user/file_view');
-	$CI->load->view('user/subjects_view',$data);
+	$CI->load->view('user/subjects_view');
 	$CI->load->view('user/footer_view');
 } 
 

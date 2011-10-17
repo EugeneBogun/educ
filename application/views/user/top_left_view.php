@@ -1,7 +1,7 @@
 <body>
 <div id="wrapper">
 
-	<div id="header">КК НАУ / КПИ / 397 / Богун Евгений
+	<div id="header"><span id="title_bar_vuz">КК НАУ</span>/ <span  id="title_bar_departament">КПИ</span> / <span  id="title_bar_group">397</span> / <span  id="title_bar_fio">Богун Евгений</span>
       <menu>Выход</menu>
 	</div>
   
