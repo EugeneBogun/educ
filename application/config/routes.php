@@ -40,10 +40,13 @@
 
 $route['default_controller']    = "welcome";
 $route['user']                  = "user";
-$route['timetable']             = "user/timetable";
-$route['ajaxusergroup']         = "dispatcher/ajaxusergroup";
-$route['ajaxinsertusergroup']   = "dispatcher/ajaxinsertusergroup";
 $route['ajaxtimetable']         = "user/ajaxtimetable";
+//диспетчерская
+$route['ajaxusergroup']         = "dispatcher/ajaxusergroup";
+$route['ajaxusernogroup']   = "dispatcher/ajaxusernogroup";
+$route['ajaxinsertusergroupresult']   = "dispatcher/ajaxinsertusergroupresult";
+//расписание
+
 $route['reg']                   = "welcome/reg";
 $route['welcome']				= "welcome/welcome";
 $route['about']					= "welcome/about";

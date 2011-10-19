@@ -18,11 +18,15 @@ class dispatcher_model extends CI_Model
         $users = $this->db->select('id, fam, name, surname')->get('Users')->result_array();
         foreach ($users as $row)
         {
+            $users_group = null;
+            $user_departament = null;
+            $user_subdepartament = null;
+            
             $users_group = $this->db->where('Users_id',$row['id'])->get('UsersGroups')->result_array();
-            if (isset($users_group[0])) {
-                $users_group = null;
-                continue;
-            }
+            $user_departament = $this->db->where('Users_id',$row['id'])->get('UsersDepartments')->result_array();
+            $user_subdepartament = $this->db->where('Users_id',$row['id'])->get('UsersSubDepartments')->result_array();
+            if ((isset($users_group[0])) OR (isset($user_departament[0])) OR (isset($user_subdepartament[0]))){
+                continue;}
             $data[$i]['id'] = $row['id'];
             $data[$i]['fio'] = $row['fam'].' '.substr($row['name'],0,1).'. ';
                 if ($row['surname']) {$data[$i]['fio'] .= substr($row['surname'], 0, 1).'.';}
@@ -36,7 +40,7 @@ class dispatcher_model extends CI_Model
     {
          return $this->db->where_in('id',array(1,4,5,6))->get('Roles')->result_array();
     }
-    
+    //âûâîä ñîñòàâà ãğóïïû 
     public function ajaxusergroup($group)
     {
         $data = array();
@@ -54,10 +58,13 @@ class dispatcher_model extends CI_Model
         }
         return $data;
     }
-    
-    public function ajaxinsertusergroup($id_user,$id_group,$id_role)
+    //êíîïêà äîáàâèòü şçåğà â ãğóïïó
+    public function ajaxinsertusergroupresult($id_user,$id_group,$id_role)
     {
-        //$user_group = $this->db->where('Groups_id',$group)->get('UsersGroups')->result_array();
+        $is_User_Group =$this->db->where('Users_id',$id_user)->where('Groups_id',$id_group)->get('UsersGroups')->result_array();
+        if (isset($is_User_Group[0])) return FALSE;
+       
+        if (($id_user == 0) or ($id_group == 0) or ($id_role == 0)) return FALSE;
         $insert_db = array(
         'Groups_id' => $id_group,
         'Users_id' => $id_user,

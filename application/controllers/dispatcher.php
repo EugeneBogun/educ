@@ -25,13 +25,25 @@ class dispatcher extends CI_Controller
         echo $user['role'].' '.$user['fio'].'<br/>';
        }
     }
-    public function ajaxinsertusergroup()
+    
+    public function ajaxusernogroup()
     {
-        if ($this->dispatcher_model->ajaxinsertusergroup($_REQUEST['user'], $_REQUEST['group'],$_REQUEST['role']))
+      $users_list = $this->dispatcher_model->get_users_list();            
+            foreach ($users_list as $user) {  echo '
+            <option value="'.$user['id'].'">'.$user['fio'].'</option>';}
+    }
+    
+    public function ajaxinsertusergroupresult()
+    {
+        
+        if ($this->dispatcher_model->ajaxinsertusergroupresult($_REQUEST['user'], $_REQUEST['group'],$_REQUEST['role']))
         {
             echo 'Добавлено';
         }
-        //var_dump($_REQUEST);
+        else
+        {
+            echo 'Введите данные';
+        }
     }
 }   
     

@@ -1,6 +1,5 @@
 <div id="subjects_ajax"></div>
-<script language="JavaScript">
-$(document).ready(function(){    
+<script language="JavaScript"> 
 		$.ajax({
         	url:	 'ajaxtimetable',
         	type:	 'POST', //что-нибудь получим
@@ -10,5 +9,4 @@ $(document).ready(function(){
         		  $('#subjects_ajax').html(data);
                 }
             });
-        });
 </script>
