@@ -3,7 +3,7 @@
 <div id="title_user_group">Состав групп</div>
 	<div id="group">
         Группы:
-		<select id="group_list"size="13" name="group" >
+		<select id="group_list" size="13" name="group" >
             <? foreach ($group_list as $group)
                 {
                     echo '<option value="'.$group['id'].'">'.$group['name'].'</option>';

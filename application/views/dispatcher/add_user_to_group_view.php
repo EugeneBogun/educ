@@ -36,7 +36,7 @@
 		</select>
   </div>
   <div  id="add_user_group_button">
-  <input type="button" value="Добавить" /></div>
+  <input type="button" class="button" value="Добавить" /></div>
   <div id="add_user_group_status"></div>
 </div>
 <script language="Javascript">
