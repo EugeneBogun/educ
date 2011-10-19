@@ -1,4 +1,6 @@
 RewriteEngine on
-RewriteCond $1 !^(index.php|css|img|js|fonts|robots.txt)
+RewriteCond $1 !^(index.php|css|img|js|robots.txt)
 RewriteRule ^(.*)$ /index.php/$1 [L]
 php_flag display_errors 1
+AddDefaultCharset cp1251  
+AddCharset cp1251  .php
