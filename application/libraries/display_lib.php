@@ -32,8 +32,8 @@ public function timetable_insert_page($data)
 	$CI =& get_instance ();
 	$CI->load->view('dispatcher/header_view');
 	$CI->load->view('dispatcher/top_left_view');
-	$CI->load->view('dispatcher/group_view');
-    $CI->load->view('dispatcher/insert_group_view',$data);
+	$CI->load->view('dispatcher/group_view',$data);
+    $CI->load->view('dispatcher/add_user_to_group_view',$data);
 	$CI->load->view('dispatcher/footer_view');
 }
 }
