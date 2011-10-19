@@ -1,0 +1,66 @@
+#timetable_module{
+        width:450px; 
+        min-height:250px; 
+        margin-left:10px; 
+        margin-top:10px; 
+        float:left;
+        border: #DDD solid 1px;
+        box-shadow: 0 0 5px black; /* Параметры тени */
+        box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+        -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Firefox */
+        -webkit-box-shadow: 0px 3px 20px rgba(0,0,0,0.2); /* Для Safari и Chrome */
+         color:#06F;
+         font-family: tahoma;
+        }
+div#timetable_module div#when{
+        width:118px; 
+		height:130px;
+        float:left;}
+        
+div#timetable_module div#timetable_module_title{
+    
+        height:20px;
+        line-height:20px;
+       	font-family: Tahoma;
+    	font-size: 16px;
+        font-weight: 600;
+        padding-left:80px;
+        border-bottom-color: #DDD;
+	    border-bottom-style: solid;
+	    border-bottom-width: 1px;
+        }
+div#timetable_module div#weeks{
+        width:108px; 
+		height:35px;
+        padding:10px 10px 10px 10px;
+        float:left;}
+div#timetable_module div#days{
+        width:108px; 
+        min-height:50px; 
+        padding:10px 10px 10px 10px;
+        }
+div#timetable_module div#subject_num{
+        width:108px;
+		min-height:50px; 
+        padding:10px 10px 10px 10px;
+        }
+div#timetable_module div#roles{
+        width:104px; 
+        min-height:236px; 
+        padding:10px 10px 10px 10px;
+        float:left;
+        }
+div#timetable_module div#title_roles_list{
+        width:50px;
+        }
+div#add_user_group_button{
+    margin-left:15px;
+    margin-top:20px;
+    width:80px;
+    float:left;
+}
+div#add_user_group_status{
+    margin-top:20px;
+    width:108px;
+    float:left;
+}
