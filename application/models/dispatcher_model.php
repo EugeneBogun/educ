@@ -34,7 +34,7 @@ class dispatcher_model extends CI_Model
     
     public function get_roles_list()
     {
-         return $this->db->get('Roles')->result_array();
+         return $this->db->where_in('id',array(1,4,5,6))->get('Roles')->result_array();
     }
     
     public function ajaxusergroup($group)
@@ -53,6 +53,18 @@ class dispatcher_model extends CI_Model
             $i++;
         }
         return $data;
-        
+    }
+    
+    public function ajaxinsertusergroup($id_user,$id_group,$id_role)
+    {
+        //$user_group = $this->db->where('Groups_id',$group)->get('UsersGroups')->result_array();
+        $insert_db = array(
+        'Groups_id' => $id_group,
+        'Users_id' => $id_user,
+        'Roles_id' => $id_role,
+        'description ' => 'вручную'
+        );
+        $this->db->insert('UsersGroups', $insert_db);     
+        return TRUE;
     }
 }

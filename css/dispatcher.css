@@ -52,7 +52,7 @@ div#user-group div#group{
         
         
 #add_user_group{
-        width:380px; 
+        width:450px; 
         min-height:250px; 
         margin-left:10px; 
         margin-top:10px; 
@@ -67,7 +67,7 @@ div#user-group div#group{
         }
         
 div#add_user_group div#title_add_user_group{
-        width:200px;
+    
         height:20px;
         line-height:20px;
        	font-family: Tahoma;
@@ -93,7 +93,7 @@ div#add_user_group div#title_group_list{
         width:50px;
         }
 div#add_user_group div#roles{
-        width:60px; 
+        width:104px; 
         min-height:236px; 
         padding:10px 10px 10px 10px;
         float:left;
@@ -101,5 +101,24 @@ div#add_user_group div#roles{
 div#add_user_group div#title_roles_list{
         width:50px;
         }
+div#user_group_insert{
+    margin-left:15px;
+    margin-top:20px;
+    width:80px;
+    float:left;
+}
+div#user_group_insert input{
+    background-color:#DDD;
+    border:1px #DDD solid;
+    width:80px;
+    float:left;
+    line-height:20px;
+    cursor:pointer;
+}
+div#status_user_group{
 
+    margin-top:20px;
+    width:108px;
+    float:left;
+}
 

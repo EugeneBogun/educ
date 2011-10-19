@@ -42,6 +42,7 @@ $route['default_controller']    = "welcome";
 $route['user']                  = "user";
 $route['timetable']             = "user/timetable";
 $route['ajaxusergroup']         = "dispatcher/ajaxusergroup";
+$route['ajaxinsertusergroup']   = "dispatcher/ajaxinsertusergroup";
 $route['ajaxtimetable']         = "user/ajaxtimetable";
 $route['reg']                   = "welcome/reg";
 $route['welcome']				= "welcome/welcome";

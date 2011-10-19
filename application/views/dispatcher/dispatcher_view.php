@@ -2,7 +2,7 @@
 <div id="title_user_group">Состав групп</div>
 	<div id="group">
         Группы:
-		<select id="group_list"size="13" name="group" >
+		<select id="group_list_view"size="13" name="group" >
             <? foreach ($group_list as $group)
                 {
                     echo '<option value="'.$group['id'].'">'.$group['name'].'</option>';
@@ -19,12 +19,12 @@
 <script language="JavaScript">
     
 $(document).ready(function(){    
-    $('#group_list').click(function(){
+    $('#group_list_view').click(function(){
 		$.ajax({
         	url:	 'ajaxusergroup',
         	type:	 'POST', //что-нибудь получим
             processData: false,
-            data: 'group='+$("#group_list option:selected").val(),
+            data: 'group='+$("#group_list_view option:selected").val(),
         	success: function(data){
         		  $('#users_list').html(data);
                 }
@@ -38,7 +38,7 @@ $(document).ready(function(){
 <div id="title_add_user_group">Управление группами</div>
 	<div id="users">
         Пользователи:
-		<select size="13" name="group" >
+		<select size="13" name="users" id="users_list_insert">
             <? 
             foreach ($users_list as $user)
                 {
@@ -51,8 +51,8 @@ $(document).ready(function(){
 	</div>
     
     <div id="groups">
-        <div id="title_group_list" class="listbox">Группы:</div>
-		<select size="13" name="group" >
+        <div id="title_group_list">Группы:</div>
+		<select size="13" name="groups" id="groups_list_insert" >
             <? foreach ($group_list as $group)
                 {
                     echo '<option value="'.$group['id'].'">'.$group['name'].'</option>';
@@ -61,8 +61,8 @@ $(document).ready(function(){
 		</select>
   </div>
   <div id="roles">
-        <div id="title_roles_list" class="listbox">Роли:</div>
-		<select  size="13" name="group" >
+        <div id="title_roles_list">Роли:</div>
+		<select  size="13" name="roles" id="roles_list_insert">
             <? foreach ($roles_list as $group)
                 {
                     echo '<option value="'.$group['id'].'">'.$group['name'].'</option>';
@@ -70,5 +70,27 @@ $(document).ready(function(){
             ?>
 		</select>
   </div>
+  <div id="user_group_insert">
+  <input type="button" value="Добавить"/></div>
+  <div id="status_user_group">
+  Отчет</div>
+  <script language="JavaScript">
+  $(document).ready(function(){    
+    $('#user_group_insert input').click(function(){
+		$.ajax({
+        	url:	 'ajaxinsertusergroup',
+        	type:	 'POST', //что-нибудь получим
+            processData: false,
+            data: 'user='+$("#users_list_insert option:selected").val()
+            +'&group='+$("#groups_list_insert option:selected").val()
+            +'&role='+$("#roles_list_insert option:selected").val(),
+        	success: function(data){
+        	 //  alert(data);
+        	   $('#status_user_group').html(data);
+                }
+            });
+        });
+        });
+        </script>
 
 </div>
