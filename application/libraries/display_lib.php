@@ -37,5 +37,6 @@ public function timetable_insert_page($data)
 	$CI->load->view('dispatcher/add_timetable_view',$data);
 	$CI->load->view('dispatcher/footer_view');
 }
+
 }
 ?>

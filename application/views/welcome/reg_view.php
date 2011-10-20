@@ -10,32 +10,31 @@
            <table>
            
                 <tr id="login">
-                  <th>Логин:</th>
-                  <td><input type="text" name="login" class="text" value="" /></td>
+                  <th>E-Mail:</th>
+                  <td><input type="text" name="mail" class="text" value="<?echo $login?>" /></td>
                 </tr>
-            
                  <td/>
 				 <td>
-                    Логин и пароль используются при входе на сайт.
+                    E-Mail и пароль используются при входе на сайт.
                     <br/>
- 					Логин может состоять из букв английского алфавита, цифр 0-9 или дефиса «-».
+					<?echo form_error('mail');?>
 				 </td>
-                 
                     <tr>
                    	 <td/>
                      <td><br/></td>
                     </tr>
                                   
-                  <tr id="passw">
+                <tr id="passw">
                   	<th>Пароль:</th>
 				    <td>
                     	<input type="text" name="passw" class="text" value="" />
                     </td>
-                  </tr>
-                         
+                </tr>
                   <td/>
 				  <td>
                   	Введите пароль и запомните его.
+					<br/>
+					<?echo form_error('passw');?>
                   </td>
                   
                     <tr>
@@ -45,12 +44,13 @@
                       
                   <tr id="key" >
                     <th>Ключ:</td>
-					<td><input type="text" name="key" class="text" value="" /></td>
+					<td><input type="text" name="key" class="text" value="<?echo $key?>" /></td>
                   </tr>
-                  
                   <td/>
 				  <td>
                   	Ключ вы получаете лично в руки от администрации. Он использется 1 раз.
+					<br/>
+					<?echo form_error('key');?>
                   </td>
                   <tr>
               	  <td/>
@@ -63,8 +63,3 @@
 	
 					
 		</form>
-		<?
-			echo form_error('login');
-            echo form_error('passw');
-            echo form_error('key');
-        ?>
