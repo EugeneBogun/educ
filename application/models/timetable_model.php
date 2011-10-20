@@ -10,10 +10,11 @@ class timetable_model extends CI_Model
 	public function timetable($id,$week)
 	{
 		$UserGroups = $this->db->query('SELECT Groups_id FROM  UsersGroups WHERE Users_id='.$id)->result_array();
+			
 		$Timetable_list = $this->db->query('SELECT * FROM  Timetable WHERE Groups_id='.$UserGroups[0]['Groups_id'])->result_array();
 		$i = 0;
 		$univer = 1;
-        
+
 		foreach ($Timetable_list as $lesson)
          {
             if ($lesson['week'] == $week) 

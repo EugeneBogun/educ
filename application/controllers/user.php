@@ -21,7 +21,7 @@ class user extends CI_Controller
          $week = 1;
 	 $data['lessons'] = array();
 	 $this->load->model('timetable_model');
-	 $timetable = $this->timetable_model->timetable($id,$week);
+	 $timetable = $this->timetable_model->timetable($id,$week);;
      $this->timetable_model->get_view_timetable($timetable);
     }
     
