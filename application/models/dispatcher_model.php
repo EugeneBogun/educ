@@ -74,4 +74,32 @@ class dispatcher_model extends CI_Model
         $this->db->insert('UsersGroups', $insert_db);     
         return TRUE;
     }
+    
+    public function get_classrooms($univer)
+	{
+		$classrooms = $this->db->order_by('name','ASC')->get('Classrooms')->result_array();
+        
+        $i = 0;
+        foreach($classrooms as $classroom)
+        {
+            $building = $this->db
+            ->where('id',$classroom['Buildings_id'])
+            ->where('Universities_id',$univer)
+            ->limit(1)
+            ->get('Buildings')->result_array();
+            
+            $data[$i]['id'] = $classroom['id'];
+            if ($building[0]['name'] != '')
+            {
+                $data[$i]['name'] = $building[0]['name'].'-'.$classroom['name'];
+            }
+            else
+            {
+                $data[$i]['name'] = $classroom['name'];
+            }
+            
+            $i++;
+        }
+		return $data;
+	}
 }

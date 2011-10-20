@@ -89,7 +89,7 @@ class timetable_model extends CI_Model
         }
 	}
 	
-	private function get_classroom_name($id,$univer)
+	private function get_classroom_name($univer)
 	{
 		//сам кабинет
 		$classroom = $this->db->query('SELECT * FROM  Classrooms WHERE id = '.$id)->result_array();

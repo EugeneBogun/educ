@@ -12,11 +12,14 @@ class dispatcher extends CI_Controller
     public function index()
     {
      $data = array();
+     $univer = 1;
      $data['group_list'] = $this->dispatcher_model->get_group_list();
      $data['users_list'] = $this->dispatcher_model->get_users_list();
      $data['roles_list'] = $this->dispatcher_model->get_roles_list();
+     $data['classrooms_list'] =$this->dispatcher_model->get_classrooms($univer);
      $this->display_lib->timetable_insert_page($data);
     }
+    
     public function ajaxusergroup()
     {
        $users_list = $this->dispatcher_model->ajaxusergroup($_REQUEST['group']);

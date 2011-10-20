@@ -29,38 +29,47 @@ div#timetable_module div#timetable_module_title{
 	    border-bottom-style: solid;
 	    border-bottom-width: 1px;
         }
-div#timetable_module div#weeks{
+div#timetable_module div#when div#weeks{
         width:108px; 
 		height:35px;
         padding:10px 10px 10px 10px;
         float:left;}
-div#timetable_module div#days{
+div#timetable_module div#when div#days{
         width:108px; 
         min-height:50px; 
         padding:10px 10px 10px 10px;
         }
-div#timetable_module div#subject_num{
+div#timetable_module div#when div#subject_num{
         width:108px;
 		min-height:50px; 
         padding:10px 10px 10px 10px;
         }
-div#timetable_module div#roles{
-        width:104px; 
-        min-height:236px; 
-        padding:10px 10px 10px 10px;
-        float:left;
-        }
-div#timetable_module div#title_roles_list{
-        width:50px;
-        }
-div#add_user_group_button{
-    margin-left:15px;
+div#timetable_module div#where{
+float:left;
+height:220px;
+width:103px;
+padding:10px 10px 10px 10px;
+} 
+div#timetable_module div#who{
+height:220px;
+width:55px;
+margin-left:235px;
+padding:10px 10px 10px 10px;
+} 
+div#timetable_module div#who div#groups{
+float:left;
+} 
+div#timetable_module div#who div#subject{
+height:220px;
+width:55px;
+margin-left:75px;
+padding:10px 10px 10px 10px;
+float:left;
+} 
+		
+div#add_timetable_status{
     margin-top:20px;
-    width:80px;
-    float:left;
-}
-div#add_user_group_status{
-    margin-top:20px;
+	
     width:108px;
     float:left;
 }
