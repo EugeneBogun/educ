@@ -1,6 +1,6 @@
 <link href="css/add_timetable.css" rel="stylesheet" type="text/css" />
 <div id="timetable_module">
-<div id="timetable_module_title">Управление расписанием</div>
+<div id="timetable_module_title">Управление расписанием добавить универ, отделение, учебный план а потом через ajax подгружать инфу по группам и предметам</div>
 <!--Когда?-->
 <div id="when">
 
@@ -52,7 +52,7 @@
 <!--Кто?-->
 <div id="who">
 	<div id="groups">
-			<div id="title_group_list">Группы:</div>
+			Группы:
 			<select size="12" name="group" id="add_groups_list">
 				<? foreach ($group_list as $group)
 					{
@@ -63,12 +63,12 @@
 			</select>
 	</div> 
     	<div id="subject">
-			<div id="title_subject_list">Группы:</div>
+			Предмет:
 			<select size="12" name="subject" id="add_subject_list">
-				<? foreach ($group_list as $group)
+				<? foreach ($subjects_list as $subject)
 					{
 						echo '
-						<option value="'.$group['id'].'">'.$group['name'].'</option>';
+						<option value="'.$subject['id'].'">'.$subject['name'].'</option>';
 					}
 				?>
 			</select>

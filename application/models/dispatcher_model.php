@@ -36,9 +36,26 @@ class dispatcher_model extends CI_Model
         return $data;
     }
     
-    public function get_roles_list()
+     public function get_roles_list()
     {
          return $this->db->where_in('id',array(1,4,5,6))->get('Roles')->result_array();
+    }
+    
+    public function get_subject_teacher_list($curricula_id)
+    {
+         $UsersSubjectsCurricula =$this->db->get('UsersSubjectsCurricula')->result_array();
+         $i=0;
+         foreach($UsersSubjectsCurricula as $row)
+         {
+            $name = $this->get_teacher_name($row['Users_id']);
+            $subject_id =  $this->get_subjectcurricula($row['Subjects_Curricula_id'],$curricula_id);
+            $subject  =  $this->get_subject($subject_id);
+            $return[$i]['name'] = $subject.' - '.$name;
+            $return[$i]['id'] = $row['Subjects_Curricula_id'];
+            $i++;
+         }
+         return $return;
+         
     }
     //вывод состава группы 
     public function ajaxusergroup($group)
@@ -51,7 +68,8 @@ class dispatcher_model extends CI_Model
             $user = $this->db->select('fam,name,surname')->where('id',$row['Users_id'])->get('Users')->result_array();
             
             $data[$i]['fio'] = $user[0]['fam'].' '.substr($user[0]['name'],0,1).'. ';
-            if ($user[0]['surname']) {$data['users'][$i]['fio'] .= substr($user[0]['surname'], 0, 1).'.';}
+			
+            if ($user[0]['surname'] != NULL) {$data[$i]['fio'] .= substr($user[0]['surname'], 0, 1).'.';}
             $role = $this->db->select('name')->where('id',$row['Roles_id'])->get('Roles')->result_array();
             $data[$i]['role'] = $role[0]['name'];
             $i++;
@@ -102,4 +120,23 @@ class dispatcher_model extends CI_Model
         }
 		return $data;
 	}
+    
+    	
+	private function get_teacher_name($id)
+	{
+		$User = $this->db->query('SELECT name,fam,surname FROM  Users WHERE id='.$id)->result_array();
+		$fio = $User[0]['fam'].' '.substr($User[0]['name'], 0, 1).'. '.substr($User[0]['surname'], 0, 1).'.';
+		return $fio;
+	}
+    private function get_subjectcurricula($id,$curricula_id)
+	{
+	   $subject_id = $this->db->select('Subjects_id')->where('id',$id)->where('curricula_id',$curricula_id)->get('Subjects_Curricula')->result_array();
+       return $subject_id[0]['Subjects_id'];
+   	}
+    private function get_subject($id)
+	{
+	   $Subject = $this->db->select('name')->where('id',$id)->get('Subjects')->result_array();
+	   return $Subject[0]['name'];
+   	}
+    
 }

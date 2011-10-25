@@ -17,6 +17,8 @@ class dispatcher extends CI_Controller
      $data['users_list'] = $this->dispatcher_model->get_users_list();
      $data['roles_list'] = $this->dispatcher_model->get_roles_list();
      $data['classrooms_list'] =$this->dispatcher_model->get_classrooms($univer);
+     $curricula_id = 1;
+     $data['subjects_list'] = $this->dispatcher_model->get_subject_teacher_list($curricula_id);
      $this->display_lib->timetable_insert_page($data);
     }
     

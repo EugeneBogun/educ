@@ -1,5 +1,5 @@
 #timetable_module{
-        width:450px; 
+        width:500px; 
         min-height:250px; 
         margin-left:10px; 
         margin-top:10px; 
@@ -63,8 +63,6 @@ div#timetable_module div#who div#subject{
 height:220px;
 width:55px;
 margin-left:75px;
-padding:10px 10px 10px 10px;
-float:left;
 } 
 		
 div#add_timetable_status{
