@@ -12,15 +12,22 @@ class welcome extends CI_Controller
     
     public function index()
     {
-	
-        $this->welcome();
-        
+		$sesion_id = $this->session->userdata('id');
+		if(isset($sesion_id)and($sesion_id!=NULL))
+			{
+			redirect(base_url()."id".$sesion_id);
+			}
+		else
+			{
+			$this->welcome();
+			}
     }
 	
 	public function link()
 	{
-		$invite="'1'";
-		$this->Welcome_model->parser_links($invite);
+		$invite ="'654456'";
+		$id =326 ;
+		$this->Welcome_model->parser_links($invite,$id);
 	}
 	//********************************************************************************************************************
     // авторизация пользователя
@@ -39,7 +46,10 @@ class welcome extends CI_Controller
 				'Users_id'=>$users_id[0]['id']
 					);
 		$data->id=$users_id[0]['id'];
-		$view = 'profile';
+		//$view = 'profile';
+		$array = array('id'=>$users_id[0]['id']);
+		$this->session->set_userdata($array);
+		redirect(base_url()."id".$users_id[0]['id']);
 	}
 	else
 	{
@@ -104,7 +114,7 @@ class welcome extends CI_Controller
 					);
 		$this->db->update('Invites', $id, "invite = '".$key."'"); 
 		$data->id=$users_id[0]['id'];
-		$this->Welcome_model->parser_links($data);
+		$this->Welcome_model->parser_links($key,$users_id[0]['id']);//Добавил
 		$view = 'profile';
 	}
 	else

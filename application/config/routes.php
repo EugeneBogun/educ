@@ -40,6 +40,7 @@
 
 $route['default_controller']    = "welcome";
 $route['user']                  = "user";
+$route['id(:num)']				="user/index/$1";
 $route['ajaxtimetable']         = "user/ajaxtimetable";
 //диспетчерская
 $route['ajaxusergroup']         = "dispatcher/ajaxusergroup";

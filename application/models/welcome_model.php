@@ -6,14 +6,45 @@ class Welcome_model extends CI_Model
     {
           parent::_construct();
     }
-	public function parser_links($invite)
+	public function parser_links($invite,$id)
 	{
-		$data=$this->db->query( "SELECT * FROM Invites WHERE invite = ".$invite)->result_array();
-		$link=explode(";",$data[0]['option']);
-		var_dump($link);
-		echo "<br>";
-		$link=explode(":",$link[0]);
-		var_dump($link);
+		$data=$this->db->query( "SELECT * FROM Invites WHERE invite = '".$invite."'")->result_array();
+		$options=explode(";",$data[0]['option']);
+		foreach($options as $row)
+		{
+			$atom = explode(":",$row);
+				switch($atom[0])
+				{	
+					case 'U': 
+						$ins=array(
+							'Universities_id'=>$atom[1],
+							'Roles_id'=>$atom[2],
+							'Users_id'=>$id);
+						$this->db->insert('UsersUniversities',$ins);
+						break;
+					case 'D': 
+						$ins=array(
+							'Departments_id'=>$atom[1],
+							'Roles_id'=>$atom[2],
+							'Users_id'=>$id);
+						$this->db->insert('UsersDepartments',$ins);
+						break;
+					case 'S': break;
+						$ins=array(
+							'SubDepartments_id'=>$atom[1],
+							'Roles_id'=>$atom[2],
+							'Users_id'=>$id);
+						$this->db->insert('UsersSubDepartments',$ins);
+						break;
+					case 'G': 
+						$ins=array(
+							'Groups_id'=>$atom[1],
+							'Roles_id'=>$atom[2],
+							'Users_id'=>$id);
+						$this->db->insert('UsersGroups',$ins);
+						break;
+				}
+		}
 	}
 	public $reg_rules = array
 		(
