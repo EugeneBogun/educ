@@ -1,0 +1,20 @@
+	@charset "utf-8";
+#send
+{
+	height:73px;
+	width:500px;
+	border:3px solid #0033FF;
+	margin:40px 250px;
+}
+
+#send_top
+{
+height:30px;
+width:auto;
+background-color:#0033FF;
+}
+
+#send_information
+{
+text-align:center;
+}

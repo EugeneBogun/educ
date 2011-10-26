@@ -52,6 +52,9 @@ $route['reg']                   = "welcome/reg";
 $route['welcome']				= "welcome/welcome";
 $route['about']					= "welcome/about";
 $route['login']					= "welcome/login";
+$route['send']                  = "message/send";
+$route['posted']                  = "message/posted";
+$route['adopted']                  = "message/adopted";
 
 $route['404_override'] = '';
 

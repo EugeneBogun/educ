@@ -292,7 +292,6 @@ a{
 a:hover{
  text-decoration:none;
  color:#09F;
- font-weight:bold;
 }
 a:visited{
  text-decoration:none;
@@ -337,3 +336,21 @@ select{
     line-height:20px;
     cursor:pointer;
 }
+
+#background_global{
+	width:810px;
+	min-height:500px;
+	margin-left:170px;
+	margin-top:28px;
+	border-top-color: #09F;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-left-color: #09F;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-right-color: #09F;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-bottom-color: #09F;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;}

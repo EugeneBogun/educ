@@ -31,11 +31,21 @@ public function timetable_insert_page($data)
 {	
 	$CI =& get_instance ();
 	$CI->load->view('dispatcher/header_view');
-	$CI->load->view('dispatcher/top_left_view');
+	$CI->load->view('user/top_left_view');
 	$CI->load->view('dispatcher/group_view',$data);
     $CI->load->view('dispatcher/add_user_to_group_view',$data);
 	$CI->load->view('dispatcher/add_timetable_view',$data);
 	$CI->load->view('dispatcher/footer_view');
+}
+public function message_page($data,$view)
+{ 	
+	$CI =& get_instance ();
+    $CI->load->view('message/header_view');
+	$CI->load->view('user/top_left_view');
+	$CI->load->view('message/menu_view');
+	$CI->load->view('message/'.$view.'_view',$data);
+    $CI->load->view('message/footer_view');
+   
 }
 
 }
