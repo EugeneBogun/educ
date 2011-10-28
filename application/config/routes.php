@@ -46,6 +46,13 @@ $route['ajaxtimetable']         = "user/ajaxtimetable";
 $route['ajaxusergroup']         = "dispatcher/ajaxusergroup";
 $route['ajaxusernogroup']   = "dispatcher/ajaxusernogroup";
 $route['ajaxinsertusergroupresult']   = "dispatcher/ajaxinsertusergroupresult";
+$route['ajaxuniverteachplan']   = "dispatcher/ajaxuniverteachplan";
+$route['ajaxcurriculagrouplist']   = "dispatcher/ajaxcurriculagrouplist";
+$route['ajaxsubjectlist']   = "dispatcher/ajaxsubjectlist";
+$route['ajaxfreeclassroomslist']   = "dispatcher/ajaxfreeclassroomslist";
+
+
+
 //расписание
 
 $route['reg']                   = "welcome/reg";

@@ -11,9 +11,13 @@
         -webkit-box-shadow: 0px 3px 20px rgba(0,0,0,0.2); /* Äëÿ Safari è Chrome */
          color:#06F;
          font-family: tahoma;
+         border-radius: 3px;
+        -moz-border-radius: 3px;
+         -webkit-border-radius: 3px;
+        -khtml-border-radius:  3px;
         }
         
-div#add_user_group div#title_add_user_group{
+#title_add_user_group{
     
         height:20px;
         line-height:20px;
@@ -25,36 +29,37 @@ div#add_user_group div#title_add_user_group{
 	    border-bottom-style: solid;
 	    border-bottom-width: 1px;
         }
-div#add_user_group div#users{
+#add_user_group_users{
         width:108px; 
         min-height:230px; 
         padding:10px 10px 10px 10px;
         float:left;}
-div#add_user_group div#groups{
-        width:60px; 
+#add_user_group_groups{
+        width:40px; 
         min-height:236px; 
         padding:10px 10px 10px 10px;
         float:left;
         }
-div#add_user_group div#title_group_list{
+#title_group_list{
         width:50px;
         }
-div#add_user_group div#roles{
+#add_user_group_roles{
         width:104px; 
-        min-height:236px; 
+        min-height:236px;
+        margin-left:20px; 
         padding:10px 10px 10px 10px;
         float:left;
         }
-div#add_user_group div#title_roles_list{
+#title_roles_list{
         width:50px;
         }
-div#add_user_group_button{
+#add_user_group_button{
     margin-left:15px;
     margin-top:20px;
     width:80px;
     float:left;
 }
-div#add_user_group_status{
+#add_user_group_status{
     margin-top:20px;
     width:108px;
     float:left;

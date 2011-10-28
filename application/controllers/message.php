@@ -13,11 +13,12 @@ class message extends CI_Controller
 	
 		$to=$this->input->post('to', TRUE);
 		$text=$this->input->post('text', TRUE);
+		var_dump($_POST);
 		/*var_dump($to);
 		var_dump($text);*/
-		
+		$from = 0;
 		$insert_db = array(
-        'Users_id_from' => '0',
+        'Users_id_from' => $from,
 		'text' => $text,
 		'Users_id_to' => $to,
 		);
@@ -29,8 +30,8 @@ class message extends CI_Controller
 	
 	public function posted()
     {
-		
-		$data['messages']=$this->db->where('Users_id_from',0)->get('Messages')->result_array();
+		$from = 0;
+		$data['messages']=$this->db->where('Users_id_from',$from)->get('Messages')->result_array();
 		
 		$this->display_lib->message_page($data,'posted');  /*   */
         
@@ -38,8 +39,8 @@ class message extends CI_Controller
 	
 	public function adopted()
     {
-		
-		$data['messages']=$this->db->where('Users_id_to',2)->get('Messages')->result_array();
+		$to = 2;
+		$data['messages']=$this->db->where('Users_id_to',$to)->get('Messages')->result_array();
 		
 		$this->display_lib->message_page($data,'adopted');  /*   */
         

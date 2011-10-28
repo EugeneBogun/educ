@@ -1,7 +1,7 @@
 <link href="css/add_user_group.css" rel="stylesheet" type="text/css" />
 <div id="add_user_group">
 <div id="title_add_user_group">Управление группами</div>
-	<div id="users">
+	<div id="add_user_group_users">
         Пользователи:
 		<select size="13" name="group" id="add_users_list" >
             <? 
@@ -15,7 +15,7 @@
         </select>
 	</div>
     
-    <div id="groups">
+    <div id="add_user_group_groups">
         <div id="title_group_list">Группы:</div>
 		<select size="13" name="group" id="add_groups_list">
             <? foreach ($group_list as $group)
@@ -25,7 +25,7 @@
             ?>
 		</select>
   </div>
-  <div id="roles">
+  <div id="add_user_group_roles">
         <div id="title_roles_list" >Роли:</div>
 		<select  size="13" name="group" id="add_roles_list">
             <? foreach ($roles_list as $group)

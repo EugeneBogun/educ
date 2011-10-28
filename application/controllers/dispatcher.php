@@ -7,18 +7,19 @@ class dispatcher extends CI_Controller
     {
       parent::__construct();
 	  $this->load->model('dispatcher_model');
+      $this->load->model('timetable_model');
     }    
     
     public function index()
     {
      $data = array();
      $univer = 1;
+     $data['univer_list'] = $this->dispatcher_model->get_univer_list();
      $data['group_list'] = $this->dispatcher_model->get_group_list();
      $data['users_list'] = $this->dispatcher_model->get_users_list();
      $data['roles_list'] = $this->dispatcher_model->get_roles_list();
-     $data['classrooms_list'] =$this->dispatcher_model->get_classrooms($univer);
      $curricula_id = 1;
-     $data['subjects_list'] = $this->dispatcher_model->get_subject_teacher_list($curricula_id);
+
      $this->display_lib->timetable_insert_page($data);
     }
     
@@ -49,6 +50,51 @@ class dispatcher extends CI_Controller
         {
             echo '¬ведите данные';
         }
+    }
+    
+    public function ajaxuniverteachplan()
+    {   
+        $teach_plan_list = $this->dispatcher_model->get_teach_plan_list($_REQUEST['univer']);  
+          
+        foreach ($teach_plan_list as $unit) {  echo '
+            <option value="'.$unit['id'].'">'.$unit['name'].' '.$unit['year_start'].'-'.$unit['year_end'].'</option>';}
+    }
+    
+    public function ajaxcurriculagrouplist()
+    {      
+        $group_list = $this->dispatcher_model->get_groupcurricula_list($_REQUEST['curricula']);  
+        foreach ($group_list as $unit) {  echo '
+            <option value="'.$unit['id'].'">'.$unit['name'].'</option>';}
+    }
+    
+    
+    public function ajaxsubjectlist()
+    {
+        $group_id     = $_REQUEST['group'];
+        $curricula_id = $_REQUEST['curricula']; 
+        $term = $this->dispatcher_model->get_term($group_id); //семестр группы
+        $subject_list = $this->dispatcher_model->get_subjectcurriculaterm_list($curricula_id,$term); //предметы группы в этом семестре
+         foreach ($subject_list as $unit) {
+            
+              echo '
+           <option value="'.$unit['id'].'">'.$unit['fullname'].'</option>';}
+    }
+    
+    public function ajaxfreeclassroomslist()
+    {
+        //var_dump($_REQUEST);
+        $num  = $_REQUEST['num'];
+        $day  = $_REQUEST['day'];
+        $week = $_REQUEST['week'];
+        $univer = $_REQUEST['univer'];
+        $classrooms = $this->dispatcher_model->get_free_classrooms($num,$day,$week,$univer);
+        if (!isset($classrooms[0])) return;
+        foreach ($classrooms as $classroom)
+        {
+             echo '
+           <option value="'.$classroom['id'].'">'.$this->timetable_model->get_classroom_name($classroom['id'],$univer).'</option>';}
+        
+        
     }
 }   
     

@@ -4,7 +4,7 @@
 * { margin: 0; padding:0;}
 /**/
 html { height:100%; 	}
-
+select{margin-top:2px;}
 body {
 	font:12px Verdana, Arial, Helvetica, sans-serif;
 	color:#09F;
@@ -138,6 +138,7 @@ height:395px;}
 border-spacing:0;
 border-collapse: collapse;
 
+
 }
 
 #news_table td{
@@ -184,6 +185,7 @@ height:20px;
 
 #file{margin-top:160px;position:absolute;}
 #file_table{
+
 border-spacing:0;
 border-collapse: collapse;
 
@@ -335,6 +337,10 @@ select{
     float:left;
     line-height:20px;
     cursor:pointer;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+   -khtml-border-radius:  3px;
 }
 
 #background_global{

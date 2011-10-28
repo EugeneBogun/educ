@@ -53,8 +53,8 @@ class timetable_model extends CI_Model
 	
 	private function get_teacher_name($id)
 	{
-		$User = $this->db->query('SELECT name,fam,surname FROM  Users WHERE id='.$id)->result_array();
-		$fio = $User[0]['fam'].' '.substr($User[0]['name'], 0, 1).'. '.substr($User[0]['surname'], 0, 1).'.';
+		$User = $this->db->query('SELECT name,patronymic,surname FROM  Users WHERE id='.$id)->result_array();
+		$fio = $User[0]['surname'].' '.substr($User[0]['name'], 0, 1).'. '.substr($User[0]['patronymic'], 0, 1).'.';
 		return $fio;
 	}
 	
@@ -90,12 +90,13 @@ class timetable_model extends CI_Model
         }
 	}
 	
-	private function get_classroom_name($id,$univer)
+	public function get_classroom_name($id,$univer)
 	{
 		//сам кабинет
 		$classroom = $this->db->query('SELECT * FROM  Classrooms WHERE id = '.$id)->result_array();
 		//номер корпуса
 		$building = $this->db->query('SELECT name FROM  Buildings WHERE id='.$classroom[0]['Buildings_id'].' AND Universities_id='.$univer)->result_array();//”ниверситет добавить
+        if  ($building[0]['name'] == '') {return $classroom[0]['name'];}
 		$return = $building[0]['name'].'-'.$classroom[0]['name'];
 		//тип кабинета
 		return $return;

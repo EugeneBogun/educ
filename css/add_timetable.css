@@ -1,5 +1,5 @@
 #timetable_module{
-        width:500px; 
+        width:740px; 
         min-height:250px; 
         margin-left:10px; 
         margin-top:10px; 
@@ -11,63 +11,111 @@
         -webkit-box-shadow: 0px 3px 20px rgba(0,0,0,0.2); /* Äëÿ Safari è Chrome */
          color:#06F;
          font-family: tahoma;
+         border-radius: 3px;
+        -moz-border-radius: 3px;
+         -webkit-border-radius: 3px;
+        -khtml-border-radius:  3px;
         }
-div#timetable_module div#when{
+div#when{
         width:118px; 
-		height:130px;
         float:left;}
         
-div#timetable_module div#timetable_module_title{
+div#timetable_module_title{
     
         height:20px;
+        text-align: center;
         line-height:20px;
        	font-family: Tahoma;
     	font-size: 16px;
         font-weight: 600;
-        padding-left:80px;
+        text-align: center;
         border-bottom-color: #DDD;
 	    border-bottom-style: solid;
 	    border-bottom-width: 1px;
         }
-div#timetable_module div#when div#weeks{
+div#vuz_timetable{
+        width:88px; 
+		height:35px;
+        position:absolute;
+        margin-left:20px;
+        padding:10px 10px 10px 10px;
+        float:left;
+        }
+div#teach_plan{
+        width:280px; 
+		height:35px;
+        position:absolute;
+        margin-left:112px;
+        padding:10px 10px 10px 10px;
+        float:left;
+        }
+div#when div#teach_plan select{
+        width:280px; 
+        }
+div#weeks_timetable{
         width:108px; 
+        position:absolute;
+        margin-left:10px;
 		height:35px;
         padding:10px 10px 10px 10px;
         float:left;}
-div#timetable_module div#when div#days{
+div#days_timetable{
         width:108px; 
+        position:absolute;
+        margin-left:120px;
         min-height:50px; 
         padding:10px 10px 10px 10px;
         }
-div#timetable_module div#when div#subject_num{
+div#subject_num_timetable{
         width:108px;
+        position:absolute;
 		min-height:50px; 
+        margin-left:230px;
         padding:10px 10px 10px 10px;
         }
-div#timetable_module div#where{
-float:left;
-height:220px;
-width:103px;
-padding:10px 10px 10px 10px;
+div#who{
+        position:absolute;
+        height:220px;
+        width:55px;
+        margin-top:45px;
+        padding:10px 10px 10px 10px;
 } 
-div#timetable_module div#who{
-height:220px;
-width:55px;
-margin-left:235px;
-padding:10px 10px 10px 10px;
+div#groups{
+        height:40px;
+        width:155px;
+        margin-left:410px;
+        padding-top:10px;
+        position:absolute;
+}
+ 
+select#groups_list{
+        width:140px; 
+        }
+#subject{
+        height:40px;
+        width:170px;
+        position:absolute;
+        margin-left:560px;
+        padding-top:10px;
 } 
-div#timetable_module div#who div#groups{
-float:left;
-} 
-div#timetable_module div#who div#subject{
-height:220px;
-width:55px;
-margin-left:75px;
-} 
+select#subject_list{
+        width:140px; 
+        }
 		
-div#add_timetable_status{
-    margin-top:20px;
-	
-    width:108px;
-    float:left;
+#add_timetable_status{
+        margin-top:620px;
+
+        width:108px;
+        position:absolute;
+}
+#classrooms_timetable{
+        width:108px;
+        position:absolute;
+        margin-left:330px;
+        padding-top:10px;
+}
+#add_timetable_button{
+        position:absolute;
+        margin-left:500px;
+        margin-top:80px;    
 }

@@ -7,15 +7,38 @@ class dispatcher_model extends CI_Model
           parent::_construct();
     }
     
+    public function get_univer_list()
+    {
+		return $this->db->get('Universities')->result_array();
+    }
+    
     public function get_group_list()
     {
 		return $this->db->get('Groups')->result_array();
+    }
+    public function get_groupcurricula_list($curricula)
+    {
+		return $this->db->where('Curricula_id',$curricula)->get('Groups')->result_array();
+    }
+    public function get_subjectcurriculaterm_list($curricula,$term)
+    {
+        $i=1;
+        $result = array();
+   	    $Subjects_Curricula = $this->db->where('curricula_id',$curricula)->where('term',$term)->get('Subjects_Curricula')->result_array();
+        foreach ($Subjects_Curricula as $unit)
+        {   
+            $subject = $this->db->where('id',$unit['Subjects_id'])->get('Subjects')->result_array();
+            $result[$i]['fullname'] = $subject[0]['full_name'];
+            $result[$i]['id'] = $subject[0]['id'];
+            $i++;
+        }
+        return $result;
     }
     public function get_users_list()
     {
 		$data = array();
         $i = 0;
-        $users = $this->db->select('id, fam, name, surname')->get('Users')->result_array();
+        $users = $this->db->select('id, name, surname, patronymic')->get('Users')->result_array();
         foreach ($users as $row)
         {
             $users_group = null;
@@ -28,8 +51,8 @@ class dispatcher_model extends CI_Model
             if ((isset($users_group[0])) OR (isset($user_departament[0])) OR (isset($user_subdepartament[0]))){
                 continue;}
             $data[$i]['id'] = $row['id'];
-            $data[$i]['fio'] = $row['fam'].' '.substr($row['name'],0,1).'. ';
-                if ($row['surname']) {$data[$i]['fio'] .= substr($row['surname'], 0, 1).'.';}
+            $data[$i]['fio'] = $row['surname'].' '.substr($row['name'],0,1).'. ';
+                if ($row['patronymic']) {$data[$i]['fio'] .= substr($row['patronymic'], 0, 1).'.';}
             $i++;
             
         }
@@ -65,11 +88,11 @@ class dispatcher_model extends CI_Model
         $i = 0;
         foreach ($user_group as $row)
         {
-            $user = $this->db->select('fam,name,surname')->where('id',$row['Users_id'])->get('Users')->result_array();
+            $user = $this->db->select('name, surname, patronymic')->where('id',$row['Users_id'])->get('Users')->result_array();
             
-            $data[$i]['fio'] = $user[0]['fam'].' '.substr($user[0]['name'],0,1).'. ';
+            $data[$i]['fio'] = $user[0]['surname'].' '.substr($user[0]['name'],0,1).'. ';
 			
-            if ($user[0]['surname'] != NULL) {$data[$i]['fio'] .= substr($user[0]['surname'], 0, 1).'.';}
+            if ($user[0]['patronymic'] != NULL) {$data[$i]['patronymic'] .= substr($user[0]['patronymic'], 0, 1).'.';}
             $role = $this->db->select('name')->where('id',$row['Roles_id'])->get('Roles')->result_array();
             $data[$i]['role'] = $role[0]['name'];
             $i++;
@@ -92,40 +115,62 @@ class dispatcher_model extends CI_Model
         $this->db->insert('UsersGroups', $insert_db);     
         return TRUE;
     }
-    
-    public function get_classrooms($univer)
+    //пустые аудитории
+    public function get_free_classrooms($num,$day,$week,$univer)
 	{
-		$classrooms = $this->db->order_by('name','ASC')->get('Classrooms')->result_array();
-        
-        $i = 0;
-        foreach($classrooms as $classroom)
-        {
-            $building = $this->db
-            ->where('id',$classroom['Buildings_id'])
-            ->where('Universities_id',$univer)
-            ->limit(1)
-            ->get('Buildings')->result_array();
+	   //список корпусов ВУЗА
+	   $buildings_univer =$this
+       ->db
+       ->select('id')
+       ->where('Universities_id',$univer)
+       ->get('Buildings')
+       ->result_array();
+       
+       $i = 0;
+       
+       //список аудиторий ВУЗА
+       foreach ($buildings_univer as $build)
+       {
+            $tmp = $this
+            ->db
+            ->where('Buildings_id',$build['id'])
+            ->get('Classrooms')
+            ->result_array();
             
-            $data[$i]['id'] = $classroom['id'];
-            if ($building[0]['name'] != '')
+            if (empty($tmp)) continue;
+            foreach ($tmp as $unit)
             {
-                $data[$i]['name'] = $building[0]['name'].'-'.$classroom['name'];
+                 $classrooms[$i] = $unit;
+                 $i++;
             }
-            else
-            {
-                $data[$i]['name'] = $classroom['name'];
-            }
+       }
+       //занятые аудитории
+       $timetable = $this
+           ->db
+           ->where('week',$week)
+           ->where('numder',$num)
+           ->where('day',$day)
+           ->get('Timetable')
+           ->result_array();
+       
+       $i = 0;
+       //пустые аудитории
+       if (!isset($timetable[0])) return $classrooms;
+       foreach ($classrooms as $classroom)
+       {
             
+            if ($classroom['id'] == $timetable[0]['Classrooms_id']) continue;
+            $classrooms_id[$i] = $classroom['id'];
             $i++;
-        }
-		return $data;
+       }
+		return $classrooms_id;
 	}
     
     	
 	private function get_teacher_name($id)
 	{
-		$User = $this->db->query('SELECT name,fam,surname FROM  Users WHERE id='.$id)->result_array();
-		$fio = $User[0]['fam'].' '.substr($User[0]['name'], 0, 1).'. '.substr($User[0]['surname'], 0, 1).'.';
+		$User = $this->db->query('SELECT name,patronymic,surname FROM  Users WHERE id='.$id)->result_array();
+		$fio = $User[0]['surname'].' '.substr($User[0]['name'], 0, 1).'. '.substr($User[0]['patronymic'], 0, 1).'.';
 		return $fio;
 	}
     private function get_subjectcurricula($id,$curricula_id)
@@ -138,5 +183,68 @@ class dispatcher_model extends CI_Model
 	   $Subject = $this->db->select('name')->where('id',$id)->get('Subjects')->result_array();
 	   return $Subject[0]['name'];
    	}
+    public function get_teach_plan_list($univer)
+    {   
+        
+        $Curricula = array();   
+        $Departments = $this->db->where('Universities_id',$univer)->get('Departments')->result_array();
+        foreach($Departments as $Departament)
+        {
+            $Dep_Spec = $this->db->where('Departments_id',$Departament['id'])->get('Dep_Spec')->result_array();
+            foreach($Dep_Spec  as $Dep_Spec_unit)
+            {
+                $Curricula = array_merge($Curricula, $this->db->where('Dep_Spec_id',$Dep_Spec_unit['id'])->get('Curricula')->result_array());
+            }
+        }
+        return $Curricula;
+    }
     
+    public function get_group_info($id)
+    {
+         return $this->db->where('id',$id)->get('Groups')->result_array();
+    }
+    
+    public function get_term($id)
+    {      
+        $group_info = $this->dispatcher_model->get_group_info($id);
+        $this->load->helper('date');
+        
+          $year_now = mdate('%Y', time());
+          $month_now = mdate('%m', time());
+          if (!isset($group_info[0])) return;
+          
+          $year_tech = $year_now-$group_info[0]['YearCreate']; 
+          
+          switch ($year_tech)
+            {   //1 курс
+                case 0: $semestr = 1; break; //осень
+                case 1: 
+                        if ($month_now < 7) {$semestr = 2;}//весна
+                        //2 курс
+                        if ($month_now > 8) {$semestr = 3;}//осень
+                        break;
+                case 2:
+                        if ($month_now < 7) {$semestr = 4;}//весна
+                        //3 курс
+                        if ($month_now > 8) {$semestr = 5;}//осень
+                        break;
+                case 3:
+                        if ($month_now < 7) {$semestr = 5;}//весна
+                        //4 курс
+                        if ($month_now > 8) {$semestr = 6;}//осень
+                        break;
+                case 4:
+                        if ($month_now < 7) {$semestr = 7;}//весна
+                        //5 курс
+                        if ($month_now > 8) {$semestr = 8;}//осень
+                        break;
+                case 5:
+                        if ($month_now < 7) {$semestr = 9;}
+                        //6 курс
+                        if ($month_now > 8) {$semestr = 10;}
+                        break;
+                default: $semestr = 0;
+            }
+          return $semestr; 
+    }
 }
