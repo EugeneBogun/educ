@@ -103,19 +103,24 @@ select#subject_list{
         }
 		
 #add_timetable_status{
-        margin-top:620px;
-
+        margin-top:110px;
+        margin-left:630px;
+        height:12px;
         width:108px;
         position:absolute;
 }
 #classrooms_timetable{
-        width:108px;
         position:absolute;
         margin-left:330px;
         padding-top:10px;
 }
+#teacher_timetable{
+        position:absolute;
+        margin-left:457px;
+        padding-top:10px;
+}
 #add_timetable_button{
         position:absolute;
-        margin-left:500px;
+        margin-left:630px;
         margin-top:80px;    
 }

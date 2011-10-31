@@ -92,7 +92,8 @@ class dispatcher_model extends CI_Model
             
             $data[$i]['fio'] = $user[0]['surname'].' '.substr($user[0]['name'],0,1).'. ';
 			
-            if ($user[0]['patronymic'] != NULL) {$data[$i]['patronymic'] .= substr($user[0]['patronymic'], 0, 1).'.';}
+            if ($user[0]['patronymic'] != NULL) 
+            {$data[$i]['fio'] .= substr($user[0]['patronymic'], 0, 1).'.';}
             $role = $this->db->select('name')->where('id',$row['Roles_id'])->get('Roles')->result_array();
             $data[$i]['role'] = $role[0]['name'];
             $i++;
@@ -245,6 +246,36 @@ class dispatcher_model extends CI_Model
                         break;
                 default: $semestr = 0;
             }
+            if ($group_info[0]['type'] == 0) {$semestr -= 2;}
           return $semestr; 
+    }
+    public function get_freeteacher($subject,$curricula)
+    {
+        $subject_curricula_id = $this->db
+        ->select('id')
+        ->where('curricula_id',$curricula)
+        ->where('Subjects_id',$subject)
+        ->get('Subjects_Curricula')->result_array();
+        $i = 0;
+        
+        
+         $UsersSubjectsCurricula = $this->db
+            ->where('Subjects_Curricula_id',$subject_curricula_id[0]['id'])
+            ->get('UsersSubjectsCurricula')
+            ->result_array();
+          $Users = array();
+          
+        foreach ($UsersSubjectsCurricula as $unit)
+        {            
+            $User = $this->db
+            ->where('id',$unit['Users_id'])
+            ->get('Users')
+            ->result_array();
+            $Users[$i]['id'] = $unit['id'];  
+            $Users[$i]['surname'] = $User[0]['surname'];
+            $i++;
+           
+        }
+       return $Users;  
     }
 }

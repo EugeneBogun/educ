@@ -93,9 +93,53 @@ class dispatcher extends CI_Controller
         {
              echo '
            <option value="'.$classroom['id'].'">'.$this->timetable_model->get_classroom_name($classroom['id'],$univer).'</option>';}
-        
-        
+          
     }
-}   
+     public function ajaxaddtimetable()
+     {
+        $num  = $_REQUEST['num'];
+        $day  = $_REQUEST['day'];
+        $week = $_REQUEST['week'];
+        $univer = $_REQUEST['univer'];
+        $group  = $_REQUEST['group'];
+        $curricula  = $_REQUEST['curricula'];
+        $classroom = $_REQUEST['classroom'];
+        $subject = $_REQUEST['subject'];
+        $teacher = $_REQUEST['teacher'];
+        switch (0){
+            case $num:
+            case $day:
+            case $week:
+            case $univer:
+            case $group:
+            case $curricula:
+            case $classroom:
+            case $subject:
+            case $teacher:
+                    echo '-1';
+                    return;
+        }
+        $ins=array(
+        'week'=>$week,
+        'day'=>$day,
+        'numder' => $num,
+        'Groups_id' => $group,
+        'Classrooms_id' => $classroom,
+        'UsersSubjectsCurricula_id' => $teacher);
+        $this->db->insert('Timetable',$ins);
+        var_dump($_REQUEST);
+     }
+      public function ajaxteacherlist()
+      {
+        $subject = $_REQUEST['subject'];  
+        $curricula  = $_REQUEST['curricula'];
+        $teachers = $this->dispatcher_model->get_freeteacher($subject,$curricula);
+        foreach($teachers as $teacher)
+        {
+            echo '
+           <option value="'.$teacher['id'].'">'.$teacher['surname'].'</option>';
+        }
+      }
+}  
     
 ?>

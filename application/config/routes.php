@@ -43,15 +43,15 @@ $route['user']                  = "user";
 $route['id(:num)']				="user/index/$1";
 $route['ajaxtimetable']         = "user/ajaxtimetable";
 //диспетчерская
-$route['ajaxusergroup']         = "dispatcher/ajaxusergroup";
-$route['ajaxusernogroup']   = "dispatcher/ajaxusernogroup";
-$route['ajaxinsertusergroupresult']   = "dispatcher/ajaxinsertusergroupresult";
-$route['ajaxuniverteachplan']   = "dispatcher/ajaxuniverteachplan";
-$route['ajaxcurriculagrouplist']   = "dispatcher/ajaxcurriculagrouplist";
-$route['ajaxsubjectlist']   = "dispatcher/ajaxsubjectlist";
-$route['ajaxfreeclassroomslist']   = "dispatcher/ajaxfreeclassroomslist";
-
-
+$route['ajaxusergroup']              = "dispatcher/ajaxusergroup";
+$route['ajaxusernogroup']            = "dispatcher/ajaxusernogroup";
+$route['ajaxinsertusergroupresult']  = "dispatcher/ajaxinsertusergroupresult";
+$route['ajaxuniverteachplan']        = "dispatcher/ajaxuniverteachplan";
+$route['ajaxcurriculagrouplist']     = "dispatcher/ajaxcurriculagrouplist";
+$route['ajaxsubjectlist']            = "dispatcher/ajaxsubjectlist";
+$route['ajaxfreeclassroomslist']     = "dispatcher/ajaxfreeclassroomslist";
+$route['ajaxaddtimetable']           = "dispatcher/ajaxaddtimetable";
+$route['ajaxteacherlist']            = "dispatcher/ajaxteacherlist";
 
 //расписание
 
@@ -60,8 +60,8 @@ $route['welcome']				= "welcome/welcome";
 $route['about']					= "welcome/about";
 $route['login']					= "welcome/login";
 $route['send']                  = "message/send";
-$route['posted']                  = "message/posted";
-$route['adopted']                  = "message/adopted";
+$route['posted']                = "message/posted";
+$route['adopted']               = "message/adopted";
 
 $route['404_override'] = '';
 
