@@ -119,6 +119,9 @@ select#subject_list{
         margin-left:457px;
         padding-top:10px;
 }
+#teacher_timetable select{
+        width:140px;
+        }
 #add_timetable_button{
         position:absolute;
         margin-left:630px;
