@@ -3,7 +3,7 @@
 
 /*таблицы*/
 .table_message{
-	margin:40px 30px;
+	margin:40px 20px;
 	-moz-border-top-left-radius:4px;
     border-top-left-radius:4px;
     -webkit-border-top-left-radius:4px;
@@ -11,28 +11,40 @@
 	-moz-border-top-right-radius:4px;
     border-top-right-radius:4px;
     -webkit-border-top-right-radius:4px;}
+.table_message table{
+	border-spacing:0;
+	border-collapse: collapse;}
 	
 .table_message table td{
 	 border: #DDD solid 1px;}
 #to{
-	width:70px;}
+	width:100px;
+	text-align:center;}
 #text{
-	width:500px;}
+	width:518px;
+	padding-left:10px;
+	padding-right:10px;}
 #datetime{
-	width:auto;}
+	width:130px;
+	font-size:10px;}
 
 /*message*/
 
 #message{
-	height:300px;
+	height:265px;
 	width:500px;
-	border:3px solid #0033FF;
-	margin:40px 40px;
+	border:3px solid #CCC;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	margin:40px 140px;
 	background-color:#FFF;
 	}
 
 #message_top {
-	background-color:#0033FF;
+	padding-top:10px;
+	padding-left:10px;
+	font-size:11px;
 	height:30px;
 	width:auto;
 }	
@@ -43,11 +55,14 @@
 	padding-left:5px;}
 
 #message_button{
-	margin-left:400px;
-	margin-top:10px;}
+	margin-left:370px;
+	margin-top:10px;
+	width:100px;
+	height:28px;}
 
 #message_text{
-	margin-left:5px;}
+	margin-left:10px;
+	border:1px solid #DDD;}
 
 #message_logo{
 	padding-top:3px;

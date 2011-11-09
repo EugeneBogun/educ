@@ -13,7 +13,9 @@ body {
 	width: 100%;
 	text-align:center;
 }
-
+input, textarea {
+outline: none;
+}
 #wrapper {
   width: 1000px;
   margin: 0 auto;

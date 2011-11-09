@@ -16,7 +16,7 @@
 				<?php  	
 				 foreach($messages as $message)
 						{
-						echo '<tr><td>'.$message['Users_id_to'].'</td><td align="center">'.$message['text'].'</td><td><font size="1">'.$message['datetime'].'</font></td></tr>';
+						echo '<tr><td id="to">'.$message['Users_id_to'].'</td><td id="text">'.$message['text'].'</td><td  id="datetime">'.$message['datetime'].'</font></td></tr>';
 						}		
 				?>
 		
