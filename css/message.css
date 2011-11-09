@@ -3,9 +3,17 @@
 
 /*таблицы*/
 .table_message{
-	margin:40px 30px;}
+	margin:40px 30px;
+	-moz-border-top-left-radius:4px;
+    border-top-left-radius:4px;
+    -webkit-border-top-left-radius:4px;
+	
+	-moz-border-top-right-radius:4px;
+    border-top-right-radius:4px;
+    -webkit-border-top-right-radius:4px;}
+	
 .table_message table td{
-	border:1px solid blue;}
+	 border: #DDD solid 1px;}
 #to{
 	width:70px;}
 #text{
@@ -73,38 +81,5 @@ background-color:#0033FF;
 text-align:center;
 }
 /*menu*/
-#menu_message{
-	width:400px;
-	margin-left:171px;
-	}	
-#menu_message div{
-	float:left;
-	color:#09f;
-	border-top-color: #09F;
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-left-color: #09F;
-	border-left-style: solid;
-	border-left-width: 1px;
-	border-right-color: #09F;
-	border-right-style: solid;
-	border-right-width: 1px;
-	cursor:pointer;
-	font-size:13px;
-	margin-left:2px;
-    padding: 6px 8px 2px 8px;
-	margin-top:4px;
-    -moz-border-top-left-radius:4px;
-    border-top-left-radius:4px;
-    -webkit-border-top-left-radius:4px;
-	
-	-moz-border-top-right-radius:4px;
-    border-top-right-radius:4px;
-    -webkit-border-top-right-radius:4px;
-	
-	font-family: "tahoma", "arial", "verdana", sans-serif, "Lucida Sans";
-	font-size: 11px;
-	height: 16px;
-	text-decoration:none;
-	}	
+
 

@@ -1,8 +1,9 @@
-		<div id="menu_message">
+		<link href="/css/message.css" rel="stylesheet" type="text/css" />
+		<div id="menu_tab">
 		
-			<a href="message"><div id="menu_message_block">Написать сообщение</div></a>
-			<a href="adopted"><div id="menu_message_block">Принятые</div></a>
-			<a href="posted"><div id="menu_message_block">Отправленные</div></a>
+			<a href="/message"><div>Написать сообщение</div></a>
+			<a href="/inbox"><div>Принятые</div></a>
+			<a href="/outbox"><div>Отправленные</div></a>
 			
 		
 		</div>

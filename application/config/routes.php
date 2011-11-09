@@ -42,6 +42,8 @@ $route['default_controller']    = "welcome";
 $route['user']                  = "user";
 $route['id(:num)']				="user/index/$1";
 $route['ajaxtimetable']         = "user/ajaxtimetable";
+//оценки
+//$route['values/(:any)']              = "task/index/$1";
 //диспетчерская
 $route['ajaxusergroup']              = "dispatcher/ajaxusergroup";
 $route['ajaxusernogroup']            = "dispatcher/ajaxusernogroup";
@@ -60,8 +62,8 @@ $route['welcome']				= "welcome/welcome";
 $route['about']					= "welcome/about";
 $route['login']					= "welcome/login";
 $route['send']                  = "message/send";
-$route['posted']                = "message/posted";
-$route['adopted']               = "message/adopted";
+$route['outbox']                = "message/posted";
+$route['inbox']               = "message/adopted";
 
 $route['404_override'] = '';
 

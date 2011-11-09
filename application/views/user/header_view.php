@@ -11,7 +11,7 @@ die('<div style="clear:both; background:#ffff99; border:1px solid #cccc66; font-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>EduUnit - Моя страница</title>
-<link href="css/user.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+<link href="/css/user.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
 
 </head>

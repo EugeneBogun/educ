@@ -28,6 +28,10 @@ class user extends CI_Controller
 				$this->session->unset_userdata($array); 
 				redirect(base_url());
 	}
+    public function task_add()
+    {
+   	    $this->display_lib->task_add_page();
+    }
 
      public function ajaxtimetable()
     {

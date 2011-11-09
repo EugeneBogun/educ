@@ -1,0 +1,32 @@
+#values_module{
+        width:740px; 
+        min-height:250px; 
+        margin-left:10px; 
+        margin-top:10px; 
+        float:left;
+        border: #DDD solid 1px;
+        box-shadow: 0 0 5px black; /* Параметры тени */
+        box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+        -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Firefox */
+        -webkit-box-shadow: 0px 3px 20px rgba(0,0,0,0.2); /* Для Safari и Chrome */
+         color:#06F;
+         font-family: tahoma;
+         border-radius: 3px;
+        -moz-border-radius: 3px;
+         -webkit-border-radius: 3px;
+        -khtml-border-radius:  3px;
+        }
+        
+div#values_module_title{
+    
+        height:20px;
+        text-align: center;
+        line-height:20px;
+       	font-family: Tahoma;
+    	font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        border-bottom-color: #DDD;
+	    border-bottom-style: solid;
+	    border-bottom-width: 1px;
+        }
