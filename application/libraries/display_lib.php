@@ -46,22 +46,22 @@ public function message_page($data,$view)
     $CI->load->view('message/footer_view');
    
 }
-public function values_add_page()
+public function values_page($view)
 {	
 	$CI =& get_instance ();
 	$CI->load->view('user/header_view');
 	$CI->load->view('user/top_left_view');
-    $CI->load->view('values/menu_view');
-	$CI->load->view('values/add_values_view');
+	$CI->load->view('values/'.$view.'_values_view');
 	$CI->load->view('values/footer_view');
 }
-public function values_read_page()
+public function settings_page($view)
 {	
 	$CI =& get_instance ();
 	$CI->load->view('user/header_view');
 	$CI->load->view('user/top_left_view');
-	$CI->load->view('values/read_values_view');
-	$CI->load->view('values/footer_view');
+    $CI->load->view('settings/menu_view');
+	$CI->load->view('settings/'.$view.'_view');
+	$CI->load->view('settings/footer_view');
 }
 
 }

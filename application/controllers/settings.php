@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class values extends CI_Controller
+class settings extends CI_Controller
 {
     
     public function __construct()
@@ -18,13 +18,13 @@ class values extends CI_Controller
 		redirect(base_url());	
     }
     
-    public function add()
+    public function about()
     {
-   	    $this->display_lib->values_page('add');
+   	    $this->display_lib->settings_page('about');
     }
-    public function read()
+    public function invite()
     {
-   	    $this->display_lib->values_page('read');
+   	    $this->display_lib->settings_page('invite');
     }
     
 }   
