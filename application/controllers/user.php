@@ -37,10 +37,11 @@ class user extends CI_Controller
     {
        	 $id = 7;
          $week = 1;
-	 $data['lessons'] = array();
 	 $this->load->model('timetable_model');
-	 $timetable = $this->timetable_model->timetable($id,$week);
-     $this->timetable_model->get_view_timetable($timetable);
+	 $data['timetable'] = $this->timetable_model->timetable($id,$week);
+	 
+	 $CI =& get_instance ();
+	 $CI->load->view('ajax/timetable_view',$data);
     }
     
 }   

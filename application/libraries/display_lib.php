@@ -19,7 +19,6 @@ public function user_page()
 	
 	$CI->load->view('user/header_view');
 	$CI->load->view('user/top_left_view');
-	$CI->load->view('user/content_border_view');
 	$CI->load->view('user/content_left_view');
 	$CI->load->view('user/news_view');
 	$CI->load->view('user/file_view');

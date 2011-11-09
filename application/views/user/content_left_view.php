@@ -1,4 +1,5 @@
-     <div id="left_bar">
+ <div id="background_global" style="margin-top:3px;">
+ <div id="left_bar">
       	<div id="avatar">
 			<img src="img/foto.png">
             <!--Иванов И.И. |  Курсант-->

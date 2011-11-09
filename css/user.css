@@ -121,24 +121,25 @@ body {
 
 /* ссылки, псевдоклассы ссылок
 -----------------------------------------------------------------------------*/
-#news{margin-top:54px;position:absolute;}
+#news{
+	margin-top:44px;
+	margin-left:13px;
+	position:absolute;
+	border: #DDD solid 1px;
+	}
 #news_table{
-border-spacing:0;
-border-collapse: collapse;
-
-
-}
+	border-spacing:0;
+	border-collapse: collapse;
+	}
 
 #news_table td{
-border: 1px solid #DDD;
-text-align:center;
-font-size:11px;
-background-color:#FFF;
-color: #06F;
-}
+	border: 1px solid #DDD;
+	text-align:center;
+	font-size:11px;
+	background-color:#FFF;
+	color: #06F;}
 #news_table  #row{
-height:20px;
-}
+	height:20px;}
 
 #news_table #title
 {	width:130px;
@@ -147,10 +148,10 @@ height:20px;
 {	width:310px;
 }
 #news_table #date	
-{	width:70px;
+{	width:40px;
 }
 #news_table #autor	
-{	width:130px;
+{	width:100px;
 }
 
 #news_title{
@@ -171,12 +172,15 @@ height:20px;
 	background-color:#f7f7f7;
 }
 
-#file{margin-top:160px;position:absolute;}
+#file{margin-top:150px;
+	position:absolute;
+	margin-left:13px;
+	position:absolute;
+	border: #DDD solid 1px;
+	}
 #file_table{
-
-border-spacing:0;
-border-collapse: collapse;
-
+	border-spacing:0;
+	border-collapse: collapse;
 }
 
 #file_table td{
@@ -200,10 +204,10 @@ color: #06F;
 {	width:310px;
 }
 #file_table #date
-{	width:70px;
+{	width:40px;
 }
 #file_table #autor
-{	width:130px;
+{	width:100px;
 }
 #file_table  #row{
 height:20px;
@@ -228,34 +232,39 @@ height:20px;
 	background-color:#f7f7f7;
 }
 
-#subjects{margin-left:-170px;
-margin-top:280px;
-position:absolute;}
+#subjects{
+	margin-left:-153px;
+	margin-top:258px;
+	position:absolute;
+	position:absolute;
+	border: #DDD solid 1px;}
 #subjects_table{
-border-spacing:0;
-border-collapse: collapse;
-
-}
+	border-spacing:0;
+	border-collapse: collapse;}
 
 #subjects_table td{
-border: 1px solid #DDD;
-text-align:center;
-font-size:11px;
-background-color:#FFF;
-color: #06F;
-}
+	border: 1px solid #DDD;
+	text-align:center;
+	font-size:11px;
+	background-color:#FFF;
+	color: #06F;
+	}
 #subjects_table  #row{
-height:50px;
+	height:50px;
 }
 	
 #subjects_table #day
-{	width:135px;
+{	
 	color:#777;
 	font-weight:600;
 	font-family:tahoma, Geneva, sans-serif;
 	font-style:normal;
 	font-size:12px;
 	background-color:#f7f7f7;
+}
+#subjects_table td{
+    overflow:hidden;
+    width:128px;
 }
 #subjects_title{
 	font-size: 1.3em;
@@ -391,4 +400,5 @@ select{
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Firefox */
     -webkit-box-shadow: 0px 3px 20px rgba(0,0,0,0.2); /* Для Safari и Chrome */
 	 border: #DDD solid 1px;
+     min-height:580px;
 }
