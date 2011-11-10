@@ -1,8 +1,8 @@
-п»ї  <div class="welcome">
-	<a href="reg">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂСѓРµРјСЃСЏ</a>, <a href="login">РІРѕР№РґРµРј</a> РёР»Рё СѓР¶Рµ РїРѕС‡РёС‚Р°РµРј <a href="about">РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїСЂРѕРµРєС‚Рµ</a>?
+  <div class="welcome">
+	<a href="reg">Зарегистрируемся</a>, <a href="login">войдем</a> или уже почитаем <a href="about">информацию о проекте</a>?
   </div>
   <div class="title">
- 	<h1>Р’С…РѕРґ</h1>
+ 	<h1>Вход</h1>
   <!-- end .title --></div>
 		<form action="" method="POST" id="login-form">
            <table>
@@ -21,7 +21,7 @@
 					<?echo form_error('mail');?>
 				 </td>
                 <tr >
-                  <th>РџР°СЂРѕР»СЊ:</th>
+                  <th>Пароль:</th>
 				  <td><input type="text" name="passw" class="text" value="" /></td>
                 </tr>
 				<td/>
@@ -34,7 +34,7 @@
                 </tr>
               	  <td/>
 				  <td>
-                  	<input type="submit" class="submit" value="Р’РѕР№С‚Рё" />
+                  	<input type="submit" class="submit" value="Войти" />
                   </td>
                   </tr>
               </table>			

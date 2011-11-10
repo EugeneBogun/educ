@@ -1,15 +1,15 @@
-п»ї<div class="table_message">
+<div class="table_message">
 <input type="hidden" id="tab" value="adopted"/>
 		<table>
 			<tr align="center">
 				<td id="to">
-				РљС‚Рѕ:
+				Кто:
 				</td>
 				<td id="text">
-				РўРµРєСЃС‚:
+				Текст:
 				</td>
 				<td id="datetime">
-				Р’СЂРµРјСЏ:
+				Время:
 				</td>
 			</tr>
 			
