@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 31, 2011 at 05:31 PM
+-- Generation Time: Nov 10, 2011 at 04:55 PM
 -- Server version: 5.1.40
 -- PHP Version: 5.3.1
 
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `Classrooms` (
   PRIMARY KEY (`id`),
   KEY `fk_Classrooms_ClassRoomsTypes1` (`ClassRoomsTypes_id`),
   KEY `fk_Classrooms_Buildings1` (`Buildings_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `Classrooms`
@@ -94,7 +94,12 @@ INSERT INTO `Classrooms` (`id`, `name`, `ClassRoomsTypes_id`, `Buildings_id`) VA
 (7, '301', 2, 2),
 (8, '319', 2, 2),
 (9, 'Спортзал №1', 3, 4),
-(10, 'Спортзал №2', 3, 4);
+(10, 'Спортзал №2', 3, 4),
+(11, '104', 2, 2),
+(12, '106', 2, 1),
+(13, '309', 2, 1),
+(14, '113', 2, 3),
+(15, '320', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -272,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `Messages` (
   `Users_id_to` int(11) NOT NULL COMMENT 'Кому',
   PRIMARY KEY (`id`),
   KEY `fk_Messages_Users1` (`Users_id_from`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Личные сообщения' AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Личные сообщения' AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `Messages`
@@ -297,7 +302,8 @@ INSERT INTO `Messages` (`id`, `Users_id_from`, `text`, `datetime`, `status`, `Us
 (18, 0, '', '2011-10-26 18:13:48', 1, 0),
 (19, 0, '', '2011-10-26 18:16:47', 1, 0),
 (20, 0, '', '2011-10-26 18:16:59', 1, 0),
-(21, 0, '0', '2011-10-26 18:18:40', 1, 0);
+(21, 0, '0', '2011-10-26 18:18:40', 1, 0),
+(22, 0, '', '2011-11-05 08:59:03', 1, 8);
 
 -- --------------------------------------------------------
 
@@ -342,6 +348,29 @@ INSERT INTO `Roles` (`id`, `name`) VALUES
 (5, 'Старшина'),
 (6, 'Замстаршина'),
 (7, 'Глава ЦК');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Settings`
+--
+
+CREATE TABLE IF NOT EXISTS `Settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `settings1` varchar(255) NOT NULL,
+  `settings2` varchar(255) NOT NULL,
+  `settings3` varchar(255) NOT NULL,
+  `settings4` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `Settings`
+--
+
+INSERT INTO `Settings` (`id`, `settings1`, `settings2`, `settings3`, `settings4`) VALUES
+(1, 'week', '07.11.2011', '13.11.2011', '1'),
+(2, 'week', '14.11.2011', '20.11.2011', '0');
 
 -- --------------------------------------------------------
 
@@ -401,7 +430,7 @@ CREATE TABLE IF NOT EXISTS `Subjects` (
   `full_name` varchar(75) NOT NULL COMMENT 'Полное имя',
   `name` varchar(45) NOT NULL COMMENT 'Абревиатура',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Предметы' AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Предметы' AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `Subjects`
@@ -414,11 +443,13 @@ INSERT INTO `Subjects` (`id`, `full_name`, `name`) VALUES
 (4, 'Економіка підприємства', 'ЕП'),
 (5, 'Фізична культура', 'фіз-ра'),
 (7, 'Інтернет технології', 'ІТ'),
-(6, 'Соціологія', 'Соціологія'),
-(9, 'Політологія', 'Політологія'),
+(6, 'Соціологія', 'Соц.'),
+(13, 'Англійска мова', 'Англ.'),
+(9, 'Політологія', 'Політ.'),
 (10, 'Комп''ютерні мережі', 'КМ'),
 (11, 'Менеджмент/Маркетинг', 'Мен./Марк.'),
-(12, 'Веб-дизайн', 'Веб-дизайн');
+(12, 'Веб-дизайн', 'Веб-диз.'),
+(14, 'Основи захисту інформації', 'ОЗІ');
 
 -- --------------------------------------------------------
 
@@ -434,7 +465,7 @@ CREATE TABLE IF NOT EXISTS `Subjects_Curricula` (
   PRIMARY KEY (`id`),
   KEY `fk_Subjects_Curricula_Curricula1` (`curricula_id`),
   KEY `fk_Subjects_Curricula_Subjects1` (`Subjects_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Предмет-программа' AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Предмет-программа' AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `Subjects_Curricula`
@@ -448,10 +479,12 @@ INSERT INTO `Subjects_Curricula` (`id`, `curricula_id`, `Subjects_id`, `term`) V
 (5, 1, 5, 5),
 (6, 1, 6, 5),
 (7, 1, 7, 5),
+(14, 1, 13, 5),
 (9, 1, 9, 5),
 (10, 1, 10, 5),
 (11, 1, 11, 5),
-(12, 1, 12, 5);
+(12, 1, 12, 5),
+(15, 1, 14, 5);
 
 -- --------------------------------------------------------
 
@@ -471,7 +504,7 @@ CREATE TABLE IF NOT EXISTS `Timetable` (
   KEY `fk_Timetable_Groups1` (`Groups_id`),
   KEY `fk_Timetable_Classrooms1` (`Classrooms_id`),
   KEY `fk_Timetable_UsersSubjectsCurricula1` (`UsersSubjectsCurricula_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Расписание' AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Расписание' AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `Timetable`
@@ -491,7 +524,25 @@ INSERT INTO `Timetable` (`id`, `week`, `day`, `numder`, `Groups_id`, `Classrooms
 (16, 2, 1, 3, 1, 9, 10),
 (17, 1, 1, 3, 1, 9, 10),
 (18, 1, 1, 3, 1, 3, 11),
-(19, 2, 1, 3, 1, 3, 11);
+(19, 2, 1, 3, 1, 3, 11),
+(20, 1, 2, 1, 1, 3, 11),
+(21, 1, 2, 2, 1, 1, 2),
+(22, 2, 2, 2, 1, 1, 2),
+(23, 2, 2, 1, 1, 3, 11),
+(24, 1, 2, 3, 1, 11, 12),
+(25, 2, 2, 3, 1, 11, 12),
+(26, 1, 4, 1, 1, 12, 13),
+(27, 2, 4, 1, 1, 12, 13),
+(28, 1, 4, 2, 1, 13, 17),
+(29, 2, 4, 2, 1, 13, 17),
+(30, 1, 4, 3, 1, 3, 18),
+(31, 2, 4, 3, 1, 3, 18),
+(32, 2, 5, 1, 1, 3, 16),
+(33, 1, 5, 1, 1, 3, 16),
+(34, 1, 5, 2, 1, 14, 14),
+(35, 2, 5, 2, 1, 14, 14),
+(36, 1, 5, 3, 1, 15, 15),
+(37, 2, 5, 3, 1, 15, 15);
 
 -- --------------------------------------------------------
 
@@ -520,6 +571,32 @@ INSERT INTO `Universities` (`id`, `name`, `fullname`, `adress`, `Cities_id`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `UniversitiesRoles`
+--
+
+CREATE TABLE IF NOT EXISTS `UniversitiesRoles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Roles_id` int(11) NOT NULL,
+  `Universities_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='"Таблица необходима для связывания ролей с университетами"' AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `UniversitiesRoles`
+--
+
+INSERT INTO `UniversitiesRoles` (`id`, `Roles_id`, `Universities_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Users`
 --
 
@@ -536,7 +613,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `avatar` varchar(200) DEFAULT NULL COMMENT 'Аватар',
   `patronymic` varchar(30) DEFAULT NULL COMMENT 'Отчество',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `Users`
@@ -557,7 +634,8 @@ INSERT INTO `Users` (`id`, `email`, `password`, `surname`, `name`, `datebithday`
 (18, 'dfsa@a.ru', '123', 'Дворецкий', 'Дмитрий', NULL, NULL, NULL, NULL, NULL, 'Николаевич'),
 (19, 'sads@a.ru', '123', 'Грипас', 'Лариса', NULL, NULL, NULL, NULL, NULL, 'Николаевна'),
 (20, 'sdds@a.ru', '123', 'Кожаев', 'Андрей', NULL, NULL, NULL, NULL, NULL, 'Владимирович'),
-(21, 'sdаds@a.ru', '123', 'Самохвалов', 'Юрий', NULL, NULL, NULL, NULL, NULL, 'Владимирович');
+(21, 'sdаds@a.ru', '123', 'Самохвалов', 'Юрий', NULL, NULL, NULL, NULL, NULL, 'Владимирович'),
+(22, 'g@g.ru', '123', 'Куриленко', 'Виктория', NULL, NULL, NULL, NULL, NULL, 'Сергеевна');
 
 -- --------------------------------------------------------
 
@@ -597,7 +675,7 @@ CREATE TABLE IF NOT EXISTS `UsersGroups` (
   KEY `fk_GroupsUsers_Groups1` (`Groups_id`),
   KEY `fk_UsersGroups_Users1` (`Users_id`),
   KEY `fk_UsersGroups_Roles1` (`Roles_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Пользователи - группы' AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Пользователи - группы' AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `UsersGroups`
@@ -607,7 +685,12 @@ INSERT INTO `UsersGroups` (`id`, `description`, `Groups_id`, `Users_id`, `Roles_
 (1, NULL, 1, 7, 1),
 (9, NULL, 3, 14, 1),
 (16, 'вручную', 1, 8, 1),
-(19, NULL, 1, 16, 1);
+(19, NULL, 1, 16, 1),
+(23, NULL, 1, 7, 1),
+(22, NULL, 1, 7, 1),
+(24, NULL, 1, 7, 1),
+(25, NULL, 1, 7, 1),
+(26, NULL, 1, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -682,7 +765,7 @@ CREATE TABLE IF NOT EXISTS `UsersSubjectsCurricula` (
   KEY `fk_UsersSubjectsCurricula_Subjects_Curricula1` (`Subjects_Curricula_id`),
   KEY `fk_UsersSubjectsCurricula_Users1` (`Users_id`),
   KEY `fk_UsersSubjectsCurricula_Roles1` (`Roles_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Преподаватель-предмет-учебный план' AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Преподаватель-предмет-учебный план' AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `UsersSubjectsCurricula`
@@ -699,7 +782,9 @@ INSERT INTO `UsersSubjectsCurricula` (`id`, `Subjects_Curricula_id`, `Users_id`,
 (13, 9, 19, 2),
 (14, 10, 21, 2),
 (15, 11, 12, 2),
-(16, 12, 20, 2);
+(16, 12, 20, 2),
+(17, 14, 22, 2),
+(18, 15, 11, 2);
 
 -- --------------------------------------------------------
 
@@ -722,3 +807,26 @@ CREATE TABLE IF NOT EXISTS `UsersUniversities` (
 -- Dumping data for table `UsersUniversities`
 --
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Values`
+--
+
+CREATE TABLE IF NOT EXISTS `Values` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `UsersSubjectsCurricula_id` int(11) NOT NULL COMMENT 'Ссылка на предмет/преподавателя/уч.план',
+  `Users_id` int(11) NOT NULL COMMENT 'Ссылка на курсанта',
+  `Data` date NOT NULL COMMENT 'Дата',
+  `Value` varchar(2) NOT NULL COMMENT 'Оценка',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Оценки' AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `Values`
+--
+
+INSERT INTO `Values` (`id`, `UsersSubjectsCurricula_id`, `Users_id`, `Data`, `Value`) VALUES
+(1, 8, 7, '2011-11-09', '5'),
+(2, 8, 7, '2011-11-10', 'нп');

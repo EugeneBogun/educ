@@ -55,4 +55,42 @@ class profile_model extends CI_Model
 	}
 	return $data;
 	}
+	public function runway($id)
+	{
+		$data=$this->db->query( "SELECT * FROM Invites WHERE Users_id = '".$id."'")->result_array();
+		$options=explode(";",$data[0]['option']);
+		foreach($options as $row)
+		{
+			$atom = explode(":",$row);
+				switch($atom[0])
+				{	
+					case 'U': 	
+						$data->id=$this->db->where('Users_id',$id)->get('UsersUniversities')->result_array();
+						$name=$this->db->where('id',$data->id)->get('Universities')->result_array();
+						$data->name=$name[0]['name'];
+						break;
+					case 'D': 
+						$ins=array(
+							'Departments_id'=>$atom[1],
+							'Roles_id'=>$atom[2],
+							'Users_id'=>$id);
+						$this->db->insert('UsersDepartments',$ins);
+						break;
+					case 'S': 
+						$ins=array(
+							'SubDepartments_id'=>$atom[1],
+							'Roles_id'=>$atom[2],
+							'Users_id'=>$id);
+						$this->db->insert('UsersSubDepartments',$ins);
+						break;
+					case 'G': 
+						$ins=array(
+							'Groups_id'=>$atom[1],
+							'Roles_id'=>$atom[2],
+							'Users_id'=>$id);
+						$this->db->insert('UsersGroups',$ins);
+						break;
+				}
+		}
+	}
 }

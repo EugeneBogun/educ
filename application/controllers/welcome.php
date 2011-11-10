@@ -33,30 +33,32 @@ class welcome extends CI_Controller
     // авторизация пользователя
 	public function login() //отображение формы авторизации
     {
-	$data->title = 'Вход';
-	$view = 'login';
-	$this->form_validation->set_rules($this->Welcome_model->login_rules);
-	$this->form_validation->set_error_delimiters('<span style="color:red;">', '</span>'); 
-	//$data->id='500';
-	if ($this->form_validation->run() == TRUE)
-	{
-		$login = $this->input->post('mail', TRUE);
-		$users_id=$this->db->query( "SELECT * FROM Users WHERE email = '".$login."'")->result_array();//Рекомендую возвращать из модели
-		$id = array(
-				'Users_id'=>$users_id[0]['id']
-					);
-		$data->id=$users_id[0]['id'];
-		//$view = 'profile';
-		$array = array('id'=>$users_id[0]['id']);
-		$this->session->set_userdata($array);
-		redirect(base_url()."id".$users_id[0]['id']);
-	}
-	else
-	{
-		$data->login=$this->input->post('mail', TRUE);
-	}
-    $this->display_lib->welcome_page($view ,$data);
-    }
+		$sesion_id = $this->session->userdata('id');
+		if(isset($sesion_id)and($sesion_id!=NULL))
+			{
+			redirect(base_url()."id".$sesion_id);
+			}
+		else
+			{
+			$data->title = 'Вход';
+			$view = 'login';
+			$this->form_validation->set_rules($this->Welcome_model->login_rules);
+			$this->form_validation->set_error_delimiters('<span style="color:red;">', '</span>'); 
+			if ($this->form_validation->run() == TRUE)
+				{
+				$array['login'] = $this->input->post('mail', TRUE);
+				$data->id=$this->Welcome_model->return_data($array);
+				$array = array('id'=>$data->id);
+				$this->session->set_userdata($array);
+				redirect(base_url()."id".$data->id);
+				}
+			else
+				{
+				$data->login=$this->input->post('mail', TRUE);
+				}
+		$this->display_lib->welcome_page($view ,$data);
+		}	
+	}     
 	
 	public function log_mail($str)
 	{
@@ -91,38 +93,52 @@ class welcome extends CI_Controller
     // реестрация пользователя
     public function reg()
     {
-    $data->title =  'Регистрация EduUnit'; 	
-	$view = 'reg';
-	$this->form_validation->set_rules($this->Welcome_model->reg_rules);
-	$this->form_validation->set_error_delimiters('<span style="color:red;float:left;">', '</span>'); 
-	if ($this->form_validation->run() == TRUE)
-	{
-		$key = $this->input->post('key', TRUE);
-		$login = $this->input->post('mail', TRUE);
-		$passw = $this->input->post('passw', TRUE);
-		$mas = array(									//Рекомендую возвращать из модели
-				'email'=>$login,
-				'password'=>$passw
-					);
-		$this->db->insert('Users',$mas);
-		$users_id=$this->db->query( "SELECT * FROM Users WHERE email = '".$login."'")->result_array();//Рекомендую возвращать из модели
-		$this->load->helper('date');
-		$now = time();
-		$id = array(
-				'Users_id'=>$users_id[0]['id'],
-				'date_reg' => unix_to_human($now, TRUE, 'eu')
-					);
-		$this->db->update('Invites', $id, "invite = '".$key."'"); 
-		$data->id=$users_id[0]['id'];
-		$this->Welcome_model->parser_links($key,$users_id[0]['id']);//Добавил
-		$view = 'profile';
-	}
-	else
-	{
-		$data->login=$this->input->post('mail', TRUE);
-		$data->key=$this->input->post('key', TRUE);
-	}
-    $this->display_lib->welcome_page($view,$data);      
+		$sesion_id = $this->session->userdata('id');
+		if(isset($sesion_id)and($sesion_id!=NULL))
+			{
+			redirect(base_url()."id".$sesion_id);
+			}
+		else
+			{
+			$data->title =  'Регистрация EduUnit'; 	
+			$view = 'reg';
+			$this->form_validation->set_rules($this->Welcome_model->reg_rules);
+			$this->form_validation->set_error_delimiters('<span style="color:red;float:left;">', '</span>'); 
+			if ($this->form_validation->run() == TRUE)
+				{
+				$array['key']= $this->input->post('key', TRUE);
+				$array['login']=$this->input->post('mail', TRUE);
+				$array['passw']=$this->input->post('passw', TRUE);
+				/*$key = $this->input->post('key', TRUE);
+				$login = $this->input->post('mail', TRUE);
+				$passw = $this->input->post('passw', TRUE);*/
+				$data->id=$this->Welcome_model->return_data($array);
+				/*
+				$mas = array(									//Рекомендую возвращать из модели
+						'email'=>$login,
+						'password'=>$passw
+							);
+				$this->db->insert('Users',$mas);
+				$users_id=$this->db->query( "SELECT * FROM Users WHERE email = '".$login."'")->result_array();//Рекомендую возвращать из модели
+				$this->load->helper('date');
+				$now = time();
+				$id = array(
+						'Users_id'=>$users_id[0]['id'],
+						'date_reg' => unix_to_human($now, TRUE, 'eu')
+							);
+				$this->db->update('Invites', $id, "invite = '".$key."'"); 
+				$data->id=$users_id[0]['id'];
+				$this->Welcome_model->parser_links($key,$users_id[0]['id']);//Добавил*/
+				
+				redirect(base_url()."login");
+				}
+			else
+				{
+				$data->login=$this->input->post('mail', TRUE);
+				$data->key=$this->input->post('key', TRUE);
+				}
+			$this->display_lib->welcome_page($view,$data);  
+			}     
 	}
 	
 	public function reg_mail($str)
@@ -156,9 +172,17 @@ class welcome extends CI_Controller
 	//********************************************************************************************************************    
 	public function about()
     {
-    $data->title =  'О проекте'; 	
-	$view = 'about';
-    $this->display_lib->welcome_page($view,$data);      
+		$sesion_id = $this->session->userdata('id');
+		if(isset($sesion_id)and($sesion_id!=NULL))
+			{
+			redirect(base_url()."id".$sesion_id);
+			}
+		else
+			{
+			$data->title =  'О проекте'; 	
+			$view = 'about';
+			$this->display_lib->welcome_page($view,$data); 
+			}     
     }
     
     

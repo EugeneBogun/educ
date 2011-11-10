@@ -1,0 +1,67 @@
+@charset "utf-8";
+#main{
+	    width:420px; 
+        min-height:250px; 
+        margin-left:10px; 
+        margin-top:10px; 
+        float:left;
+        border: #DDD solid 1px;
+        box-shadow: 0 0 5px black; /* ��������� ���� */
+        box-shadow: 0 0 10px rgba(0,0,0,0.5); /* ��������� ���� */
+        -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* ��� Firefox */
+        -webkit-box-shadow: 0px 3px 20px rgba(0,0,0,0.2); /* ��� Safari � Chrome */
+         color:#06F;
+         font-family: tahoma;
+		}
+#title{
+    
+        height:20px;
+        line-height:20px;
+       	font-family: Tahoma;
+    	font-size: 16px;
+        font-weight: 600;
+		text-align:center;
+        border-bottom-color: #DDD;
+	    border-bottom-style: solid;
+	    border-bottom-width: 1px;
+        }
+#select_data{min-height:166px;}
+/*#data_invites { border:#ddd solid 1px;}*/
+#vuz_category{
+		width:110px;
+		min-height:144px;
+		float:left;
+		/*border:#000 solid 1px;*/
+		padding:10px 5px;
+		}
+#category{ margin-top:10px;}
+#select_category{
+		/*border:#123 solid 1px;*/
+		width:120px;
+		float:left;
+		padding:10px 5px;
+		min-height:144px;
+		}
+#rol_col{
+		/*border:#acd solid 1px;*/
+		width:140px;
+		min-height:144px;
+		padding:10px 5px;
+		float:left;
+		}
+/*#col{margin-top:10px;}*/
+#dec{float:left;position:absolute;background:url(../img/dec.jpg);height:16px;width:15px;cursor:pointer;}
+#num{
+		float:left;
+		position:absolute;
+		margin-left:15px;
+		width:83px;
+		border:#ccc solid 1px;
+		text-align:right;
+		padding-right:5px;
+		line-height:14px}
+#inc{float:left;position:absolute;background:url(../img/inc.jpg)#ccc;margin-left:105px;height:16px;width:15px;cursor:pointer;}
+#proces_data{height:30px;}
+#add_data{width:80px;line-height:20px;background:#ddd;cursor:pointer;text-align:center;color:#000;float:left;margin:5px 20px 5px 125px;}
+#save_data{width:80px;line-height:20px;background:#ddd;cursor:pointer;text-align:center;color:#000;float:left;margin:5px;}
+#validation,#rol_val{text-align:center;color:#f00;}

@@ -40,7 +40,12 @@
 
 $route['default_controller']    = "welcome";
 $route['user']                  = "user";
-
+$route['logout']                  	= "user/logout";
+//invite
+$route['ajaxuniverlist']			= "dispatcher/ajaxuniverlist";
+$route['ajaxcategorylist']			= "dispatcher/ajaxcategorylist";
+$route['ajaxroleslist']				= "dispatcher/ajaxroleslist";
+//расписание
 $route['ajaxtimetable']         = "user/ajaxtimetable";
 //группа
 $route['univer(:num)']			="univer/index/$1";

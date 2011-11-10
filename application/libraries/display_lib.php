@@ -32,6 +32,7 @@ public function timetable_insert_page($data)
 	$CI->load->view('dispatcher/group_view',$data);
     $CI->load->view('dispatcher/add_user_to_group_view',$data);
 	$CI->load->view('dispatcher/add_timetable_view',$data);
+	$CI->load->view('dispatcher/invite_view',$data);
 	$CI->load->view('dispatcher/footer_view');
 }
 public function message_page($data,$view)

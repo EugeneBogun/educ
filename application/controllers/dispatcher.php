@@ -140,6 +140,68 @@ class dispatcher extends CI_Controller
            <option value="'.$teacher['id'].'">'.$teacher['surname'].'</option>';
         }
       }
+	  //invites	
+	public function ajaxuniverlist()
+    {
+		$univer_list = $this->dispatcher_model->get_univer_list();
+		echo '<option value="0">Выбирите</option>';
+			foreach ($univer_list as $univer) {  echo '
+            <option value="'.$univer['id'].'">'.$univer['name'].'</option>';}
+    }
+	
+	public function ajaxroleslist()
+	{
+	  $id=$_REQUEST['univer_id'];
+	  $univerroles_list = $this->dispatcher_model->get_univerroles_list($id);
+	  echo '<option value="0">Выбирете</option>';
+	  foreach($univerroles_list as $univerroles)
+	  {
+		$roles = $this->db->where('id',$univerroles['Roles_id'])->get('Roles')->result_array();
+		echo('<option value="'.$roles['0']['id'].'">'.$roles['0']['name'].'</option>');
+	  }
+	}
+	
+	public function ajaxcategorylist()
+    {
+	  $category=$_REQUEST['category'];
+	  $id=$_REQUEST['id_univer'];
+	  switch($category)
+		{
+			case 'U': 
+				break;
+			case 'D': 
+				$department_list=$this->dispatcher_model->get_department_list($id);
+				foreach ($department_list as $department) {  echo '
+				<option value="'.$department['id'].'">'.$department['name'].'</option>';}
+				break;
+			case 'S': 
+				$department_list=$this->dispatcher_model->get_department_list($id);
+				foreach ($department_list as $department) { 
+					$subdepartments_list=$this->dispatcher_model->get_subdepartments_list($department['id']);
+					foreach($subdepartments_list as $subdepartments){ echo '
+					<option value="'.$subdepartments['id'].'">'.$subdepartments['name'].'</option>';}
+				}
+				break;
+			case 'G': 
+				$department_list=$this->dispatcher_model->get_department_list($id);
+				foreach ($department_list as $department) { 
+					$Dep_Spec_list=$this->dispatcher_model->get_Dep_Spec_list($department['id']);
+					foreach($Dep_Spec_list as $Dep_Spec){
+						$Curricula_list=$this->dispatcher_model->get_Curricula_list($Dep_Spec['id']);
+						foreach($Curricula_list as $Curricula){
+							$Curriculatogroup_list=$this->dispatcher_model->get_Curriculatogroup_list($Curricula['id']);
+							foreach($Curriculatogroup_list as $Curriculatogroup){echo '
+								<option value="'.$Curriculatogroup['id'].'">'.$Curriculatogroup['name'].'</option>';
+								}
+							}
+						}
+				}
+				break;		
+		}
+				
+	}   
+	
+//invites
 }  
     
 ?>

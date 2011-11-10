@@ -6,6 +6,7 @@ class user extends CI_Controller
     public function __construct()
     {
       parent::__construct();
+	  $this->load->model('profile_model');
     }    
     
     public function index($id)
@@ -15,6 +16,7 @@ class user extends CI_Controller
 			{
 			$week = 1;
 			$this->display_lib->main_page('user',array());
+			$data=$this->profile_model->runway($id);
 			}
 		else
 			{
