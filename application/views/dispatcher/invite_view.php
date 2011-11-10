@@ -1,12 +1,12 @@
-<link href="/css/add_invites.css" rel="stylesheet" type="text/css" />
+п»ї<link href="/css/add_invites.css" rel="stylesheet" type="text/css" />
 <script src="/js/invite.js"></script>
 <div id="main">
-	<div id="title">Создание инвайтов</div>
+	<div id="title">РЎРѕР·РґР°РЅРёРµ РёРЅРІР°Р№С‚РѕРІ</div>
 	<div id="data_invites">
 		<div id="select_data">
 			<div id="vuz_category">
 				<div id="select_vuz">
-					Выбрыть универ:<br/>
+					Р’С‹Р±СЂС‹С‚СЊ СѓРЅРёРІРµСЂ:<br/>
 					<Select size="1" id="vuz_list_invite" name="vuz_list_invite">
 					</select>
 				</div>
@@ -19,7 +19,7 @@
 				<div id="rol">
 				</div>
 				<div id="col">
-					Выбрать количество:
+					Р’С‹Р±СЂР°С‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ:
 					<div id="count">
 						<div id="dec"></div>
 						<div id="num" value="1">1</div>
@@ -33,8 +33,8 @@
 			</textarea>
 		</div>
 		<div id="proces_data">
-			<div id="add_data">Добавить</div>
-			<div id="save_data">Создать</div>
+			<div id="add_data">Р”РѕР±Р°РІРёС‚СЊ</div>
+			<div id="save_data">РЎРѕР·РґР°С‚СЊ</div>
 		</div>
 		<div id="validation">
 		</div>

@@ -1,8 +1,8 @@
-		<link href="/css/message.css" rel="stylesheet" type="text/css" />
+п»ї		<link href="/css/message.css" rel="stylesheet" type="text/css" />
 		<div id="menu_tab">
 		
-			<a href="/settings/about"><div>О себе</div></a>
-			<a href="/settings/invite"><div>Приглашения</div></a>
+			<a href="/settings/about"><div>Рћ СЃРµР±Рµ</div></a>
+			<a href="/settings/invite"><div>РџСЂРёРіР»Р°С€РµРЅРёСЏ</div></a>
 			
 		
 		</div>

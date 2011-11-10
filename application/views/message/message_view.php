@@ -1,14 +1,14 @@
-<link href="/css/message.css" rel="stylesheet" type="text/css" />
+п»ї<link href="/css/message.css" rel="stylesheet" type="text/css" />
 <div id="message">		
-	<div id="message_top">	<!--BLOCK под Бар закрашенный-->
-	Получатель: <a href="id<?echo $to?>"> <? echo $FIO ?></a>
+	<div id="message_top">	<!--BLOCK РїРѕРґ Р‘Р°СЂ Р·Р°РєСЂР°С€РµРЅРЅС‹Р№-->
+	РџРѕР»СѓС‡Р°С‚РµР»СЊ: <a href="id<?echo $to?>"> <? echo $FIO ?></a>
 	</div>
 	
 	<form action="send/<?=$to;?>" method="POST">
 
 		<textarea id="message_text" name="text" cols="58" rows="11"></textarea>
 	
-		<input id="message_button" type="submit" class="button" value="Отправить">
+		<input id="message_button" type="submit" class="button" value="РћС‚РїСЂР°РІРёС‚СЊ">
 	</form>
 	
 	

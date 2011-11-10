@@ -24,7 +24,8 @@ class message extends CI_Controller
 		$text=$this->input->post('text', TRUE);
 		$from = $this->session->userdata('id');
 		$this->message_model->insert_message($from,$to,$text);	
-		redirect('/inbox');	
+		var_dump($text);
+		//redirect('/inbox');	
     } 
 	
 	public function posted()  //забираем с сисеии ИД и отдайм его моделе(отправленные)

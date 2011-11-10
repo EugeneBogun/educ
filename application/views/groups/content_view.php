@@ -1,11 +1,11 @@
-<div id="background_global" >
+п»ї<div id="background_global" >
 	<div id="left_bar">
 			<div id="avatar">
 				<img src="img/avatar/group.png" />
 			</div>
 	</div>
 	<div id="content">
-	Состав:
+	РЎРѕСЃС‚Р°РІ:
 		<table>
 		<?foreach ($users as $user)
 		{

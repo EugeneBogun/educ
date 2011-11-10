@@ -1,8 +1,8 @@
-<link href="css/user_group.css" rel="stylesheet" type="text/css" />
+п»ї<link href="css/user_group.css" rel="stylesheet" type="text/css" />
 <div id="user-group">
-<div id="title_user_group">Состав групп</div>
+<div id="title_user_group">РЎРѕСЃС‚Р°РІ РіСЂСѓРїРї</div>
 	<div id="group">
-        Группы:
+        Р“СЂСѓРїРїС‹:
 		<select id="group_list" size="13" name="group" >
             <? foreach ($group_list as $group)
                 {
@@ -12,7 +12,7 @@
 		</select>
 	</div>
 	<div id="users">
-    <div id="title_users_list">Состав группы:</div>
+    <div id="title_users_list">РЎРѕСЃС‚Р°РІ РіСЂСѓРїРїС‹:</div>
     <div id="users_list"></div>
     </div>
 </div>
@@ -23,7 +23,7 @@ $(document).ready(function(){
     $('#group_list').click(function(){
 		$.ajax({
         	url:	 'ajaxusergroup',
-        	type:	 'POST', //что-нибудь получим
+        	type:	 'POST', //С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СѓС‡РёРј
             processData: false,
             data: 'group='+$("#group_list option:selected").val(),
         	success: function(data){
