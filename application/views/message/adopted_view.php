@@ -1,8 +1,9 @@
 <div class="table_message">
+<input type="hidden" id="tab" value="adopted"/>
 		<table>
 			<tr align="center">
 				<td id="to">
-				Кому:
+				Кто:
 				</td>
 				<td id="text">
 				Текст:

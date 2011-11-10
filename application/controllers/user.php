@@ -14,7 +14,7 @@ class user extends CI_Controller
 		if(isset($sesion_id)and($sesion_id!=NULL))
 			{
 			$week = 1;
-			$this->display_lib->user_page();
+			$this->display_lib->main_page('user',array());
 			}
 		else
 			{

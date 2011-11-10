@@ -1,4 +1,5 @@
 <div class="table_message">
+<input type="hidden" id="tab" value="posted"/>
 
 		<table>
 			<tr align="center">
