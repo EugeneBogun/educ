@@ -4,13 +4,12 @@
 	Получатель: <a href="id<?echo $to?>"> <? echo $FIO ?></a>
 	</div>
 	
-	<form action="send/<?=$to;?>" method="POST">
+	<form action="send/<?=$to;?>" method="GET">
 
-		<textarea id="message_text" name="text" cols="58" rows="11"></textarea>
+		<textarea type="text" id="message_text" name="text" cols="58" rows="11"></textarea>
 	
 		<input id="message_button" type="submit" class="button" value="Отправить">
 	</form>
-	
 	
 	
 </div>	
