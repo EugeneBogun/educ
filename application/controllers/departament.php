@@ -13,7 +13,7 @@ class departament extends CI_Controller
     {	
 		$data= $this->profile_model->get_nav_info($id, 'departament');
 		$data= array_merge($data,$this->profile_model->get_departament_info($id));
-		$this->display_lib->main_page('departament',array());
+		$this->display_lib->main_page('departament',$data);
     }
 }   
     
