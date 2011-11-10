@@ -1,18 +1,18 @@
-п»ї<body>
+<body>
 <div id="wrapper">
 
 	<div id="header">
-      <a href="logout"><menu>Р’С‹С…РѕРґ</menu></a>
+      <a href="logout"><menu>Выход</menu></a>
 	</div>
   
   <div id="global">
   
   		<div id="Left_menu"> 
-               <menu>   <a href ="/id7"> РњРѕСЏ СЃС‚СЂР°РЅРёС†Р°</a></menu>
-               <menu>   <a href ="/inbox"> РЎРѕРѕР±С‰РµРЅРёСЏ</a></menu>
-               <menu>   <a href ="/values/add"> РћС†РµРЅРєРё</a></menu>
-               <!--<menu> 	<a href ="#"> РћСЂРіР°РЅРёР·Р°С†РёРё </a></menu>
-               <menu>   <a href ="#"> РћРґРЅРѕРіСЂСѓРїРЅРёРєРё</a></menu>
-               <menu>   <a href ="#"> РџСЂРµРїРѕРґР°РІР°С‚РµР»Рё</a></menu>
-               <menu>   <a href ="#"> РљРѕРЅСЃСѓР»СЊС‚Р°С†РёРё</a></menu>  -->
+               <menu>   <a href ="/id7"> Моя страница</a></menu>
+               <menu>   <a href ="/inbox"> Сообщения</a></menu>
+               <menu>   <a href ="/values/add"> Оценки</a></menu>
+               <!--<menu> 	<a href ="#"> Организации </a></menu>
+               <menu>   <a href ="#"> Одногрупники</a></menu>
+               <menu>   <a href ="#"> Преподаватели</a></menu>
+               <menu>   <a href ="#"> Консультации</a></menu>  -->
        </div>

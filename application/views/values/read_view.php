@@ -1,7 +1,7 @@
-п»ї<div id="background_global" style="margin-top:3px;">
+<div id="background_global" style="margin-top:3px;">
 <link href="/css/values.css" rel="stylesheet" type="text/css"  />
-        <div id="values_module_title">Р§С‚РµРЅРёРµ РѕС†РµРЅРѕРє </div>
+        <div id="values_module_title">Чтение оценок </div>
         <?=var_dump($values);?>
-		<br />РўСѓС‚ СЂРёСЃСѓРј РєР°Р»РµРЅРґР°СЂСЊ Рё РІ СЏС‡РµР№РєРё РµСЃР»Рё РґР°С‚Р° СЃС…РѕРґРёС‚СЊСЃСЏ РїРёС€РµРј Р·РЅР°С‡РµРЅРёРµ
+		<br />Тут рисум календарь и в ячейки если дата сходиться пишем значение
 </div>
 

@@ -1,12 +1,12 @@
-п»ї<link href="css/add_timetable.css" rel="stylesheet" type="text/css" />
+<link href="css/add_timetable.css" rel="stylesheet" type="text/css" />
 <div id="timetable_module">
-<div id="timetable_module_title">РЈРїСЂР°РІР»РµРЅРёРµ СЂР°СЃРїРёСЃР°РЅРёРµРј </div>
-<!--РљРѕРіРґР°?-->
+<div id="timetable_module_title">Управление расписанием </div>
+<!--Когда?-->
 <div id="when">
     <div id="vuz_timetable">
-        Р’РЈР—:
+        ВУЗ:
 		<select size="1" name="vuz" id="vuz_timetable">
-        <option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option>';
+        <option value="0">Выберите</option>';
         <? foreach ($univer_list as $univer)
                 {
                     echo '
@@ -16,24 +16,24 @@
         </select>
 	</div>
     <div id="teach_plan">
-    РЈС‡. РџР»Р°РЅ<br/><select size="1" name="teach_plan" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ Р’РЈР—</option></select></div>
+    Уч. План<br/><select size="1" name="teach_plan" ><option value="0">Выберите ВУЗ</option></select></div>
     </div>
         <script>
         
          $('#vuz_timetable').change( function() {
-             $('#teach_plan').html('РЈС‡. РџР»Р°РЅ<br/><select size="1" name="teach_plan" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option></select>');
-             $('#groups').html('Р“СЂСѓРїРїС‹:<br/><select size="1" name="group" id="groups_list"><option value="0">Р’С‹Р±РµСЂРёС‚Рµ РЈС‡. РїР»Р°РЅ</option></select>');
-             $('#subject').html('РџСЂРµРґРјРµС‚:<br /><select size="1" name="subject" id="subject_list"><option value="0">Р’С‹Р±РµСЂРёС‚Рµ РіСЂСѓРїРїСѓ</option></select>');
-             $('#classrooms_timetable').html('РђСѓРґРёС‚РѕСЂРёСЏ:<select size="1" name="auditor" id="add_auditor_list"><option value="0">Р’С‹Р±РµСЂРёС‚Рµ РєРѕРіРґР°</option></select>');
-             $('#weeks_timetable').html('Р”РµРЅСЊ:<select size="1" name="day" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option><option value="1">РџРѕРЅРµРґРµР»СЊРЅРёРє</option><option value="2">Р’С‚РѕСЂРЅРёРє</option><option value="3">РЎСЂРµРґР°</option><option value="4">Р§РµС‚РІРµСЂРі</option><option value="5">РџСЏС‚РЅРёС†Р°</option><option value="6">РЎСѓР±Р±РѕС‚Р°</option></select>');
-             $('#subject_num_timetable').html('РџР°СЂР°:<br /><select size="1" name="num" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>');
-             $('#days_timetable').html('Р”РµРЅСЊ:<select size="1" name="day" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option><option value="1">РџРѕРЅРµРґРµР»СЊРЅРёРє</option><option value="2">Р’С‚РѕСЂРЅРёРє</option><option value="3">РЎСЂРµРґР°</option><option value="4">Р§РµС‚РІРµСЂРі</option><option value="5">РџСЏС‚РЅРёС†Р°</option><option value="6">РЎСѓР±Р±РѕС‚Р°</option></select></div>');	
+             $('#teach_plan').html('Уч. План<br/><select size="1" name="teach_plan" ><option value="0">Выберите</option></select>');
+             $('#groups').html('Группы:<br/><select size="1" name="group" id="groups_list"><option value="0">Выберите Уч. план</option></select>');
+             $('#subject').html('Предмет:<br /><select size="1" name="subject" id="subject_list"><option value="0">Выберите группу</option></select>');
+             $('#classrooms_timetable').html('Аудитория:<select size="1" name="auditor" id="add_auditor_list"><option value="0">Выберите когда</option></select>');
+             $('#weeks_timetable').html('День:<select size="1" name="day" ><option value="0">Выберите</option><option value="1">Понедельник</option><option value="2">Вторник</option><option value="3">Среда</option><option value="4">Четверг</option><option value="5">Пятница</option><option value="6">Суббота</option></select>');
+             $('#subject_num_timetable').html('Пара:<br /><select size="1" name="num" ><option value="0">Выберите</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>');
+             $('#days_timetable').html('День:<select size="1" name="day" ><option value="0">Выберите</option><option value="1">Понедельник</option><option value="2">Вторник</option><option value="3">Среда</option><option value="4">Четверг</option><option value="5">Пятница</option><option value="6">Суббота</option></select></div>');	
     			
-            var teach_plan_start = 'РЈС‡. РџР»Р°РЅ<br/><select size="1" name="teach_plan" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option>';
+            var teach_plan_start = 'Уч. План<br/><select size="1" name="teach_plan" ><option value="0">Выберите</option>';
             var teach_plan_end = '</select>';
             $.ajax({
                         	url:	 'ajaxuniverteachplan',
-                        	type:	 'POST', //С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СѓС‡РёРј
+                        	type:	 'POST', //что-нибудь получим
                             processData: false,
                             data: 'univer='+$("#vuz_timetable option:selected").val(),
                         	success: function(data){
@@ -47,25 +47,25 @@
         </script>
         
     	<div id="groups">
-			Р“СЂСѓРїРїС‹:
+			Группы:
 			<select size="1" name="group" id="groups_list">
-                <option value="0">Р’С‹Р±РµСЂРёС‚Рµ РЈС‡. РїР»Р°РЅ</option>
+                <option value="0">Выберите Уч. план</option>
 			</select>
 	    </div>  
         <script>
-            //РІС‹Р±РѕСЂ СѓС‡РµР±РЅРѕРіРѕ РїР»Р°РЅР° = РїРѕРґРіСЂСѓР·РєР° РіСЂСѓРїРї
+            //выбор учебного плана = подгрузка групп
         $('#teach_plan').change( function() {
-             $('#subject').html('РџСЂРµРґРјРµС‚:<br /><select size="1" name="subject" id="subject_list"><option value="0">Р’С‹Р±РµСЂРёС‚Рµ РіСЂСѓРїРїСѓ</option></select>');
-             $('#classrooms_timetable').html('РђСѓРґРёС‚РѕСЂРёСЏ:<select size="1" name="auditor" id="add_auditor_list"><option value="0">Р’С‹Р±РµСЂРёС‚Рµ РєРѕРіРґР°</option></select>');
-             $('#weeks_timetable').html('Р”РµРЅСЊ:<select size="1" name="day" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option><option value="1">РџРѕРЅРµРґРµР»СЊРЅРёРє</option><option value="2">Р’С‚РѕСЂРЅРёРє</option><option value="3">РЎСЂРµРґР°</option><option value="4">Р§РµС‚РІРµСЂРі</option><option value="5">РџСЏС‚РЅРёС†Р°</option><option value="6">РЎСѓР±Р±РѕС‚Р°</option></select>');
-             $('#subject_num_timetable').html('РџР°СЂР°:<br /><select size="1" name="num" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>');
-             $('#days_timetable').html('Р”РµРЅСЊ:<select size="1" name="day" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option><option value="1">РџРѕРЅРµРґРµР»СЊРЅРёРє</option><option value="2">Р’С‚РѕСЂРЅРёРє</option><option value="3">РЎСЂРµРґР°</option><option value="4">Р§РµС‚РІРµСЂРі</option><option value="5">РџСЏС‚РЅРёС†Р°</option><option value="6">РЎСѓР±Р±РѕС‚Р°</option></select></div>');	
+             $('#subject').html('Предмет:<br /><select size="1" name="subject" id="subject_list"><option value="0">Выберите группу</option></select>');
+             $('#classrooms_timetable').html('Аудитория:<select size="1" name="auditor" id="add_auditor_list"><option value="0">Выберите когда</option></select>');
+             $('#weeks_timetable').html('День:<select size="1" name="day" ><option value="0">Выберите</option><option value="1">Понедельник</option><option value="2">Вторник</option><option value="3">Среда</option><option value="4">Четверг</option><option value="5">Пятница</option><option value="6">Суббота</option></select>');
+             $('#subject_num_timetable').html('Пара:<br /><select size="1" name="num" ><option value="0">Выберите</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>');
+             $('#days_timetable').html('День:<select size="1" name="day" ><option value="0">Выберите</option><option value="1">Понедельник</option><option value="2">Вторник</option><option value="3">Среда</option><option value="4">Четверг</option><option value="5">Пятница</option><option value="6">Суббота</option></select></div>');	
     		
-        var start = 'Р“СЂСѓРїРїС‹:<br/><select size="1" name="group" id="groups_list"><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option>';
+        var start = 'Группы:<br/><select size="1" name="group" id="groups_list"><option value="0">Выберите</option>';
         var end = '</select>';
         $.ajax({
                     	url:	 'ajaxcurriculagrouplist',
-                    	type:	 'POST', //С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СѓС‡РёРј
+                    	type:	 'POST', //что-нибудь получим
                         processData: false,
                         data: 'curricula='+$("#teach_plan option:selected").val(),
                     	success: function(data){
@@ -76,24 +76,24 @@
          </script>
          
          <div id="subject">
-			РџСЂРµРґРјРµС‚:<br />
+			Предмет:<br />
 			<select size="1" name="subject" id="subject_list">
-            	<option value="0">Р’С‹Р±РµСЂРёС‚Рµ РіСЂСѓРїРїСѓ</option>
+            	<option value="0">Выберите группу</option>
 			</select>
 	     </div>
         <script>  
-       //РІС‹Р±РѕСЂ РіСЂСѓРїРїС‹ = РїРѕРґРіСЂСѓР·РєР° РїСЂРµРґРјРµС‚РѕРІ 
+       //выбор группы = подгрузка предметов 
        $('#groups').change( function() {
-             $('#classrooms_timetable').html('РђСѓРґРёС‚РѕСЂРёСЏ:<select size="1" name="auditor" id="add_auditor_list"><option value="0">Р’С‹Р±РµСЂРёС‚Рµ РєРѕРіРґР°</option></select>');
-             $('#weeks_timetable').html('Р”РµРЅСЊ:<select size="1" name="day" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option><option value="1">РџРѕРЅРµРґРµР»СЊРЅРёРє</option><option value="2">Р’С‚РѕСЂРЅРёРє</option><option value="3">РЎСЂРµРґР°</option><option value="4">Р§РµС‚РІРµСЂРі</option><option value="5">РџСЏС‚РЅРёС†Р°</option><option value="6">РЎСѓР±Р±РѕС‚Р°</option></select>');
-             $('#subject_num_timetable').html('РџР°СЂР°:<br /><select size="1" name="num" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>');
-             $('#days_timetable').html('Р”РµРЅСЊ:<select size="1" name="day" ><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option><option value="1">РџРѕРЅРµРґРµР»СЊРЅРёРє</option><option value="2">Р’С‚РѕСЂРЅРёРє</option><option value="3">РЎСЂРµРґР°</option><option value="4">Р§РµС‚РІРµСЂРі</option><option value="5">РџСЏС‚РЅРёС†Р°</option><option value="6">РЎСѓР±Р±РѕС‚Р°</option></select></div>');	
+             $('#classrooms_timetable').html('Аудитория:<select size="1" name="auditor" id="add_auditor_list"><option value="0">Выберите когда</option></select>');
+             $('#weeks_timetable').html('День:<select size="1" name="day" ><option value="0">Выберите</option><option value="1">Понедельник</option><option value="2">Вторник</option><option value="3">Среда</option><option value="4">Четверг</option><option value="5">Пятница</option><option value="6">Суббота</option></select>');
+             $('#subject_num_timetable').html('Пара:<br /><select size="1" name="num" ><option value="0">Выберите</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>');
+             $('#days_timetable').html('День:<select size="1" name="day" ><option value="0">Выберите</option><option value="1">Понедельник</option><option value="2">Вторник</option><option value="3">Среда</option><option value="4">Четверг</option><option value="5">Пятница</option><option value="6">Суббота</option></select></div>');	
     		            
-        var start = 'РџСЂРµРґРјРµС‚:<br /><select size="1" name="subject" id="subject_list"><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option>';
+        var start = 'Предмет:<br /><select size="1" name="subject" id="subject_list"><option value="0">Выберите</option>';
         var end = '</select>';
         $.ajax({
                     	url:	 'ajaxsubjectlist',
-                    	type:	 'POST', //С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СѓС‡РёРј
+                    	type:	 'POST', //что-нибудь получим
                         processData: false,
                         data:'group='+$("#groups option:selected").val()+ 
                         '&curricula='+$("#teach_plan option:selected").val(), 
@@ -104,33 +104,33 @@
         });
         </script>
          
-        <!--РљС‚Рѕ?-->
+        <!--Кто?-->
 <div id="who">
     <div id="when_time">
         <div id="weeks_timetable">
-            РўРёРї РЅРµРґРµР»Рё:
+            Тип недели:
     		<select size="1" name="week" >
-                <option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option>
-    			<option value="1">Р§РёСЃР»РёС‚РµР»СЊ</option>
-    			<option value="2">Р—РЅР°РјРµРЅР°С‚РµР»СЊ</option>
+                <option value="0">Выберите</option>
+    			<option value="1">Числитель</option>
+    			<option value="2">Знаменатель</option>
             </select>
     	</div>
      <div id="days_timetable">
-            Р”РµРЅСЊ:
+            День:
     		<select size="1" name="day" >
-                <option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option>
-    			<option value="1">РџРѕРЅРµРґРµР»СЊРЅРёРє</option>
-    			<option value="2">Р’С‚РѕСЂРЅРёРє</option>
-    			<option value="3">РЎСЂРµРґР°</option>
-    			<option value="4">Р§РµС‚РІРµСЂРі</option>
-    			<option value="5">РџСЏС‚РЅРёС†Р°</option>
-    			<option value="6">РЎСѓР±Р±РѕС‚Р°</option>
+                <option value="0">Выберите</option>
+    			<option value="1">Понедельник</option>
+    			<option value="2">Вторник</option>
+    			<option value="3">Среда</option>
+    			<option value="4">Четверг</option>
+    			<option value="5">Пятница</option>
+    			<option value="6">Суббота</option>
             </select>
     	</div>
         <div id="subject_num_timetable">
-            РџР°СЂР°:<br />
+            Пара:<br />
     		<select size="1" name="num" >
-                <option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option>
+                <option value="0">Выберите</option>
     			<option value="1">1</option>
     			<option value="2">2</option>
     			<option value="3">3</option>
@@ -142,9 +142,9 @@
     </div>
     
     	<div id="classrooms_timetable">
-    РђСѓРґРёС‚РѕСЂРёСЏ:
+    Аудитория:
 		<select size="1" name="classroom" id="add_auditor_list">
-        <option value="0">Р’С‹Р±РµСЂРёС‚Рµ РєРѕРіРґР°</option>
+        <option value="0">Выберите когда</option>
 		</select>
 	</div>
     <script>
@@ -154,12 +154,12 @@
         if ($("#subject_num_timetable option:selected").val() == 0) return;
         if ($("#vuz_timetable option:selected").val() == 0) return;
                 
-        var start = 'РђСѓРґРёС‚РѕСЂРёСЏ:<select size="1" name="auditor" id="add_auditor_list"><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option>';
+        var start = 'Аудитория:<select size="1" name="auditor" id="add_auditor_list"><option value="0">Выберите</option>';
         var end = '</select>';
         
         $.ajax({
                     	url:	 'ajaxfreeclassroomslist',
-                    	type:	 'POST', //С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СѓС‡РёРј
+                    	type:	 'POST', //что-нибудь получим
                         processData: false,
                         data:
                             'week='+$("#weeks_timetable option:selected").val()+ 
@@ -173,21 +173,21 @@
         });
 </script>
      <div id="teacher_timetable">
-    РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ:
+    Преподаватель:
 		<select size="1" name="teacher" id="add_teacher_list">
-        <option value="0">Р’С‹Р±РµСЂРёС‚Рµ РїСЂРµРґРјРµС‚</option>
+        <option value="0">Выберите предмет</option>
 		</select>
 	</div>
     <script>
  $('#subject').change( function() {
         if ($("#vuz_timetable option:selected").val() == 0) return;
                 
-        var start = 'РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ:<select size="1" name="teacher" id="add_teacher_list"><option value="0">Р’С‹Р±РµСЂРёС‚Рµ</option>';
+        var start = 'Преподаватель:<select size="1" name="teacher" id="add_teacher_list"><option value="0">Выберите</option>';
         var end = '</select>';
         
         $.ajax({
                     	url:	 'ajaxteacherlist',
-                    	type:	 'POST', //С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СѓС‡РёРј
+                    	type:	 'POST', //что-нибудь получим
                         processData: false,
                         data:   'subject='+$("#subject option:selected").val()+
                             '&curricula='+$("#teach_plan option:selected").val(), 
@@ -200,17 +200,17 @@
     
    
 </div>
-<!--Р“РґРµ?-->
+<!--Где?-->
 
 
   <div  id="add_timetable_button">
-  <input type="button" class="button" value="Р”РѕР±Р°РІРёС‚СЊ" /></div>
+  <input type="button" class="button" value="Добавить" /></div>
   <div id="add_timetable_status"></div>
   <script>
    $('#add_timetable_button').click( function() {
         $.ajax({
                     	url:	 'ajaxaddtimetable',
-                    	type:	 'POST', //С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СѓС‡РёРј
+                    	type:	 'POST', //что-нибудь получим
                         processData: false,
                         data:
                             'week='+$("#weeks_timetable option:selected").val()+ 
@@ -224,9 +224,9 @@
                             '&teacher='+$("#teacher_timetable option:selected").val(), 
                     	success: function(data){
                     	    alert(data);
-                            if (data == '-1'){$('#add_timetable_status').html('РћС€РёР±РєР°');}
+                            if (data == '-1'){$('#add_timetable_status').html('Ошибка');}
                             else
-                            {$('#add_timetable_status').html('Р”РѕР±Р°РІР»РµРЅРѕ');}
+                            {$('#add_timetable_status').html('Добавлено');}
                     		  
                             }
                         });   

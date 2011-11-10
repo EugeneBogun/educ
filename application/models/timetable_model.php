@@ -29,12 +29,12 @@ class timetable_model extends CI_Model
 	
 	private function get_subject($id)
 	{
-	   //РєС‚Рѕ С‡С‚Рѕ РїСЂРµРїРѕРґР°РµС‚
+	   //кто что преподает
 		$UsersSubjectsCurricula = $this->db->select('Subjects_Curricula_id,Users_id,Roles_id')->where('id',$id)->get('UsersSubjectsCurricula')->result_array();
 		
-		$data['teacher'] = $this->get_teacher_name($UsersSubjectsCurricula[0]['Users_id']);//РєС‚Рѕ
+		$data['teacher'] = $this->get_teacher_name($UsersSubjectsCurricula[0]['Users_id']);//кто
 		$Subjects_Curricula = $this->db->select('Subjects_id')->where('id',$UsersSubjectsCurricula[0]['Subjects_Curricula_id'])->get('Subjects_Curricula')->result_array();
-		$data['subject'] = $this->get_subject_name($Subjects_Curricula[0]['Subjects_id']);//С‡С‚Рѕ
+		$data['subject'] = $this->get_subject_name($Subjects_Curricula[0]['Subjects_id']);//что
 		return $data;
 	}
 	
@@ -68,14 +68,14 @@ class timetable_model extends CI_Model
 	{
         switch ($id)
         {
-            case 1: return 'РџРѕРЅРµРґРµР»СЊРЅРёРє';
-            case 2: return 'Р’С‚РѕСЂРЅРёРє';
-            case 3: return 'РЎСЂРµРґР°';
-            case 4: return 'Р§РµС‚РІРµСЂРі';
-            case 5: return 'РџСЏС‚РЅРёС†Р°';
-            case 6: return 'РЎСѓР±Р±РѕС‚Р°';
-            case 7: return 'Р’РѕСЃРєСЂРµСЃРµРЅРёРµ';
-            default: return 'РЅРµРёР·РІРµСЃС‚РЅС‹Р№ РґРµРЅСЊ РЅРµРґРµР»Рё';
+            case 1: return 'Понедельник';
+            case 2: return 'Вторник';
+            case 3: return 'Среда';
+            case 4: return 'Четверг';
+            case 5: return 'Пятница';
+            case 6: return 'Суббота';
+            case 7: return 'Воскресение';
+            default: return 'неизвестный день недели';
         }
 
 	}
@@ -84,21 +84,21 @@ class timetable_model extends CI_Model
 	{
 		switch ($id)
         {
-            case 1: return 'Р§РёСЃР»РёС‚РµР»СЊ';
-            case 2: return 'Р—РЅР°РјРµРЅР°С‚РµР»СЊ';
-            default: return 'РЅРµРёР·РІРµСЃС‚РЅС‹Р№ С‚РёРї РЅРµРґРµР»Рё';
+            case 1: return 'Числитель';
+            case 2: return 'Знаменатель';
+            default: return 'неизвестный тип недели';
         }
 	}
 	
 	public function get_classroom_name($id,$univer)
 	{
-		//СЃР°Рј РєР°Р±РёРЅРµС‚
+		//сам кабинет
 		$classroom = $this->db->query('SELECT * FROM  Classrooms WHERE id = '.$id)->result_array();
-		//РЅРѕРјРµСЂ РєРѕСЂРїСѓСЃР°
-		$building = $this->db->query('SELECT name FROM  Buildings WHERE id='.$classroom[0]['Buildings_id'].' AND Universities_id='.$univer)->result_array();//РЈРЅРёРІРµСЂСЃРёС‚РµС‚ РґРѕР±Р°РІРёС‚СЊ
+		//номер корпуса
+		$building = $this->db->query('SELECT name FROM  Buildings WHERE id='.$classroom[0]['Buildings_id'].' AND Universities_id='.$univer)->result_array();//Университет добавить
         if  ($building[0]['name'] == '') {return $classroom[0]['name'];}
 		$return = $building[0]['name'].'-'.$classroom[0]['name'];
-		//С‚РёРї РєР°Р±РёРЅРµС‚Р°
+		//тип кабинета
 		return $return;
 	}
          

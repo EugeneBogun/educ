@@ -1,15 +1,15 @@
-п»ї<div id="background_global" >
+<div id="background_global" >
 	<div id="left_bar">
 			<div id="avatar">
 				<img src="img/avatar/group.png" />
 			</div>
 	</div>
 	<div id="content">
-	РЎРѕСЃС‚Р°РІ:
+	Состав:
 		<table>
 		<?foreach ($users as $user)
 		{
-		echo '<tr><td>'.$user['role'].' '.$user['surname'].'</td></tr>';
+		echo '<tr><td><a href="id'.$user['id'].'">'.$user['role'].' '.$user['surname'].'</a></td></tr>';
 		}
 		?>
 		</table>

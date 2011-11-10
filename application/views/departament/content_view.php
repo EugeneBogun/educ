@@ -1,24 +1,24 @@
-п»ї<div id="background_global" >
+<div id="background_global" >
 <div id="left_bar">
       	<div id="avatar">
 			<img src="img/avatar/departament.png" />
-            <!--РРІР°РЅРѕРІ Р.Р. |  РљСѓСЂСЃР°РЅС‚-->
+            <!--Иванов И.И. |  Курсант-->
 		</div>
      </div>
 	 <div id="content">
-		<!--<h3>РѕС‚РґРµР»РµРЅРёРµ РљРџР </h3>-->
+		<!--<h3>отделение КПИ </h3>-->
 		<div id='news'>
-			<div id ="news_title">РќРѕРІРѕСЃС‚Рё:</div>	
+			<div id ="news_title">Новости:</div>	
 			<table id='news_table'>
-				<tr id="row"><td id="title"> РЈР±РѕСЂРєР° Р°СѓРґРёС‚РѕСЂРёРё</td><td id="text"> Р’ СЃСЂРµРґСѓ СѓР±РѕСЂРєР°. Р‘С‹С‚СЊ РІСЃРµРј!</td><td id="date">15.09.2011</td><td id="autor">Р‘СѓСЂР°Рє Р’.</td></tr>
-				<tr id="row"><td> РљР»Р°СЃСЃРЅС‹Р№ С‡Р°СЃ</td><td>Р’СЃРµ РєРѕРіРѕ РЅРµ Р±С‹Р»Рѕ РЅР° РєР»Р°СЃСЃРЅРѕРј С‡Р°СЃРµ - РїРёС€РёС‚Рµ...</td><td> 15.09.2011</td><td>Р‘СѓСЂР°Рє Р’.</td></tr>
+				<tr id="row"><td id="title"> Уборка аудитории</td><td id="text"> В среду уборка. Быть всем!</td><td id="date">15.09.2011</td><td id="autor">Бурак В.</td></tr>
+				<tr id="row"><td> Классный час</td><td>Все кого не было на классном часе - пишите...</td><td> 15.09.2011</td><td>Бурак В.</td></tr>
 				<tr id="row"><td></td><td></td><td></td><td></td></tr>
 			</table>
 		</div>
 <div id='file'>
-			<div id ="file_title">Р¤Р°Р№Р»С‹</div>	
+			<div id ="file_title">Файлы</div>	
 			<table id='file_table'>
-				<tr id="row"><td id="title">Р›Р°Р±С‹ 1 СЃРµРјРµСЃС‚СЂ</td><td id="subject">РЎРџР—</td><td id="date">21.10.2011</td><td id="autor">Р›РёСЃРµРЅРєРѕ Рў.Рњ.</td></tr>
+				<tr id="row"><td id="title">Лабы 1 семестр</td><td id="subject">СПЗ</td><td id="date">21.10.2011</td><td id="autor">Лисенко Т.М.</td></tr>
 				<tr id="row"><td></td><td></td><td></td><td></td></tr>
 				<tr id="row"><td></td><td></td><td></td><td></td></tr>
 			</table>

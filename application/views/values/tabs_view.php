@@ -1,8 +1,8 @@
-п»ї		<link href="/css/message.css" rel="stylesheet" type="text/css" />
+		<link href="/css/message.css" rel="stylesheet" type="text/css" />
 		<div id="menu_tab">
 		
-			<a href="/values/add"><div>Р”РѕР±Р°РІР»РµРЅРёРµ </div></a>
-			<a href="/values/read"><div>Р§С‚РµРЅРёРµ</div></a>
+			<a href="/values/add"><div>Добавление </div></a>
+			<a href="/values/read"><div>Чтение</div></a>
 			
 		
 		</div>
