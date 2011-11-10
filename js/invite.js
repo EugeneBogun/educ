@@ -5,7 +5,7 @@ $(document).ready(function(){
 	selected2=0;
 	selected3=0;
 	selected4=0;
-	
+
 	$.ajax({
 		url:	 'ajaxuniverlist',
 		type:	 'POST', //что-нибудь получим
@@ -96,14 +96,19 @@ $(document).ready(function(){
 		$('#rol_val').html('');
 		});	
 //функция на количество		
-	var num = $('#num').val();
+	//var num = $('#num').val();
+	num = 1;
 	$('#inc').click(function(){
 		if(num<35)
 			{
 			num++;
 			}
+		else
+			{
+			num=1;
+			}
 		$('#num').text(num);
-		$('#num').val()=num;
+		$('#num').val(num);
 		});
 		
 	$('#dec').click(function(){
@@ -113,10 +118,10 @@ $(document).ready(function(){
 			}
 		else
 			{
-			num=1;
+			num=35;
 			}
 		$('#num').text(num);
-		$('#num').val()=num;
+		$('#num').val(num);
 		});	
 //ф-ция добавления инвайтов в буффер
 	$('#add_data').click(function(){
@@ -136,6 +141,8 @@ $(document).ready(function(){
 						category_buffer = "U";
 						id_category_buffer = $('#vuz_list_invite').val();
 						$('#buffer_text').text(text+category_buffer+":"+id_category_buffer+":"+$('#invites_rols_list').val()+";");
+						//$('#vuz_list_invite').change
+						$('#vuz_list_invite').trigger('change');
 						}
 					else
 						{

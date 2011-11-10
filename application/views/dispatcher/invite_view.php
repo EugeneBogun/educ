@@ -41,3 +41,4 @@
 		<div id="rol_val">
 		</div>
 	</div>
+</div>

@@ -38,7 +38,7 @@ class dispatcher_model extends CI_Model
     {
 		$data = array();
         $i = 0;
-        $users = $this->db->select('id, fam, name, surname')->get('Users')->result_array();
+        $users = $this->db->select('id,name, surname,patronymic')->get('Users')->result_array();
         foreach ($users as $row)
         {
             $users_group = null;
@@ -51,8 +51,8 @@ class dispatcher_model extends CI_Model
             if ((isset($users_group[0])) OR (isset($user_departament[0])) OR (isset($user_subdepartament[0]))){
                 continue;}
             $data[$i]['id'] = $row['id'];
-            $data[$i]['fio'] = $row['fam'].' '.substr($row['name'],0,1).'. ';
-                if ($row['surname']) {$data[$i]['fio'] .= substr($row['surname'], 0, 1).'.';}
+            $data[$i]['fio'] = $row['surname'].' '.substr($row['name'],0,1).'. ';
+                if ($row['patronymic']) {$data[$i]['fio'] .= substr($row['patronymic'], 0, 1).'.';}
             $i++;
             
         }
