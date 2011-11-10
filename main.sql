@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 10, 2011 at 04:55 PM
+-- Generation Time: Nov 10, 2011 at 05:23 PM
 -- Server version: 5.1.40
 -- PHP Version: 5.3.1
 
@@ -277,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `Messages` (
   `Users_id_to` int(11) NOT NULL COMMENT 'Кому',
   PRIMARY KEY (`id`),
   KEY `fk_Messages_Users1` (`Users_id_from`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Личные сообщения' AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Личные сообщения' AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `Messages`
@@ -303,7 +303,17 @@ INSERT INTO `Messages` (`id`, `Users_id_from`, `text`, `datetime`, `status`, `Us
 (19, 0, '', '2011-10-26 18:16:47', 1, 0),
 (20, 0, '', '2011-10-26 18:16:59', 1, 0),
 (21, 0, '0', '2011-10-26 18:18:40', 1, 0),
-(22, 0, '', '2011-11-05 08:59:03', 1, 8);
+(22, 0, '', '2011-11-05 08:59:03', 1, 8),
+(23, 7, '', '2011-11-10 17:09:04', 1, 0),
+(24, 7, 'віі', '2011-11-10 17:12:20', 1, 7),
+(25, 7, '', '2011-11-10 17:15:03', 1, 10),
+(26, 7, '', '2011-11-10 17:15:22', 1, 10),
+(27, 7, 'biiiii', '2011-11-10 17:15:37', 1, 10),
+(28, 7, 'dssd', '2011-11-10 17:18:29', 1, 7),
+(29, 7, 'dssd', '2011-11-10 17:18:46', 1, 7),
+(30, 7, 'fddf', '2011-11-10 17:18:54', 1, 7),
+(31, 7, 'dssdds', '2011-11-10 17:19:18', 1, 7),
+(32, 7, '-', '2011-11-10 17:22:46', 1, 7);
 
 -- --------------------------------------------------------
 
@@ -675,7 +685,7 @@ CREATE TABLE IF NOT EXISTS `UsersGroups` (
   KEY `fk_GroupsUsers_Groups1` (`Groups_id`),
   KEY `fk_UsersGroups_Users1` (`Users_id`),
   KEY `fk_UsersGroups_Roles1` (`Roles_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Пользователи - группы' AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Пользователи - группы' AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `UsersGroups`
@@ -685,12 +695,7 @@ INSERT INTO `UsersGroups` (`id`, `description`, `Groups_id`, `Users_id`, `Roles_
 (1, NULL, 1, 7, 1),
 (9, NULL, 3, 14, 1),
 (16, 'вручную', 1, 8, 1),
-(19, NULL, 1, 16, 1),
-(23, NULL, 1, 7, 1),
-(22, NULL, 1, 7, 1),
-(24, NULL, 1, 7, 1),
-(25, NULL, 1, 7, 1),
-(26, NULL, 1, 7, 1);
+(32, NULL, 1, 7, 1);
 
 -- --------------------------------------------------------
 

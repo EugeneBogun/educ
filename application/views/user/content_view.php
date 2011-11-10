@@ -4,6 +4,9 @@
 			<img src="img/avatar/user.png" />
             <!--Иванов И.И. |  Курсант-->
 		</div>
+		<div id="message_button" style="width:auto; height:auto; margin-left:13px; margin-top:10px;">
+			<a href="message?to=<? echo $id ?>"><button class="button" style="width:150px; margin-left:-6px; margin-top:5px;">Отправить сообщение</button></a>
+		</div>	
      </div>
 <div id="content">
 		<!--<h3>Богун Е.А. - Курсант</h3>-->

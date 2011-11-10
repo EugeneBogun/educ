@@ -2,47 +2,48 @@
 
 class message extends CI_Controller
 {
+	public function __construct()
+    {
+      parent::__construct();
+	  $this->load->model('message_model');
+      
+    }    
     public function index()
     {
-	
-       $this->display_lib->message_page(array(),'message');  /*   */
+		$to=$this->input->get('to', TRUE);				//кароче это ИД где мы забираем когда идём по ветке message?to=7
+		$fio = $this->message_model->get_fio($to);		//переменная которая принимает с масива строку базы данных по айди!!! $to - это ИД
+		$data['to'] = $to;								//вбиваем в ассоциотивный массив ИД
+		$data['FIO'] = $fio[0]['name'].' '.$fio[0]['surname'];	//Вбиваем в тот же массив Имя и фамилию из базы
+		$this->display_lib->message_page($data,'message');	   /*  передайом на страничку вида данные */
+	   
         
     } 
-    public function send()     /* зАБИВАЕМ В БАЗУ ерунду всякую с сообщения */ 
+	
+	public function send($to)     /* забираем с формы данные */ 
     {	
-	
-		$to=$this->input->post('to', TRUE);
 		$text=$this->input->post('text', TRUE);
-		var_dump($_POST);
-		/*var_dump($to);
-		var_dump($text);*/
-		$from = 0;
-		$insert_db = array(
-        'Users_id_from' => $from,
-		'text' => $text,
-		'Users_id_to' => $to,
-		);
-		
-		$this->db->insert('Messages',$insert_db);
-		
-        $this->display_lib->message_page(array(),'send');
+		$from = $this->session->userdata('id');
+		$this->message_model->insert_message($from,$to,$text);	
+		redirect('/inbox');	
     } 
 	
-	public function posted()
+	public function posted()  //забираем с сисеии ИД и отдайм его моделе(отправленные)
     {
-		$from = 0;
-		$data['messages']=$this->db->where('Users_id_from',$from)->get('Messages')->result_array();
 		
-		$this->display_lib->message_page($data,'posted');  /*   */
+		
+		$from= $this->session->userdata('id');
+		$data['messages']= $this->message_model->posted_message($from);
+		$this->display_lib->message_page($data,'posted'); 
+		 /*   */
         
     } 
 	
-	public function adopted()
+	public function adopted()   //забираем с сисеии ИД и отдайм его моделе (принятые)
     {
-		$to = 2;
-		$data['messages']=$this->db->where('Users_id_to',$to)->get('Messages')->result_array();
-		
-		$this->display_lib->message_page($data,'adopted');  /*   */
+		$to = $this->session->userdata('id');
+		$data['messages']= $this->message_model->adopted_message($to);
+		$this->display_lib->message_page($data,'adopted');
+		  /*   */
         
     } 
     

@@ -15,8 +15,10 @@ class user extends CI_Controller
 		if(isset($sesion_id)and($sesion_id!=NULL))
 			{
 			$week = 1;
-			$this->display_lib->main_page('user',array());
-			$data=$this->profile_model->runway($id);
+			//$data=$this->profile_model->runway($id);
+			$data['id'] = $id;
+			$this->display_lib->main_page('user',$data);
+			
 			}
 		else
 			{

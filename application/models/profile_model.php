@@ -55,7 +55,7 @@ class profile_model extends CI_Model
 	}
 	return $data;
 	}
-	public function runway($id)
+	/*public function runway($id)
 	{
 		$data=$this->db->query( "SELECT * FROM Invites WHERE Users_id = '".$id."'")->result_array();
 		$options=explode(";",$data[0]['option']);
@@ -92,5 +92,5 @@ class profile_model extends CI_Model
 						break;
 				}
 		}
-	}
+	}*/
 }

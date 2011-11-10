@@ -71,7 +71,7 @@ $route['reg']                   = "welcome/reg";
 $route['welcome']				= "welcome/welcome";
 $route['about']					= "welcome/about";
 $route['login']					= "welcome/login";
-$route['send']                  = "message/send";
+$route['send/(:num)']                  = "message/send/$1";
 $route['outbox']                = "message/posted";
 $route['inbox']               = "message/adopted";
 
