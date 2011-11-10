@@ -1,16 +1,16 @@
-<div class="table_message">
+п»ї<div class="table_message">
 <input type="hidden" id="tab" value="posted"/>
 
 		<table>
 			<tr align="center">
 				<td id="to">
-				Кому:
+				РљРѕРјСѓ:
 				</td>
 				<td id="text">
-				Текст:
+				РўРµРєСЃС‚:
 				</td>
 				<td id="datetime">
-				Время:
+				Р’СЂРµРјСЏ:
 				</td>
 			</tr>
 			
