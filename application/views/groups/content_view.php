@@ -9,7 +9,7 @@
 		<table>
 		<?foreach ($users as $user)
 		{
-		echo '<tr><td>'.$user['role'].' '.$user['surname'].'</td></tr>';
+		echo '<tr><td><a href="id'.$user['id'].'">'.$user['role'].' '.$user['surname'].'</a></td></tr>';
 		}
 		?>
 		</table>
