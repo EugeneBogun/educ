@@ -1,4 +1,4 @@
-﻿@charset "utf-8";
+@charset "utf-8";
 body {
 	/*font: Verdana, Arial, Helvetica, sans-serif;*/
 	font-family: "Arial";
@@ -23,23 +23,23 @@ a:hover { text-decoration:none;}
 	margin-right: 3em;
 	margin-top: 3em;
 }
-/*Р»РѕРіРѕ*/
+/*лого*/
 .container img {
 	float:left;
 	border:none;
 }
-/*С‚РµРєСЃС‚ РїСЂРёРІРµС‚СЃРІРёСЏ*/
+/*текст приветсвия*/
 .welcome {
 	margin-top:18px;
 	margin-left:178px;
 }
 
-/*Р·Р°РіРѕР»РѕРІРѕРє РѕРєРЅР°*/
+/*заголовок окна*/
 .title {
 	/*margin-top:-10px;*/
 	margin-left:178px;
 }
-/*Р±РѕР»СЊС€РѕР№ С‚РµРєСЃС‚ - Р—Р°РіРѕР»РѕРІРѕРє*/
+/*большой текст - Заголовок*/
 h1 {
 	color: #606060;
 	/*margin-bottom: 0.1em;*/
@@ -47,7 +47,7 @@ h1 {
 	font-weight:normal;
 	/*margin-bottom:20px;*/
 }
-/*Р—Р°РіРѕР»РѕРІРєРё Р°Р±Р·Р°С†РѕРІ*/
+/*Заголовки абзацов*/
 h3 {
 	border-bottom-color: #b9c4da;
 	border-bottom-style: solid;
@@ -62,17 +62,17 @@ h3 {
 	height: 16px;
 	color:#36638e;
 }
-/*РїР°СЂР°РіСЂР°С„*/
+/*параграф*/
 p{clear:left;margin-left:2em; }
-/*С‚РµРєСЃС‚*/
+/*текст*/
 #content{margin-top:3em;}
-/*С„РѕСЂРјР°*/
+/*форма*/
 form {
 	margin-top:2em;
 	margin-left:4em;
     
 }
-/*РїРѕР»Рµ РІРІРѕРґР° С‚РµРєСЃС‚Р°*/
+/*поле ввода текста*/
 input {
 	padding-bottom: 2px;
 	padding-left: 2px;
@@ -83,7 +83,7 @@ input {
     color: #555;
     
 }
-/*Р·Р°РіРѕР»РѕРІРѕРє РїРѕР»СЏ РІРІРѕРґР°*/
+/*заголовок поля ввода*/
 th { 
 	padding-bottom: 4px;
 	padding-left: 4px;
@@ -96,7 +96,7 @@ th {
  td { 
     color: #777;
     }
-/*РєРЅРѕРїРєР° С„РѕСЂРјС‹ РѕС‚РїСЂР°РІРёС‚СЊ*/	
+/*кнопка формы отправить*/	
 .submit {
 	margin-left:11em;
     margin-top:1em;

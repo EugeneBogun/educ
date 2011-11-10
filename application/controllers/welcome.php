@@ -1,4 +1,4 @@
-ï»¿<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class welcome extends CI_Controller
 {
@@ -30,8 +30,8 @@ class welcome extends CI_Controller
 		$this->Welcome_model->parser_links($invite,$id);
 	}
 	//********************************************************************************************************************
-    // Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
-	public function login() //Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸
+    // àâòîðèçàöèÿ ïîëüçîâàòåëÿ
+	public function login() //îòîáðàæåíèå ôîðìû àâòîðèçàöèè
     {
 		$sesion_id = $this->session->userdata('id');
 		if(isset($sesion_id)and($sesion_id!=NULL))
@@ -40,7 +40,7 @@ class welcome extends CI_Controller
 			}
 		else
 			{
-			$data->title = 'Ð’Ñ…Ð¾Ð´';
+			$data->title = 'Âõîä';
 			$view = 'login';
 			$this->form_validation->set_rules($this->Welcome_model->login_rules);
 			$this->form_validation->set_error_delimiters('<span style="color:red;">', '</span>'); 
@@ -65,7 +65,7 @@ class welcome extends CI_Controller
 		$login=$this->db->query( "SELECT * FROM Users WHERE email = '".$str."'")->result_array();
 		if(!isset($login[0]))
 		{
-			$this->form_validation->set_message('log_mail', 'Ð”Ð°Ð½Ð½Ñ‹Ð¹ %s Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾');
+			$this->form_validation->set_message('log_mail', 'Äàííûé %s íå íàéäåíî');
 			return FALSE;
 		}
 		else
@@ -80,7 +80,7 @@ class welcome extends CI_Controller
 		$login=$this->db->query( "SELECT * FROM Users WHERE email = '".$log."'")->result_array();
 		if(!(isset($login[0])and($login[0]['password']==$str)))
 		{
-			$this->form_validation->set_message('passw', 'ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ %s !');
+			$this->form_validation->set_message('passw', 'Íåâåðíûé %s !');
 			return FALSE;
 		}
 		else
@@ -90,7 +90,7 @@ class welcome extends CI_Controller
 	}
 	
 	//********************************************************************************************************************
-    // Ñ€ÐµÐµÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+    // ðååñòðàöèÿ ïîëüçîâàòåëÿ
     public function reg()
     {
 		$sesion_id = $this->session->userdata('id');
@@ -100,7 +100,7 @@ class welcome extends CI_Controller
 			}
 		else
 			{
-			$data->title =  'Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ EduUnit'; 	
+			$data->title =  'Ðåãèñòðàöèÿ EduUnit'; 	
 			$view = 'reg';
 			$this->form_validation->set_rules($this->Welcome_model->reg_rules);
 			$this->form_validation->set_error_delimiters('<span style="color:red;float:left;">', '</span>'); 
@@ -114,12 +114,12 @@ class welcome extends CI_Controller
 				$passw = $this->input->post('passw', TRUE);*/
 				$data->id=$this->Welcome_model->return_data($array);
 				/*
-				$mas = array(									//Ð ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑŽ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°Ñ‚ÑŒ Ð¸Ð· Ð¼Ð¾Ð´ÐµÐ»Ð¸
+				$mas = array(									//Ðåêîìåíäóþ âîçâðàùàòü èç ìîäåëè
 						'email'=>$login,
 						'password'=>$passw
 							);
 				$this->db->insert('Users',$mas);
-				$users_id=$this->db->query( "SELECT * FROM Users WHERE email = '".$login."'")->result_array();//Ð ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑŽ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°Ñ‚ÑŒ Ð¸Ð· Ð¼Ð¾Ð´ÐµÐ»Ð¸
+				$users_id=$this->db->query( "SELECT * FROM Users WHERE email = '".$login."'")->result_array();//Ðåêîìåíäóþ âîçâðàùàòü èç ìîäåëè
 				$this->load->helper('date');
 				$now = time();
 				$id = array(
@@ -128,7 +128,7 @@ class welcome extends CI_Controller
 							);
 				$this->db->update('Invites', $id, "invite = '".$key."'"); 
 				$data->id=$users_id[0]['id'];
-				$this->Welcome_model->parser_links($key,$users_id[0]['id']);//Ð”Ð¾Ð±Ð°Ð²Ð¸Ð»*/
+				$this->Welcome_model->parser_links($key,$users_id[0]['id']);//Äîáàâèë*/
 				
 				redirect(base_url()."login");
 				}
@@ -146,7 +146,7 @@ class welcome extends CI_Controller
 		$login=$this->db->query( "SELECT * FROM Users WHERE email = '".$str."'")->result_array();
 		if(isset($login[0]))
 		{
-			$this->form_validation->set_message('reg_mail', 'Ð”Ð°Ð½Ð½Ñ‹Ð¹ %s ÑƒÐ¶Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ');
+			$this->form_validation->set_message('reg_mail', 'Äàííûé %s óæå èñïîëüçóåòñÿ');
 			return FALSE;
 		}
 		else
@@ -164,7 +164,7 @@ class welcome extends CI_Controller
 		}
 		else
 		{
-			$this->form_validation->set_message('key', 'Ð”Ð°Ð½Ð½Ñ‹Ð¹ %s Ð½Ðµ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹');
+			$this->form_validation->set_message('key', 'Äàííûé %s íå äîïóñòèìûé');
 			return FALSE;
 		}
 	}
@@ -179,14 +179,14 @@ class welcome extends CI_Controller
 			}
 		else
 			{
-			$data->title =  'Ðž Ð¿Ñ€Ð¾ÐµÐºÑ‚Ðµ'; 	
+			$data->title =  'Î ïðîåêòå'; 	
 			$view = 'about';
 			$this->display_lib->welcome_page($view,$data); 
 			}     
     }
     
     
-    public function welcome() //Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸
+    public function welcome() //îòîáðàæåíèå ôîðìû àâòîðèçàöèè
     {
 	$data->title = 'Welcome';
 	$view = 'welcome';

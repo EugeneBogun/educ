@@ -1,4 +1,4 @@
-п»ї<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class dispatcher_model extends CI_Model
 {   
@@ -80,7 +80,7 @@ class dispatcher_model extends CI_Model
          return $return;
          
     }
-    //РІС‹РІРѕРґ СЃРѕСЃС‚Р°РІР° РіСЂСѓРїРїС‹ 
+    //вывод состава группы 
     public function ajaxusergroup($group)
     {
         $data = array();
@@ -100,7 +100,7 @@ class dispatcher_model extends CI_Model
         }
         return $data;
     }
-    //РєРЅРѕРїРєР° РґРѕР±Р°РІРёС‚СЊ СЋР·РµСЂР° РІ РіСЂСѓРїРїСѓ
+    //кнопка добавить юзера в группу
     public function ajaxinsertusergroupresult($id_user,$id_group,$id_role)
     {
         $is_User_Group =$this->db->where('Users_id',$id_user)->where('Groups_id',$id_group)->get('UsersGroups')->result_array();
@@ -111,15 +111,15 @@ class dispatcher_model extends CI_Model
         'Groups_id' => $id_group,
         'Users_id' => $id_user,
         'Roles_id' => $id_role,
-        'description ' => 'РІСЂСѓС‡РЅСѓСЋ'
+        'description ' => 'вручную'
         );
         $this->db->insert('UsersGroups', $insert_db);     
         return TRUE;
     }
-    //РїСѓСЃС‚С‹Рµ Р°СѓРґРёС‚РѕСЂРёРё
+    //пустые аудитории
     public function get_free_classrooms($num,$day,$week,$univer)
 	{
-	   //СЃРїРёСЃРѕРє РєРѕСЂРїСѓСЃРѕРІ Р’РЈР—Рђ
+	   //список корпусов ВУЗА
 	   $buildings_univer =$this
        ->db
        ->select('id')
@@ -129,7 +129,7 @@ class dispatcher_model extends CI_Model
        
        $i = 0;
        
-       //СЃРїРёСЃРѕРє Р°СѓРґРёС‚РѕСЂРёР№ Р’РЈР—Рђ
+       //список аудиторий ВУЗА
        foreach ($buildings_univer as $build)
        {
             $tmp = $this
@@ -145,7 +145,7 @@ class dispatcher_model extends CI_Model
                  $i++;
             }
        }
-       //Р·Р°РЅСЏС‚С‹Рµ Р°СѓРґРёС‚РѕСЂРёРё
+       //занятые аудитории
        $timetable = $this
            ->db
            ->where('week',$week)
@@ -155,7 +155,7 @@ class dispatcher_model extends CI_Model
            ->result_array();
        
        $i = 0;
-       //РїСѓСЃС‚С‹Рµ Р°СѓРґРёС‚РѕСЂРёРё
+       //пустые аудитории
        if (!isset($timetable[0])) return $classrooms;
        foreach ($classrooms as $classroom)
        {
@@ -217,31 +217,31 @@ class dispatcher_model extends CI_Model
           $year_tech = $year_now-$group_info[0]['YearCreate']; 
           
           switch ($year_tech)
-            {   //1 РєСѓСЂСЃ
-                case 0: $semestr = 1; break; //РѕСЃРµРЅСЊ
+            {   //1 курс
+                case 0: $semestr = 1; break; //осень
                 case 1: 
-                        if ($month_now < 7) {$semestr = 2;}//РІРµСЃРЅР°
-                        //2 РєСѓСЂСЃ
-                        if ($month_now > 8) {$semestr = 3;}//РѕСЃРµРЅСЊ
+                        if ($month_now < 7) {$semestr = 2;}//весна
+                        //2 курс
+                        if ($month_now > 8) {$semestr = 3;}//осень
                         break;
                 case 2:
-                        if ($month_now < 7) {$semestr = 4;}//РІРµСЃРЅР°
-                        //3 РєСѓСЂСЃ
-                        if ($month_now > 8) {$semestr = 5;}//РѕСЃРµРЅСЊ
+                        if ($month_now < 7) {$semestr = 4;}//весна
+                        //3 курс
+                        if ($month_now > 8) {$semestr = 5;}//осень
                         break;
                 case 3:
-                        if ($month_now < 7) {$semestr = 5;}//РІРµСЃРЅР°
-                        //4 РєСѓСЂСЃ
-                        if ($month_now > 8) {$semestr = 6;}//РѕСЃРµРЅСЊ
+                        if ($month_now < 7) {$semestr = 5;}//весна
+                        //4 курс
+                        if ($month_now > 8) {$semestr = 6;}//осень
                         break;
                 case 4:
-                        if ($month_now < 7) {$semestr = 7;}//РІРµСЃРЅР°
-                        //5 РєСѓСЂСЃ
-                        if ($month_now > 8) {$semestr = 8;}//РѕСЃРµРЅСЊ
+                        if ($month_now < 7) {$semestr = 7;}//весна
+                        //5 курс
+                        if ($month_now > 8) {$semestr = 8;}//осень
                         break;
                 case 5:
                         if ($month_now < 7) {$semestr = 9;}
-                        //6 РєСѓСЂСЃ
+                        //6 курс
                         if ($month_now > 8) {$semestr = 10;}
                         break;
                 default: $semestr = 0;

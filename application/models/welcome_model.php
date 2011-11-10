@@ -1,4 +1,4 @@
-ï»¿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Welcome_model extends CI_Model
 {   
@@ -72,12 +72,12 @@ class Welcome_model extends CI_Model
 	{
 		if(isset($data['key']))
 		{
-		$mas = array(									//Ð ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑŽ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°Ñ‚ÑŒ Ð¸Ð· Ð¼Ð¾Ð´ÐµÐ»Ð¸
+		$mas = array(									//Ðåêîìåíäóþ âîçâðàùàòü èç ìîäåëè
 					'email'=>$data['login'],
 					'password'=>$data['passw']
 					);
 		$this->db->insert('Users',$mas);
-		$users_id=$this->db->query( "SELECT * FROM Users WHERE email = '".$data['login']."'")->result_array();//Ð ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑŽ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°Ñ‚ÑŒ Ð¸Ð· Ð¼Ð¾Ð´ÐµÐ»Ð¸
+		$users_id=$this->db->query( "SELECT * FROM Users WHERE email = '".$data['login']."'")->result_array();//Ðåêîìåíäóþ âîçâðàùàòü èç ìîäåëè
 		$id=$users_id[0]['id'];
 		$this->load->helper('date');
 		$now = time();
@@ -86,11 +86,11 @@ class Welcome_model extends CI_Model
 				'date_reg' => unix_to_human($now, TRUE, 'eu')
 					);
 		$this->db->update('Invites', $upd, "invite = '".$data['key']."'"); 
-		$this->Welcome_model->parser_links($data['key'],$id);//Ð”Ð¾Ð±Ð°Ð²Ð¸Ð»
+		$this->Welcome_model->parser_links($data['key'],$id);//Äîáàâèë
 		}
 		else
 		{
-		$users_id=$this->db->query( "SELECT * FROM Users WHERE email = '".$data['login']."'")->result_array();//Ð ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑŽ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°Ñ‚ÑŒ Ð¸Ð· Ð¼Ð¾Ð´ÐµÐ»Ð¸
+		$users_id=$this->db->query( "SELECT * FROM Users WHERE email = '".$data['login']."'")->result_array();//Ðåêîìåíäóþ âîçâðàùàòü èç ìîäåëè
 		$id=$users_id[0]['id'];
 		}
 		return($id);
@@ -107,13 +107,13 @@ class Welcome_model extends CI_Model
                 array
                 (
                     'field' => 'passw',
-                    'label' => 'ÐŸÐ°Ñ€Ð¾Ð»ÑŒ',
+                    'label' => 'Ïàðîëü',
                     'rules' => 'trim|required|xss_clean|max_length[20]'
                 ),
                 array
                 (
                     'field' => 'key',
-                    'label' => 'ÐšÐ»ÑŽÑ‡',
+                    'label' => 'Êëþ÷',
                     'rules' => 'trim|required|xss_clean|max_length[20]|callback_key'
                 )   
             );
@@ -128,7 +128,7 @@ class Welcome_model extends CI_Model
                 array
                 (
                     'field' => 'passw',
-                    'label' => 'ÐŸÐ°Ñ€Ð¾Ð»ÑŒ',
+                    'label' => 'Ïàðîëü',
                     'rules' => 'trim|required|xss_clean|max_length[20]|callback_passw'
                 ) 
             );

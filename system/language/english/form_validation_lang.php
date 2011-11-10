@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 $lang['required']			= "The %s field is required.";
 $lang['isset']				= "The %s field must have a value.";

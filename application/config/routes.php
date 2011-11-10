@@ -1,4 +1,4 @@
-ï»¿<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -45,16 +45,16 @@ $route['logout']                  	= "user/logout";
 $route['ajaxuniverlist']			= "dispatcher/ajaxuniverlist";
 $route['ajaxcategorylist']			= "dispatcher/ajaxcategorylist";
 $route['ajaxroleslist']				= "dispatcher/ajaxroleslist";
-//Ñ€Ð°ÑÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ
+//ðàñïèñàíèå
 $route['ajaxtimetable']         = "user/ajaxtimetable";
-//Ð³Ñ€ÑƒÐ¿Ð¿Ð°
+//ãðóïïà
 $route['univer(:num)']			="univer/index/$1";
 $route['departament(:num)']			="departament/index/$1";
 $route['group(:num)']				="group/index/$1";
 $route['id(:num)']				="user/index/$1";
-//Ð¾Ñ†ÐµÐ½ÐºÐ¸
+//îöåíêè
 //$route['values/(:any)']              = "task/index/$1";
-//Ð´Ð¸ÑÐ¿ÐµÑ‚Ñ‡ÐµÑ€ÑÐºÐ°Ñ
+//äèñïåò÷åðñêàÿ
 $route['ajaxusergroup']              = "dispatcher/ajaxusergroup";
 $route['ajaxusernogroup']            = "dispatcher/ajaxusernogroup";
 $route['ajaxinsertusergroupresult']  = "dispatcher/ajaxinsertusergroupresult";
@@ -65,7 +65,7 @@ $route['ajaxfreeclassroomslist']     = "dispatcher/ajaxfreeclassroomslist";
 $route['ajaxaddtimetable']           = "dispatcher/ajaxaddtimetable";
 $route['ajaxteacherlist']            = "dispatcher/ajaxteacherlist";
 
-//Ñ€Ð°ÑÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ
+//ðàñïèñàíèå
 
 $route['reg']                   = "welcome/reg";
 $route['welcome']				= "welcome/welcome";

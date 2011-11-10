@@ -1,8 +1,8 @@
-ï»¿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class message_model extends CI_Model
 {   
-    public function insert_message($from,$to,$text)   //Ð¾Ð±Ñ€Ð°Ð±Ð°Ñ‚ÑƒÐµÐ¼ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð¸ Ð·Ð°Ð±Ð¸Ð²Ð°ÐµÐ¼ Ð² Ð±Ð°Ð·Ñƒ
+    public function insert_message($from,$to,$text)   //îáðàáàòóåì äàííûå ôîðìû è çàáèâàåì â áàçó
 	{
 		$insert_db = array(
         'Users_id_from' => $from,
@@ -14,18 +14,18 @@ class message_model extends CI_Model
 		
 	}
 	
-	public function posted_message($from)   //Ð·Ð°Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ð¸Ð· Ð±Ð°Ð·Ñ‹ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ
+	public function posted_message($from)   //çàáèðàåì èç áàçû îòïðàâëåííûå ñîîáùåíèÿ
 		{
 			return $this->db->where('Users_id_from',$from)->get('Messages')->result_array();
 			
 		}
 		
-	public function adopted_message($to)  //Ð·Ð°Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ð¸Ð· Ð±Ð°Ð·Ñ‹ Ð¿Ñ€Ð¸Ð½ÑÑ‚Ñ‹Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ
+	public function adopted_message($to)  //çàáèðàåì èç áàçû ïðèíÿòûå ñîîáùåíèÿ
 		{
 			return $this->db->where('Users_id_to',$to)->get('Messages')->result_array();
 		}	
 
-	public function get_fio($id)				//Ð±ÐµÑ€Ñ‘Ð¼ Ð¸Ð¼Ñ Ð¸ Ñ„Ð°Ð¼Ð¸Ð»Ð¸ÑŽ Ñ Ð±Ð°Ð·Ñ‹
+	public function get_fio($id)				//áåð¸ì èìÿ è ôàìèëèþ ñ áàçû
 		{
 				return $this->db->where('id',$id)->get('Users')->result_array();
 		}

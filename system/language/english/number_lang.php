@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 $lang['terabyte_abbr'] = "TB";
 $lang['gigabyte_abbr'] = "GB";
