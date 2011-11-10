@@ -15,7 +15,7 @@ class user extends CI_Controller
 		if(isset($sesion_id)and($sesion_id!=NULL))
 			{
 			$week = 1;
-			//$data=$this->profile_model->runway($id);
+  	        $data['nav'] = $this->profile_model->get_nav_info($id,'user');
 			$data['id'] = $id;
 			$this->display_lib->main_page('user',$data);
 			
