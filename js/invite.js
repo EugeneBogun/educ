@@ -1,5 +1,5 @@
-$(document).ready(function(){
-//подгрузка списка универов
+п»ї$(document).ready(function(){
+//РїРѕРґРіСЂСѓР·РєР° СЃРїРёСЃРєР° СѓРЅРёРІРµСЂРѕРІ
 	$('#buffer_text').text('');
 	selected1=0;
 	selected2=0;
@@ -8,13 +8,13 @@ $(document).ready(function(){
 	
 	$.ajax({
 		url:	 'ajaxuniverlist',
-		type:	 'POST', //что-нибудь получим
+		type:	 'POST', //С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СѓС‡РёРј
 		processData: false,
 		success: function(data){
 			$('#vuz_list_invite').html(data);
 			}
 		});
-//функция изменения универов	
+//С„СѓРЅРєС†РёСЏ РёР·РјРµРЅРµРЅРёСЏ СѓРЅРёРІРµСЂРѕРІ	
 	$('#vuz_list_invite').change(function(){
 		if($('#vuz_list_invite').val()!="0")
 			{
@@ -27,12 +27,12 @@ $(document).ready(function(){
 		selected2=0;
 		selected3=0;
 		selected4=0;
-		$('#category').html('Выбор категории:<br/><select size="1" id="switch_category"><option value="0">Выбирите</option><option value="U">Университет</option><option value="D">Отделение</option><option value="S">ЦК</option><option value="G">Група</option></select>');
-		$('#rol').html('Выбрать роль:<br/><select size="1" id="invites_rols_list"></select>');
+		$('#category').html('Р’С‹Р±РѕСЂ РєР°С‚РµРіРѕСЂРёРё:<br/><select size="1" id="switch_category"><option value="0">Р’С‹Р±РёСЂРёС‚Рµ</option><option value="U">РЈРЅРёРІРµСЂСЃРёС‚РµС‚</option><option value="D">РћС‚РґРµР»РµРЅРёРµ</option><option value="S">Р¦Рљ</option><option value="G">Р“СЂСѓРїР°</option></select>');
+		$('#rol').html('Р’С‹Р±СЂР°С‚СЊ СЂРѕР»СЊ:<br/><select size="1" id="invites_rols_list"></select>');
 		$('#select_category').html('');
 		$('#validation').html('');
 		});
-//функция изменения категорий	
+//С„СѓРЅРєС†РёСЏ РёР·РјРµРЅРµРЅРёСЏ РєР°С‚РµРіРѕСЂРёР№	
 	$('#category').change(function(){
 		$('#validation').html('');
 		if($('#switch_category').val()!="0")
@@ -41,10 +41,10 @@ $(document).ready(function(){
 			if($('#switch_category').val()!="U")
 				{
 				category = $("#switch_category option:selected").text();
-				$('#select_category').html('Выбрать '+category+':<br/><select size="7" id="category_list_invite"></select>');
+				$('#select_category').html('Р’С‹Р±СЂР°С‚СЊ '+category+':<br/><select size="7" id="category_list_invite"></select>');
 				$.ajax({
 					url:	 'ajaxcategorylist',
-					type:	 'POST', //что-нибудь получим
+					type:	 'POST', //С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СѓС‡РёРј
 					processData: false,
 					data:'category='+$("#switch_category option:selected").val()+'&id_univer='+$("#vuz_list_invite option:selected").val(),
 					success: function(data){
@@ -65,18 +65,18 @@ $(document).ready(function(){
 			}
 		selected3=0;
 		});
-//функция выбора категорий
+//С„СѓРЅРєС†РёСЏ РІС‹Р±РѕСЂР° РєР°С‚РµРіРѕСЂРёР№
 	$('#select_category').change(function(){
 		selected3=1;
 		$('#validation').html('');
 		});
-//функция изменения универов	
+//С„СѓРЅРєС†РёСЏ РёР·РјРµРЅРµРЅРёСЏ СѓРЅРёРІРµСЂРѕРІ	
 	$('#vuz_list_invite').change(function(){
 		if($('#vuz_list_invite').val()!=0)
 			{
 			$.ajax({
 			url:	 'ajaxroleslist',
-			type:	 'POST', //что-нибудь получим
+			type:	 'POST', //С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СѓС‡РёРј
 			processData: false,
 			data:'univer_id='+$('#vuz_list_invite').val(),
 			success: function(data){
@@ -90,12 +90,12 @@ $(document).ready(function(){
 			$('#category').html('');
 			}
 		});
-//функция изменения инвайтов
+//С„СѓРЅРєС†РёСЏ РёР·РјРµРЅРµРЅРёСЏ РёРЅРІР°Р№С‚РѕРІ
 	$('#rol').change(function(){
 		selected4=1;
 		$('#rol_val').html('');
 		});	
-//функция на количество		
+//С„СѓРЅРєС†РёСЏ РЅР° РєРѕР»РёС‡РµСЃС‚РІРѕ		
 	var num = $('#num').val();
 	$('#inc').click(function(){
 		if(num<35)
@@ -118,13 +118,13 @@ $(document).ready(function(){
 		$('#num').text(num);
 		$('#num').val()=num;
 		});	
-//ф-ция добавления инвайтов в буффер
+//С„-С†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ РёРЅРІР°Р№С‚РѕРІ РІ Р±СѓС„С„РµСЂ
 	$('#add_data').click(function(){
 		if(selected1==1)
 			{
 			if(selected4==0)
 				{
-				$('#rol_val').html('Выбирете роль');
+				$('#rol_val').html('Р’С‹Р±РёСЂРµС‚Рµ СЂРѕР»СЊ');
 				}
 			else
 				{
@@ -147,19 +147,19 @@ $(document).ready(function(){
 							}
 						else
 							{
-							$('#validation').html('Выбирете '+category);
+							$('#validation').html('Р’С‹Р±РёСЂРµС‚Рµ '+category);
 							}
 						}
 					}
 				else
 					{
-					$('#validation').html('Выбирете категорию');
+					$('#validation').html('Р’С‹Р±РёСЂРµС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ');
 					}
 				}
 			}
 		else
 			{
-			$('#validation').html("Выбирете универ");
+			$('#validation').html("Р’С‹Р±РёСЂРµС‚Рµ СѓРЅРёРІРµСЂ");
 			}
 		});
 	});

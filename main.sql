@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 3.2.3
 -- http://www.phpmyadmin.net
 --
@@ -27,11 +27,11 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `Buildings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL COMMENT 'Номер/название корпуса',
-  `Universities_id` int(11) NOT NULL COMMENT 'Ссылка на университет',
+  `name` varchar(45) NOT NULL COMMENT 'РќРѕРјРµСЂ/РЅР°Р·РІР°РЅРёРµ РєРѕСЂРїСѓСЃР°',
+  `Universities_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° СѓРЅРёРІРµСЂСЃРёС‚РµС‚',
   PRIMARY KEY (`id`),
   KEY `fk_Buildings_Universities1` (`Universities_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Здания' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Р—РґР°РЅРёСЏ' AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `Buildings`
@@ -51,18 +51,18 @@ INSERT INTO `Buildings` (`id`, `name`, `Universities_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Cities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL COMMENT 'Название',
-  `Countries_id` int(11) NOT NULL COMMENT 'Страна',
+  `name` varchar(45) NOT NULL COMMENT 'РќР°Р·РІР°РЅРёРµ',
+  `Countries_id` int(11) NOT NULL COMMENT 'РЎС‚СЂР°РЅР°',
   PRIMARY KEY (`id`),
   KEY `fk_Cities_Countries1` (`Countries_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Города' AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Р“РѕСЂРѕРґР°' AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `Cities`
 --
 
 INSERT INTO `Cities` (`id`, `name`, `Countries_id`) VALUES
-(1, 'Кривой Рог', 1);
+(1, 'РљСЂРёРІРѕР№ Р РѕРі', 1);
 
 -- --------------------------------------------------------
 
@@ -72,9 +72,9 @@ INSERT INTO `Cities` (`id`, `name`, `Countries_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Classrooms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL COMMENT 'Номер/имя комнаты',
-  `ClassRoomsTypes_id` int(11) DEFAULT NULL COMMENT 'Ссылка на тип кабинета',
-  `Buildings_id` int(11) DEFAULT NULL COMMENT 'Ссылка на Номер корпуса',
+  `name` varchar(45) NOT NULL COMMENT 'РќРѕРјРµСЂ/РёРјСЏ РєРѕРјРЅР°С‚С‹',
+  `ClassRoomsTypes_id` int(11) DEFAULT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° С‚РёРї РєР°Р±РёРЅРµС‚Р°',
+  `Buildings_id` int(11) DEFAULT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РќРѕРјРµСЂ РєРѕСЂРїСѓСЃР°',
   PRIMARY KEY (`id`),
   KEY `fk_Classrooms_ClassRoomsTypes1` (`ClassRoomsTypes_id`),
   KEY `fk_Classrooms_Buildings1` (`Buildings_id`)
@@ -93,8 +93,8 @@ INSERT INTO `Classrooms` (`id`, `name`, `ClassRoomsTypes_id`, `Buildings_id`) VA
 (6, '401', 2, 2),
 (7, '301', 2, 2),
 (8, '319', 2, 2),
-(9, 'Спортзал №1', 3, 4),
-(10, 'Спортзал №2', 3, 4),
+(9, 'РЎРїРѕСЂС‚Р·Р°Р» в„–1', 3, 4),
+(10, 'РЎРїРѕСЂС‚Р·Р°Р» в„–2', 3, 4),
 (11, '104', 2, 2),
 (12, '106', 2, 1),
 (13, '309', 2, 1),
@@ -111,14 +111,14 @@ CREATE TABLE IF NOT EXISTS `Countries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РўР°Р±Р»РёС†Р° СЃС‚СЂР°РЅ' AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Р СћР В°Р В±Р В»Р С‘РЎвЂ Р В° РЎРѓРЎвЂљРЎР‚Р В°Р Р…' AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `Countries`
 --
 
 INSERT INTO `Countries` (`id`, `name`) VALUES
-(1, 'Украина');
+(1, 'РЈРєСЂР°РёРЅР°');
 
 -- --------------------------------------------------------
 
@@ -128,22 +128,22 @@ INSERT INTO `Countries` (`id`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Curricula` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL COMMENT 'Имя учебного плана',
-  `year_start` varchar(4) NOT NULL COMMENT 'Год начала',
-  `year_end` varchar(4) DEFAULT NULL COMMENT 'Год конца',
-  `Dep_Spec_id` int(11) NOT NULL COMMENT 'Ссылка на отделение/специальность',
+  `name` varchar(45) NOT NULL COMMENT 'РРјСЏ СѓС‡РµР±РЅРѕРіРѕ РїР»Р°РЅР°',
+  `year_start` varchar(4) NOT NULL COMMENT 'Р“РѕРґ РЅР°С‡Р°Р»Р°',
+  `year_end` varchar(4) DEFAULT NULL COMMENT 'Р“РѕРґ РєРѕРЅС†Р°',
+  `Dep_Spec_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РѕС‚РґРµР»РµРЅРёРµ/СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ',
   PRIMARY KEY (`id`),
   KEY `fk_Curricula_Dep_Spec1` (`Dep_Spec_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Учебный план' AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РЈС‡РµР±РЅС‹Р№ РїР»Р°РЅ' AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `Curricula`
 --
 
 INSERT INTO `Curricula` (`id`, `name`, `year_start`, `year_end`, `Dep_Spec_id`) VALUES
-(1, 'Учебный план программистов', '2007', '2010', 1),
-(2, 'Учебный план программистов', '2010', '2014', 1),
-(3, 'Учебный план сетевиков', '2007', '2009', 2);
+(1, 'РЈС‡РµР±РЅС‹Р№ РїР»Р°РЅ РїСЂРѕРіСЂР°РјРјРёСЃС‚РѕРІ', '2007', '2010', 1),
+(2, 'РЈС‡РµР±РЅС‹Р№ РїР»Р°РЅ РїСЂРѕРіСЂР°РјРјРёСЃС‚РѕРІ', '2010', '2014', 1),
+(3, 'РЈС‡РµР±РЅС‹Р№ РїР»Р°РЅ СЃРµС‚РµРІРёРєРѕРІ', '2007', '2009', 2);
 
 -- --------------------------------------------------------
 
@@ -167,12 +167,12 @@ CREATE TABLE IF NOT EXISTS `Departments` (
 --
 
 INSERT INTO `Departments` (`id`, `full_name`, `name`, `tel1`, `tel2`, `Universities_id`) VALUES
-(1, 'Компьютерної та програмної інженерії', 'КПІ', NULL, NULL, 1),
-(2, 'Авіоніка', 'Авіоніка', NULL, NULL, 1),
-(3, 'Організація авіаційних перевезень', 'Перевозки', NULL, NULL, 1),
-(4, 'Радіо', 'Радіо', NULL, NULL, 1),
-(5, 'Механіки', 'Механіки', NULL, NULL, 1),
-(6, 'Загальноосвітних дисциплін', 'ЗД', NULL, NULL, 1);
+(1, 'РљРѕРјРїСЊСЋС‚РµСЂРЅРѕС— С‚Р° РїСЂРѕРіСЂР°РјРЅРѕС— С–РЅР¶РµРЅРµСЂС–С—', 'РљРџР†', NULL, NULL, 1),
+(2, 'РђРІС–РѕРЅС–РєР°', 'РђРІС–РѕРЅС–РєР°', NULL, NULL, 1),
+(3, 'РћСЂРіР°РЅС–Р·Р°С†С–СЏ Р°РІС–Р°С†С–Р№РЅРёС… РїРµСЂРµРІРµР·РµРЅСЊ', 'РџРµСЂРµРІРѕР·РєРё', NULL, NULL, 1),
+(4, 'Р Р°РґС–Рѕ', 'Р Р°РґС–Рѕ', NULL, NULL, 1),
+(5, 'РњРµС…Р°РЅС–РєРё', 'РњРµС…Р°РЅС–РєРё', NULL, NULL, 1),
+(6, 'Р—Р°РіР°Р»СЊРЅРѕРѕСЃРІС–С‚РЅРёС… РґРёСЃС†РёРїР»С–РЅ', 'Р—Р”', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -182,12 +182,12 @@ INSERT INTO `Departments` (`id`, `full_name`, `name`, `tel1`, `tel2`, `Universit
 
 CREATE TABLE IF NOT EXISTS `Dep_Spec` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Specialty_id` int(11) NOT NULL COMMENT 'Ссылка на специальность',
-  `Departments_id` int(11) NOT NULL COMMENT 'Ссылка на отделение',
+  `Specialty_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ',
+  `Departments_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РѕС‚РґРµР»РµРЅРёРµ',
   PRIMARY KEY (`id`),
   KEY `fk_SubDep_Spec_Specialty1` (`Specialty_id`),
   KEY `fk_Dep_Spec_Departments1` (`Departments_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Отделение-специльаность' AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РћС‚РґРµР»РµРЅРёРµ-СЃРїРµС†РёР»СЊР°РЅРѕСЃС‚СЊ' AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `Dep_Spec`
@@ -205,14 +205,14 @@ INSERT INTO `Dep_Spec` (`id`, `Specialty_id`, `Departments_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(16) NOT NULL COMMENT 'Название группы',
-  `YearCreate` int(11) NOT NULL COMMENT 'Год создания',
-  `description` varchar(100) DEFAULT NULL COMMENT 'Описание',
-  `Curricula_id` int(11) NOT NULL COMMENT 'Ссылка на учебный план',
-  `type` int(11) NOT NULL DEFAULT '0' COMMENT '0 - 9 класс,1 - 11 класс',
+  `name` varchar(16) NOT NULL COMMENT 'РќР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹',
+  `YearCreate` int(11) NOT NULL COMMENT 'Р“РѕРґ СЃРѕР·РґР°РЅРёСЏ',
+  `description` varchar(100) DEFAULT NULL COMMENT 'РћРїРёСЃР°РЅРёРµ',
+  `Curricula_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° СѓС‡РµР±РЅС‹Р№ РїР»Р°РЅ',
+  `type` int(11) NOT NULL DEFAULT '0' COMMENT '0 - 9 РєР»Р°СЃСЃ,1 - 11 РєР»Р°СЃСЃ',
   PRIMARY KEY (`id`),
   KEY `fk_Groups_Curricula1` (`Curricula_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Группы' AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Р“СЂСѓРїРїС‹' AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `Groups`
@@ -239,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `Invites` (
   `Users_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Invaites_Users1` (`Users_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Приглашения' AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РџСЂРёРіР»Р°С€РµРЅРёСЏ' AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `Invites`
@@ -270,14 +270,14 @@ INSERT INTO `Invites` (`id`, `invite`, `date_reg`, `option`, `Users_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Users_id_from` int(11) NOT NULL COMMENT 'От кого',
-  `text` text NOT NULL COMMENT 'Текст',
-  `datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата и время',
-  `status` tinyint(1) DEFAULT '1' COMMENT 'Статус сообщения',
-  `Users_id_to` int(11) NOT NULL COMMENT 'Кому',
+  `Users_id_from` int(11) NOT NULL COMMENT 'РћС‚ РєРѕРіРѕ',
+  `text` text NOT NULL COMMENT 'РўРµРєСЃС‚',
+  `datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Р”Р°С‚Р° Рё РІСЂРµРјСЏ',
+  `status` tinyint(1) DEFAULT '1' COMMENT 'РЎС‚Р°С‚СѓСЃ СЃРѕРѕР±С‰РµРЅРёСЏ',
+  `Users_id_to` int(11) NOT NULL COMMENT 'РљРѕРјСѓ',
   PRIMARY KEY (`id`),
   KEY `fk_Messages_Users1` (`Users_id_from`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Личные сообщения' AUTO_INCREMENT=33 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ' AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `Messages`
@@ -305,7 +305,7 @@ INSERT INTO `Messages` (`id`, `Users_id_from`, `text`, `datetime`, `status`, `Us
 (21, 0, '0', '2011-10-26 18:18:40', 1, 0),
 (22, 0, '', '2011-11-05 08:59:03', 1, 8),
 (23, 7, '', '2011-11-10 17:09:04', 1, 0),
-(24, 7, 'віі', '2011-11-10 17:12:20', 1, 7),
+(24, 7, 'РІС–С–', '2011-11-10 17:12:20', 1, 7),
 (25, 7, '', '2011-11-10 17:15:03', 1, 10),
 (26, 7, '', '2011-11-10 17:15:22', 1, 10),
 (27, 7, 'biiiii', '2011-11-10 17:15:37', 1, 10),
@@ -322,9 +322,9 @@ INSERT INTO `Messages` (`id`, `Users_id_from`, `text`, `datetime`, `status`, `Us
 --
 
 CREATE TABLE IF NOT EXISTS `Organizations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Р°СѓС‚РѕРёРЅРєСЂРµРјРµРЅС‚',
-  `name` varchar(45) NOT NULL COMMENT 'РЅР°Р·РІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё',
-  `Universities_id` int(11) NOT NULL COMMENT 'РєРѕРґ СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р° РєСЂСѓР¶РєР°',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Р В°РЎС“РЎвЂљР С•Р С‘Р Р…Р С”РЎР‚Р ВµР СР ВµР Р…РЎвЂљ',
+  `name` varchar(45) NOT NULL COMMENT 'Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ Р С•РЎР‚Р С–Р В°Р Р…Р С‘Р В·Р В°РЎвЂ Р С‘Р С‘',
+  `Universities_id` int(11) NOT NULL COMMENT 'Р С”Р С•Р Т‘ РЎС“Р Р…Р С‘Р Р†Р ВµРЎР‚РЎРѓР С‘РЎвЂљР ВµРЎвЂљР В° Р С”РЎР‚РЎС“Р В¶Р С”Р В°',
   PRIMARY KEY (`id`),
   KEY `fk_Organization_Universities1` (`Universities_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -342,22 +342,22 @@ CREATE TABLE IF NOT EXISTS `Organizations` (
 
 CREATE TABLE IF NOT EXISTS `Roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL COMMENT 'Название',
+  `name` varchar(45) NOT NULL COMMENT 'РќР°Р·РІР°РЅРёРµ',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Роли' AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Р РѕР»Рё' AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `Roles`
 --
 
 INSERT INTO `Roles` (`id`, `name`) VALUES
-(1, 'Курсант'),
-(2, 'Преподаватель'),
-(3, 'Лаборант'),
-(4, 'Куратор'),
-(5, 'Старшина'),
-(6, 'Замстаршина'),
-(7, 'Глава ЦК');
+(1, 'РљСѓСЂСЃР°РЅС‚'),
+(2, 'РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ'),
+(3, 'Р›Р°Р±РѕСЂР°РЅС‚'),
+(4, 'РљСѓСЂР°С‚РѕСЂ'),
+(5, 'РЎС‚Р°СЂС€РёРЅР°'),
+(6, 'Р—Р°РјСЃС‚Р°СЂС€РёРЅР°'),
+(7, 'Р“Р»Р°РІР° Р¦Рљ');
 
 -- --------------------------------------------------------
 
@@ -390,19 +390,19 @@ INSERT INTO `Settings` (`id`, `settings1`, `settings2`, `settings3`, `settings4`
 
 CREATE TABLE IF NOT EXISTS `Specialties` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(20) DEFAULT NULL COMMENT 'Код специальности',
-  `fullname` varchar(75) DEFAULT NULL COMMENT 'Полное название',
-  `name` varchar(25) DEFAULT NULL COMMENT 'Абревиатура',
+  `code` varchar(20) DEFAULT NULL COMMENT 'РљРѕРґ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё',
+  `fullname` varchar(75) DEFAULT NULL COMMENT 'РџРѕР»РЅРѕРµ РЅР°Р·РІР°РЅРёРµ',
+  `name` varchar(25) DEFAULT NULL COMMENT 'РђР±СЂРµРІРёР°С‚СѓСЂР°',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Специальности' AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё' AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `Specialties`
 --
 
 INSERT INTO `Specialties` (`id`, `code`, `fullname`, `name`) VALUES
-(1, '5.05010301', 'Разработка програмного обеспечения', 'РПО'),
-(2, '5.05010201', 'Обслуговування комп''терних систем і мереж', 'ОКСМ');
+(1, '5.05010301', 'Р Р°Р·СЂР°Р±РѕС‚РєР° РїСЂРѕРіСЂР°РјРЅРѕРіРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЏ', 'Р РџРћ'),
+(2, '5.05010201', 'РћР±СЃР»СѓРіРѕРІСѓРІР°РЅРЅСЏ РєРѕРјРї''С‚РµСЂРЅРёС… СЃРёСЃС‚РµРј С– РјРµСЂРµР¶', 'РћРљРЎРњ');
 
 -- --------------------------------------------------------
 
@@ -412,22 +412,22 @@ INSERT INTO `Specialties` (`id`, `code`, `fullname`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `SubDepartments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Departments_id` int(11) NOT NULL COMMENT 'Ссылка на отделение',
-  `name` varchar(25) DEFAULT NULL COMMENT 'Абревиатура',
-  `fullname` varchar(50) NOT NULL COMMENT 'Полное название',
+  `Departments_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РѕС‚РґРµР»РµРЅРёРµ',
+  `name` varchar(25) DEFAULT NULL COMMENT 'РђР±СЂРµРІРёР°С‚СѓСЂР°',
+  `fullname` varchar(50) NOT NULL COMMENT 'РџРѕР»РЅРѕРµ РЅР°Р·РІР°РЅРёРµ',
   PRIMARY KEY (`id`),
   KEY `fk_SubDepartments_Departments1` (`Departments_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='ЦК' AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Р¦Рљ' AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `SubDepartments`
 --
 
 INSERT INTO `SubDepartments` (`id`, `Departments_id`, `name`, `fullname`) VALUES
-(1, 1, 'ПЗ ЕОМ', 'Практичного застосування ЕОМ'),
-(2, 1, 'ПОД', 'Професійно-оріентованих дисциплін'),
-(3, 6, 'ПН', 'Природничих наук'),
-(4, 6, 'ГН', 'Гумарнітарних наук');
+(1, 1, 'РџР— Р•РћРњ', 'РџСЂР°РєС‚РёС‡РЅРѕРіРѕ Р·Р°СЃС‚РѕСЃСѓРІР°РЅРЅСЏ Р•РћРњ'),
+(2, 1, 'РџРћР”', 'РџСЂРѕС„РµСЃС–Р№РЅРѕ-РѕСЂС–РµРЅС‚РѕРІР°РЅРёС… РґРёСЃС†РёРїР»С–РЅ'),
+(3, 6, 'РџРќ', 'РџСЂРёСЂРѕРґРЅРёС‡РёС… РЅР°СѓРє'),
+(4, 6, 'Р“Рќ', 'Р“СѓРјР°СЂРЅС–С‚Р°СЂРЅРёС… РЅР°СѓРє');
 
 -- --------------------------------------------------------
 
@@ -437,29 +437,29 @@ INSERT INTO `SubDepartments` (`id`, `Departments_id`, `name`, `fullname`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Subjects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `full_name` varchar(75) NOT NULL COMMENT 'Полное имя',
-  `name` varchar(45) NOT NULL COMMENT 'Абревиатура',
+  `full_name` varchar(75) NOT NULL COMMENT 'РџРѕР»РЅРѕРµ РёРјСЏ',
+  `name` varchar(45) NOT NULL COMMENT 'РђР±СЂРµРІРёР°С‚СѓСЂР°',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Предметы' AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РџСЂРµРґРјРµС‚С‹' AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `Subjects`
 --
 
 INSERT INTO `Subjects` (`id`, `full_name`, `name`) VALUES
-(1, 'Основи баз данных та знань', 'ОБДЗ'),
-(2, 'Розробка клиент-серверной архитектуры', 'РЗИКСА'),
-(3, 'Розробка засобів візуального програмування', 'ИЗВП'),
-(4, 'Економіка підприємства', 'ЕП'),
-(5, 'Фізична культура', 'фіз-ра'),
-(7, 'Інтернет технології', 'ІТ'),
-(6, 'Соціологія', 'Соц.'),
-(13, 'Англійска мова', 'Англ.'),
-(9, 'Політологія', 'Політ.'),
-(10, 'Комп''ютерні мережі', 'КМ'),
-(11, 'Менеджмент/Маркетинг', 'Мен./Марк.'),
-(12, 'Веб-дизайн', 'Веб-диз.'),
-(14, 'Основи захисту інформації', 'ОЗІ');
+(1, 'РћСЃРЅРѕРІРё Р±Р°Р· РґР°РЅРЅС‹С… С‚Р° Р·РЅР°РЅСЊ', 'РћР‘Р”Р—'),
+(2, 'Р РѕР·СЂРѕР±РєР° РєР»РёРµРЅС‚-СЃРµСЂРІРµСЂРЅРѕР№ Р°СЂС…РёС‚РµРєС‚СѓСЂС‹', 'Р Р—РРљРЎРђ'),
+(3, 'Р РѕР·СЂРѕР±РєР° Р·Р°СЃРѕР±С–РІ РІС–Р·СѓР°Р»СЊРЅРѕРіРѕ РїСЂРѕРіСЂР°РјСѓРІР°РЅРЅСЏ', 'РР—Р’Рџ'),
+(4, 'Р•РєРѕРЅРѕРјС–РєР° РїС–РґРїСЂРёС”РјСЃС‚РІР°', 'Р•Рџ'),
+(5, 'Р¤С–Р·РёС‡РЅР° РєСѓР»СЊС‚СѓСЂР°', 'С„С–Р·-СЂР°'),
+(7, 'Р†РЅС‚РµСЂРЅРµС‚ С‚РµС…РЅРѕР»РѕРіС–С—', 'Р†Рў'),
+(6, 'РЎРѕС†С–РѕР»РѕРіС–СЏ', 'РЎРѕС†.'),
+(13, 'РђРЅРіР»С–Р№СЃРєР° РјРѕРІР°', 'РђРЅРіР».'),
+(9, 'РџРѕР»С–С‚РѕР»РѕРіС–СЏ', 'РџРѕР»С–С‚.'),
+(10, 'РљРѕРјРї''СЋС‚РµСЂРЅС– РјРµСЂРµР¶С–', 'РљРњ'),
+(11, 'РњРµРЅРµРґР¶РјРµРЅС‚/РњР°СЂРєРµС‚РёРЅРі', 'РњРµРЅ./РњР°СЂРє.'),
+(12, 'Р’РµР±-РґРёР·Р°Р№РЅ', 'Р’РµР±-РґРёР·.'),
+(14, 'РћСЃРЅРѕРІРё Р·Р°С…РёСЃС‚Сѓ С–РЅС„РѕСЂРјР°С†С–С—', 'РћР—Р†');
 
 -- --------------------------------------------------------
 
@@ -469,13 +469,13 @@ INSERT INTO `Subjects` (`id`, `full_name`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Subjects_Curricula` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `curricula_id` int(11) NOT NULL COMMENT 'Ссылка на учебную программу',
-  `Subjects_id` int(11) NOT NULL COMMENT 'Ссылка на предмет',
-  `term` int(1) NOT NULL COMMENT 'Семестр',
+  `curricula_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° СѓС‡РµР±РЅСѓСЋ РїСЂРѕРіСЂР°РјРјСѓ',
+  `Subjects_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РїСЂРµРґРјРµС‚',
+  `term` int(1) NOT NULL COMMENT 'РЎРµРјРµСЃС‚СЂ',
   PRIMARY KEY (`id`),
   KEY `fk_Subjects_Curricula_Curricula1` (`curricula_id`),
   KEY `fk_Subjects_Curricula_Subjects1` (`Subjects_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Предмет-программа' AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РџСЂРµРґРјРµС‚-РїСЂРѕРіСЂР°РјРјР°' AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `Subjects_Curricula`
@@ -504,17 +504,17 @@ INSERT INTO `Subjects_Curricula` (`id`, `curricula_id`, `Subjects_id`, `term`) V
 
 CREATE TABLE IF NOT EXISTS `Timetable` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `week` int(11) NOT NULL COMMENT 'Имя недели',
-  `day` int(11) DEFAULT NULL COMMENT 'Имя дня',
-  `numder` int(11) DEFAULT NULL COMMENT 'Номер пары',
-  `Groups_id` int(11) NOT NULL COMMENT 'Ссылка на группу',
-  `Classrooms_id` int(11) NOT NULL COMMENT 'Ссылка на кабинет',
-  `UsersSubjectsCurricula_id` int(11) NOT NULL COMMENT 'Ссылка на предме-специальность',
+  `week` int(11) NOT NULL COMMENT 'РРјСЏ РЅРµРґРµР»Рё',
+  `day` int(11) DEFAULT NULL COMMENT 'РРјСЏ РґРЅСЏ',
+  `numder` int(11) DEFAULT NULL COMMENT 'РќРѕРјРµСЂ РїР°СЂС‹',
+  `Groups_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РіСЂСѓРїРїСѓ',
+  `Classrooms_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РєР°Р±РёРЅРµС‚',
+  `UsersSubjectsCurricula_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РїСЂРµРґРјРµ-СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ',
   PRIMARY KEY (`id`),
   KEY `fk_Timetable_Groups1` (`Groups_id`),
   KEY `fk_Timetable_Classrooms1` (`Classrooms_id`),
   KEY `fk_Timetable_UsersSubjectsCurricula1` (`UsersSubjectsCurricula_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Расписание' AUTO_INCREMENT=38 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Р Р°СЃРїРёСЃР°РЅРёРµ' AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `Timetable`
@@ -562,10 +562,10 @@ INSERT INTO `Timetable` (`id`, `week`, `day`, `numder`, `Groups_id`, `Classrooms
 
 CREATE TABLE IF NOT EXISTS `Universities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL COMMENT 'Название',
-  `fullname` varchar(100) DEFAULT NULL COMMENT 'Полное название',
-  `adress` varchar(45) DEFAULT NULL COMMENT 'Адресс',
-  `Cities_id` int(11) NOT NULL COMMENT 'Ссылка на город',
+  `name` varchar(50) NOT NULL COMMENT 'РќР°Р·РІР°РЅРёРµ',
+  `fullname` varchar(100) DEFAULT NULL COMMENT 'РџРѕР»РЅРѕРµ РЅР°Р·РІР°РЅРёРµ',
+  `adress` varchar(45) DEFAULT NULL COMMENT 'РђРґСЂРµСЃСЃ',
+  `Cities_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РіРѕСЂРѕРґ',
   PRIMARY KEY (`id`),
   KEY `fk_Universities_Cities1` (`Cities_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
@@ -575,8 +575,8 @@ CREATE TABLE IF NOT EXISTS `Universities` (
 --
 
 INSERT INTO `Universities` (`id`, `name`, `fullname`, `adress`, `Cities_id`) VALUES
-(1, 'КК НАУ', 'Криворожский коледж национального авиационного университета', 'ул. Туполева 1', 1),
-(2, 'КНУ', 'Криворожский Национальный Университет', '22 Партсьезда 8', 1);
+(1, 'РљРљ РќРђРЈ', 'РљСЂРёРІРѕСЂРѕР¶СЃРєРёР№ РєРѕР»РµРґР¶ РЅР°С†РёРѕРЅР°Р»СЊРЅРѕРіРѕ Р°РІРёР°С†РёРѕРЅРЅРѕРіРѕ СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°', 'СѓР». РўСѓРїРѕР»РµРІР° 1', 1),
+(2, 'РљРќРЈ', 'РљСЂРёРІРѕСЂРѕР¶СЃРєРёР№ РќР°С†РёРѕРЅР°Р»СЊРЅС‹Р№ РЈРЅРёРІРµСЂСЃРёС‚РµС‚', '22 РџР°СЂС‚СЃСЊРµР·РґР° 8', 1);
 
 -- --------------------------------------------------------
 
@@ -589,7 +589,7 @@ CREATE TABLE IF NOT EXISTS `UniversitiesRoles` (
   `Roles_id` int(11) NOT NULL,
   `Universities_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='"Таблица необходима для связывания ролей с университетами"' AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='"РўР°Р±Р»РёС†Р° РЅРµРѕР±С…РѕРґРёРјР° РґР»СЏ СЃРІСЏР·С‹РІР°РЅРёСЏ СЂРѕР»РµР№ СЃ СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°РјРё"' AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `UniversitiesRoles`
@@ -612,16 +612,16 @@ INSERT INTO `UniversitiesRoles` (`id`, `Roles_id`, `Universities_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(64) NOT NULL COMMENT 'Почта',
-  `password` varchar(16) NOT NULL COMMENT 'Пароль',
-  `surname` varchar(45) NOT NULL COMMENT 'Фамилия',
-  `name` varchar(45) NOT NULL COMMENT 'Имя',
-  `datebithday` datetime DEFAULT NULL COMMENT 'Дата рождения',
-  `last_ip` varchar(15) DEFAULT NULL COMMENT 'Последний IP',
-  `last_login` datetime DEFAULT NULL COMMENT 'Последний вход',
-  `nick` varchar(64) DEFAULT NULL COMMENT 'Ник',
-  `avatar` varchar(200) DEFAULT NULL COMMENT 'Аватар',
-  `patronymic` varchar(30) DEFAULT NULL COMMENT 'Отчество',
+  `email` varchar(64) NOT NULL COMMENT 'РџРѕС‡С‚Р°',
+  `password` varchar(16) NOT NULL COMMENT 'РџР°СЂРѕР»СЊ',
+  `surname` varchar(45) NOT NULL COMMENT 'Р¤Р°РјРёР»РёСЏ',
+  `name` varchar(45) NOT NULL COMMENT 'РРјСЏ',
+  `datebithday` datetime DEFAULT NULL COMMENT 'Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ',
+  `last_ip` varchar(15) DEFAULT NULL COMMENT 'РџРѕСЃР»РµРґРЅРёР№ IP',
+  `last_login` datetime DEFAULT NULL COMMENT 'РџРѕСЃР»РµРґРЅРёР№ РІС…РѕРґ',
+  `nick` varchar(64) DEFAULT NULL COMMENT 'РќРёРє',
+  `avatar` varchar(200) DEFAULT NULL COMMENT 'РђРІР°С‚Р°СЂ',
+  `patronymic` varchar(30) DEFAULT NULL COMMENT 'РћС‚С‡РµСЃС‚РІРѕ',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
@@ -630,22 +630,22 @@ CREATE TABLE IF NOT EXISTS `Users` (
 --
 
 INSERT INTO `Users` (`id`, `email`, `password`, `surname`, `name`, `datebithday`, `last_ip`, `last_login`, `nick`, `avatar`, `patronymic`) VALUES
-(7, 'max@a.ru', '123', 'Бугай', 'Максим', '0000-00-00 00:00:00', '127.0.0.1', '2011-09-07 17:58:43', '', '', NULL),
-(8, 'vova@a.ru', '123', 'Куропятник', 'Вова', '2011-10-11 09:10:55', NULL, NULL, NULL, NULL, NULL),
-(9, 'b@a.ru', '123', 'Бурак', 'Виктор', NULL, NULL, NULL, NULL, NULL, 'Дмитриевич'),
-(10, 'с@a.ru', '123', 'Савенко ', 'Роман', NULL, NULL, NULL, NULL, NULL, 'Сергеевич'),
-(11, 'd@a.ru', '123', 'Попика', 'Александр', NULL, NULL, NULL, NULL, NULL, 'Васильевич'),
-(12, 'f@a.ru', '123', 'Смирнова', 'Надежда', NULL, NULL, NULL, NULL, NULL, 'Викторовна'),
-(13, 'g@a.ru', '123', 'Кожаев', 'Андрей', NULL, NULL, NULL, NULL, NULL, 'Владимирович'),
-(14, 'h@a.ru', '123', 'Богун', 'Евгений', NULL, NULL, NULL, NULL, NULL, NULL),
-(15, 'j@a.ru', '123', 'Абрамов', 'Алексей', NULL, NULL, NULL, NULL, NULL, 'Владимирович'),
-(16, 'dd@dd.ru', '123', 'Гасаненко', 'Денис', NULL, NULL, NULL, NULL, NULL, NULL),
-(17, 'ds@a.ru', '123', 'Лисенко', 'Татьяна', NULL, NULL, NULL, NULL, NULL, 'Николаевна'),
-(18, 'dfsa@a.ru', '123', 'Дворецкий', 'Дмитрий', NULL, NULL, NULL, NULL, NULL, 'Николаевич'),
-(19, 'sads@a.ru', '123', 'Грипас', 'Лариса', NULL, NULL, NULL, NULL, NULL, 'Николаевна'),
-(20, 'sdds@a.ru', '123', 'Кожаев', 'Андрей', NULL, NULL, NULL, NULL, NULL, 'Владимирович'),
-(21, 'sdаds@a.ru', '123', 'Самохвалов', 'Юрий', NULL, NULL, NULL, NULL, NULL, 'Владимирович'),
-(22, 'g@g.ru', '123', 'Куриленко', 'Виктория', NULL, NULL, NULL, NULL, NULL, 'Сергеевна');
+(7, 'max@a.ru', '123', 'Р‘СѓРіР°Р№', 'РњР°РєСЃРёРј', '0000-00-00 00:00:00', '127.0.0.1', '2011-09-07 17:58:43', '', '', NULL),
+(8, 'vova@a.ru', '123', 'РљСѓСЂРѕРїСЏС‚РЅРёРє', 'Р’РѕРІР°', '2011-10-11 09:10:55', NULL, NULL, NULL, NULL, NULL),
+(9, 'b@a.ru', '123', 'Р‘СѓСЂР°Рє', 'Р’РёРєС‚РѕСЂ', NULL, NULL, NULL, NULL, NULL, 'Р”РјРёС‚СЂРёРµРІРёС‡'),
+(10, 'СЃ@a.ru', '123', 'РЎР°РІРµРЅРєРѕ ', 'Р РѕРјР°РЅ', NULL, NULL, NULL, NULL, NULL, 'РЎРµСЂРіРµРµРІРёС‡'),
+(11, 'd@a.ru', '123', 'РџРѕРїРёРєР°', 'РђР»РµРєСЃР°РЅРґСЂ', NULL, NULL, NULL, NULL, NULL, 'Р’Р°СЃРёР»СЊРµРІРёС‡'),
+(12, 'f@a.ru', '123', 'РЎРјРёСЂРЅРѕРІР°', 'РќР°РґРµР¶РґР°', NULL, NULL, NULL, NULL, NULL, 'Р’РёРєС‚РѕСЂРѕРІРЅР°'),
+(13, 'g@a.ru', '123', 'РљРѕР¶Р°РµРІ', 'РђРЅРґСЂРµР№', NULL, NULL, NULL, NULL, NULL, 'Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡'),
+(14, 'h@a.ru', '123', 'Р‘РѕРіСѓРЅ', 'Р•РІРіРµРЅРёР№', NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 'j@a.ru', '123', 'РђР±СЂР°РјРѕРІ', 'РђР»РµРєСЃРµР№', NULL, NULL, NULL, NULL, NULL, 'Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡'),
+(16, 'dd@dd.ru', '123', 'Р“Р°СЃР°РЅРµРЅРєРѕ', 'Р”РµРЅРёСЃ', NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 'ds@a.ru', '123', 'Р›РёСЃРµРЅРєРѕ', 'РўР°С‚СЊСЏРЅР°', NULL, NULL, NULL, NULL, NULL, 'РќРёРєРѕР»Р°РµРІРЅР°'),
+(18, 'dfsa@a.ru', '123', 'Р”РІРѕСЂРµС†РєРёР№', 'Р”РјРёС‚СЂРёР№', NULL, NULL, NULL, NULL, NULL, 'РќРёРєРѕР»Р°РµРІРёС‡'),
+(19, 'sads@a.ru', '123', 'Р“СЂРёРїР°СЃ', 'Р›Р°СЂРёСЃР°', NULL, NULL, NULL, NULL, NULL, 'РќРёРєРѕР»Р°РµРІРЅР°'),
+(20, 'sdds@a.ru', '123', 'РљРѕР¶Р°РµРІ', 'РђРЅРґСЂРµР№', NULL, NULL, NULL, NULL, NULL, 'Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡'),
+(21, 'sdР°ds@a.ru', '123', 'РЎР°РјРѕС…РІР°Р»РѕРІ', 'Р®СЂРёР№', NULL, NULL, NULL, NULL, NULL, 'Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡'),
+(22, 'g@g.ru', '123', 'РљСѓСЂРёР»РµРЅРєРѕ', 'Р’РёРєС‚РѕСЂРёСЏ', NULL, NULL, NULL, NULL, NULL, 'РЎРµСЂРіРµРµРІРЅР°');
 
 -- --------------------------------------------------------
 
@@ -655,14 +655,14 @@ INSERT INTO `Users` (`id`, `email`, `password`, `surname`, `name`, `datebithday`
 
 CREATE TABLE IF NOT EXISTS `UsersDepartments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Departments_id` int(11) NOT NULL COMMENT 'Ссылка на отделение',
-  `Users_id` int(11) NOT NULL COMMENT 'Ссылка на пользователя',
-  `Roles_id` int(11) NOT NULL COMMENT 'Ссылка на роль',
+  `Departments_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РѕС‚РґРµР»РµРЅРёРµ',
+  `Users_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ',
+  `Roles_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° СЂРѕР»СЊ',
   PRIMARY KEY (`id`),
   KEY `fk_UsersDepartments_Departments1` (`Departments_id`),
   KEY `fk_UsersDepartments_Users1` (`Users_id`),
   KEY `fk_UsersDepartments_Roles1` (`Roles_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Пользователи - отделения' AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РџРѕР»СЊР·РѕРІР°С‚РµР»Рё - РѕС‚РґРµР»РµРЅРёСЏ' AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `UsersDepartments`
@@ -677,15 +677,15 @@ CREATE TABLE IF NOT EXISTS `UsersDepartments` (
 
 CREATE TABLE IF NOT EXISTS `UsersGroups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `description` varchar(32) DEFAULT NULL COMMENT 'Описание',
-  `Groups_id` int(11) NOT NULL COMMENT 'Ссылка на группу',
-  `Users_id` int(11) NOT NULL COMMENT 'Ссылка на пользователя',
-  `Roles_id` int(11) NOT NULL COMMENT 'Ссылка на роль',
+  `description` varchar(32) DEFAULT NULL COMMENT 'РћРїРёСЃР°РЅРёРµ',
+  `Groups_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РіСЂСѓРїРїСѓ',
+  `Users_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ',
+  `Roles_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° СЂРѕР»СЊ',
   PRIMARY KEY (`id`),
   KEY `fk_GroupsUsers_Groups1` (`Groups_id`),
   KEY `fk_UsersGroups_Users1` (`Users_id`),
   KEY `fk_UsersGroups_Roles1` (`Roles_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Пользователи - группы' AUTO_INCREMENT=33 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РџРѕР»СЊР·РѕРІР°С‚РµР»Рё - РіСЂСѓРїРїС‹' AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `UsersGroups`
@@ -694,7 +694,7 @@ CREATE TABLE IF NOT EXISTS `UsersGroups` (
 INSERT INTO `UsersGroups` (`id`, `description`, `Groups_id`, `Users_id`, `Roles_id`) VALUES
 (1, NULL, 1, 7, 1),
 (9, NULL, 3, 14, 1),
-(16, 'вручную', 1, 8, 1),
+(16, 'РІСЂСѓС‡РЅСѓСЋ', 1, 8, 1),
 (32, NULL, 1, 7, 1);
 
 -- --------------------------------------------------------
@@ -704,10 +704,10 @@ INSERT INTO `UsersGroups` (`id`, `description`, `Groups_id`, `Users_id`, `Roles_
 --
 
 CREATE TABLE IF NOT EXISTS `UsersOrganizations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'РєРѕРґ СЃРІСЏР·Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ РїСЂР°РІР°РјРё Р° СѓРїСЂР°РІР»РµРЅРёСЏ РѕСЂРіР°РЅРёР·Р°С†РёРµР№',
-  `Organizations_id` int(11) NOT NULL COMMENT 'РєРѕРґ РѕСЂРіР°РЅРёР·Р°С†РёРё СѓС‡РµР±РЅРѕРіРѕ Р·Р°РІРµРґРµРЅРёСЏ',
-  `Users_id` int(11) NOT NULL COMMENT 'РєРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ',
-  `Roles_id` int(11) NOT NULL COMMENT 'РєРѕРґ СЂРѕР»Рё',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Р С”Р С•Р Т‘ РЎРѓР Р†РЎРЏР В·Р С‘ Р С—Р С•Р В»РЎРЉР В·Р С•Р Р†Р В°РЎвЂљР ВµР В»РЎРЏ РЎРѓ Р С—РЎР‚Р В°Р Р†Р В°Р СР С‘ Р В° РЎС“Р С—РЎР‚Р В°Р Р†Р В»Р ВµР Р…Р С‘РЎРЏ Р С•РЎР‚Р С–Р В°Р Р…Р С‘Р В·Р В°РЎвЂ Р С‘Р ВµР в„–',
+  `Organizations_id` int(11) NOT NULL COMMENT 'Р С”Р С•Р Т‘ Р С•РЎР‚Р С–Р В°Р Р…Р С‘Р В·Р В°РЎвЂ Р С‘Р С‘ РЎС“РЎвЂЎР ВµР В±Р Р…Р С•Р С–Р С• Р В·Р В°Р Р†Р ВµР Т‘Р ВµР Р…Р С‘РЎРЏ',
+  `Users_id` int(11) NOT NULL COMMENT 'Р С”Р С•Р Т‘ Р С—Р С•Р В»РЎРЉР В·Р С•Р Р†Р В°РЎвЂљР ВµР В»РЎРЏ',
+  `Roles_id` int(11) NOT NULL COMMENT 'Р С”Р С•Р Т‘ РЎР‚Р С•Р В»Р С‘',
   PRIMARY KEY (`id`),
   KEY `fk_UsersOrganizations_Organizations1` (`Organizations_id`),
   KEY `fk_UsersOrganizations_Users1` (`Users_id`),
@@ -763,14 +763,14 @@ INSERT INTO `UsersSubDepartments` (`id`, `SubDepartments_id`, `Users_id`, `Roles
 
 CREATE TABLE IF NOT EXISTS `UsersSubjectsCurricula` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Subjects_Curricula_id` int(11) NOT NULL COMMENT 'ссылка на предмет-учебный план',
-  `Users_id` int(11) DEFAULT NULL COMMENT 'Ссылка на пользователя',
-  `Roles_id` int(11) DEFAULT NULL COMMENT 'Ссылка на роль',
+  `Subjects_Curricula_id` int(11) NOT NULL COMMENT 'СЃСЃС‹Р»РєР° РЅР° РїСЂРµРґРјРµС‚-СѓС‡РµР±РЅС‹Р№ РїР»Р°РЅ',
+  `Users_id` int(11) DEFAULT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ',
+  `Roles_id` int(11) DEFAULT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° СЂРѕР»СЊ',
   PRIMARY KEY (`id`),
   KEY `fk_UsersSubjectsCurricula_Subjects_Curricula1` (`Subjects_Curricula_id`),
   KEY `fk_UsersSubjectsCurricula_Users1` (`Users_id`),
   KEY `fk_UsersSubjectsCurricula_Roles1` (`Roles_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Преподаватель-предмет-учебный план' AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ-РїСЂРµРґРјРµС‚-СѓС‡РµР±РЅС‹Р№ РїР»Р°РЅ' AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `UsersSubjectsCurricula`
@@ -798,10 +798,10 @@ INSERT INTO `UsersSubjectsCurricula` (`id`, `Subjects_Curricula_id`, `Users_id`,
 --
 
 CREATE TABLE IF NOT EXISTS `UsersUniversities` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'РєРѕРґ СЃРІСЏР·Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ С„СѓРЅРєС†РёСЏРјРё СѓРїСЂР°РІР»РµРЅРёСЏ РЅР° СѓС‡РµР±РЅРѕРµ Р·Р°РІРµРґРµРЅРёРµ',
-  `Universities_id` int(11) NOT NULL COMMENT 'РєРѕРґ СѓС‡РµР±РЅРѕРіРѕ Р·Р°РІРµРґРµРЅРёСЏ',
-  `Users_id` int(11) NOT NULL COMMENT 'РєРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ',
-  `Roles_id` int(11) NOT NULL COMMENT 'РєРѕРґ СЂРѕР»Рё',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Р С”Р С•Р Т‘ РЎРѓР Р†РЎРЏР В·Р С‘ Р С—Р С•Р В»РЎРЉР В·Р С•Р Р†Р В°РЎвЂљР ВµР В»РЎРЏ РЎРѓ РЎвЂћРЎС“Р Р…Р С”РЎвЂ Р С‘РЎРЏР СР С‘ РЎС“Р С—РЎР‚Р В°Р Р†Р В»Р ВµР Р…Р С‘РЎРЏ Р Р…Р В° РЎС“РЎвЂЎР ВµР В±Р Р…Р С•Р Вµ Р В·Р В°Р Р†Р ВµР Т‘Р ВµР Р…Р С‘Р Вµ',
+  `Universities_id` int(11) NOT NULL COMMENT 'Р С”Р С•Р Т‘ РЎС“РЎвЂЎР ВµР В±Р Р…Р С•Р С–Р С• Р В·Р В°Р Р†Р ВµР Т‘Р ВµР Р…Р С‘РЎРЏ',
+  `Users_id` int(11) NOT NULL COMMENT 'Р С”Р С•Р Т‘ Р С—Р С•Р В»РЎРЉР В·Р С•Р Р†Р В°РЎвЂљР ВµР В»РЎРЏ',
+  `Roles_id` int(11) NOT NULL COMMENT 'Р С”Р С•Р Т‘ РЎР‚Р С•Р В»Р С‘',
   PRIMARY KEY (`id`),
   KEY `fk_UsersUniversities_Universities1` (`Universities_id`),
   KEY `fk_UsersUniversities_Users1` (`Users_id`),
@@ -821,12 +821,12 @@ CREATE TABLE IF NOT EXISTS `UsersUniversities` (
 
 CREATE TABLE IF NOT EXISTS `Values` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `UsersSubjectsCurricula_id` int(11) NOT NULL COMMENT 'Ссылка на предмет/преподавателя/уч.план',
-  `Users_id` int(11) NOT NULL COMMENT 'Ссылка на курсанта',
-  `Data` date NOT NULL COMMENT 'Дата',
-  `Value` varchar(2) NOT NULL COMMENT 'Оценка',
+  `UsersSubjectsCurricula_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РїСЂРµРґРјРµС‚/РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ/СѓС‡.РїР»Р°РЅ',
+  `Users_id` int(11) NOT NULL COMMENT 'РЎСЃС‹Р»РєР° РЅР° РєСѓСЂСЃР°РЅС‚Р°',
+  `Data` date NOT NULL COMMENT 'Р”Р°С‚Р°',
+  `Value` varchar(2) NOT NULL COMMENT 'РћС†РµРЅРєР°',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Оценки' AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='РћС†РµРЅРєРё' AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `Values`
@@ -834,4 +834,4 @@ CREATE TABLE IF NOT EXISTS `Values` (
 
 INSERT INTO `Values` (`id`, `UsersSubjectsCurricula_id`, `Users_id`, `Data`, `Value`) VALUES
 (1, 8, 7, '2011-11-09', '5'),
-(2, 8, 7, '2011-11-10', 'нп');
+(2, 8, 7, '2011-11-10', 'РЅРї');

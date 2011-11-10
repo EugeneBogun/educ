@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+п»ї<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class dispatcher extends CI_Controller
 {
@@ -44,11 +44,11 @@ class dispatcher extends CI_Controller
         
         if ($this->dispatcher_model->ajaxinsertusergroupresult($_REQUEST['user'], $_REQUEST['group'],$_REQUEST['role']))
         {
-            echo 'Добавлено';
+            echo 'Р”РѕР±Р°РІР»РµРЅРѕ';
         }
         else
         {
-            echo 'Введите данные';
+            echo 'Р’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ';
         }
     }
     
@@ -72,8 +72,8 @@ class dispatcher extends CI_Controller
     {
         $group_id     = $_REQUEST['group'];
         $curricula_id = $_REQUEST['curricula']; 
-        $term = $this->dispatcher_model->get_term($group_id); //семестр группы
-        $subject_list = $this->dispatcher_model->get_subjectcurriculaterm_list($curricula_id,$term); //предметы группы в этом семестре
+        $term = $this->dispatcher_model->get_term($group_id); //СЃРµРјРµСЃС‚СЂ РіСЂСѓРїРїС‹
+        $subject_list = $this->dispatcher_model->get_subjectcurriculaterm_list($curricula_id,$term); //РїСЂРµРґРјРµС‚С‹ РіСЂСѓРїРїС‹ РІ СЌС‚РѕРј СЃРµРјРµСЃС‚СЂРµ
          foreach ($subject_list as $unit) {
             
               echo '
@@ -144,7 +144,7 @@ class dispatcher extends CI_Controller
 	public function ajaxuniverlist()
     {
 		$univer_list = $this->dispatcher_model->get_univer_list();
-		echo '<option value="0">Выбирите</option>';
+		echo '<option value="0">Р’С‹Р±РёСЂРёС‚Рµ</option>';
 			foreach ($univer_list as $univer) {  echo '
             <option value="'.$univer['id'].'">'.$univer['name'].'</option>';}
     }
@@ -153,7 +153,7 @@ class dispatcher extends CI_Controller
 	{
 	  $id=$_REQUEST['univer_id'];
 	  $univerroles_list = $this->dispatcher_model->get_univerroles_list($id);
-	  echo '<option value="0">Выбирете</option>';
+	  echo '<option value="0">Р’С‹Р±РёСЂРµС‚Рµ</option>';
 	  foreach($univerroles_list as $univerroles)
 	  {
 		$roles = $this->db->where('id',$univerroles['Roles_id'])->get('Roles')->result_array();

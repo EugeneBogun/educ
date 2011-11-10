@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+ï»¿<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class message extends CI_Controller
 {
@@ -10,16 +10,16 @@ class message extends CI_Controller
     }    
     public function index()
     {
-		$to=$this->input->get('to', TRUE);				//êàðî÷å ýòî ÈÄ ãäå ìû çàáèðàåì êîãäà èä¸ì ïî âåòêå message?to=7
-		$fio = $this->message_model->get_fio($to);		//ïåðåìåííàÿ êîòîðàÿ ïðèíèìàåò ñ ìàñèâà ñòðîêó áàçû äàííûõ ïî àéäè!!! $to - ýòî ÈÄ
-		$data['to'] = $to;								//âáèâàåì â àññîöèîòèâíûé ìàññèâ ÈÄ
-		$data['FIO'] = $fio[0]['name'].' '.$fio[0]['surname'];	//Âáèâàåì â òîò æå ìàññèâ Èìÿ è ôàìèëèþ èç áàçû
-		$this->display_lib->message_page($data,'message');	   /*  ïåðåäàéîì íà ñòðàíè÷êó âèäà äàííûå */
+		$to=$this->input->get('to', TRUE);				//ÐºÐ°Ñ€Ð¾Ñ‡Ðµ ÑÑ‚Ð¾ Ð˜Ð” Ð³Ð´Ðµ Ð¼Ñ‹ Ð·Ð°Ð±Ð¸Ñ€Ð°ÐµÐ¼ ÐºÐ¾Ð³Ð´Ð° Ð¸Ð´Ñ‘Ð¼ Ð¿Ð¾ Ð²ÐµÑ‚ÐºÐµ message?to=7
+		$fio = $this->message_model->get_fio($to);		//Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð¿Ñ€Ð¸Ð½Ð¸Ð¼Ð°ÐµÑ‚ Ñ Ð¼Ð°ÑÐ¸Ð²Ð° ÑÑ‚Ñ€Ð¾ÐºÑƒ Ð±Ð°Ð·Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð¿Ð¾ Ð°Ð¹Ð´Ð¸!!! $to - ÑÑ‚Ð¾ Ð˜Ð”
+		$data['to'] = $to;								//Ð²Ð±Ð¸Ð²Ð°ÐµÐ¼ Ð² Ð°ÑÑÐ¾Ñ†Ð¸Ð¾Ñ‚Ð¸Ð²Ð½Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð² Ð˜Ð”
+		$data['FIO'] = $fio[0]['name'].' '.$fio[0]['surname'];	//Ð’Ð±Ð¸Ð²Ð°ÐµÐ¼ Ð² Ñ‚Ð¾Ñ‚ Ð¶Ðµ Ð¼Ð°ÑÑÐ¸Ð² Ð˜Ð¼Ñ Ð¸ Ñ„Ð°Ð¼Ð¸Ð»Ð¸ÑŽ Ð¸Ð· Ð±Ð°Ð·Ñ‹
+		$this->display_lib->message_page($data,'message');	   /*  Ð¿ÐµÑ€ÐµÐ´Ð°Ð¹Ð¾Ð¼ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ‡ÐºÑƒ Ð²Ð¸Ð´Ð° Ð´Ð°Ð½Ð½Ñ‹Ðµ */
 	   
         
     } 
 	
-	public function send($to)     /* çàáèðàåì ñ ôîðìû äàííûå */ 
+	public function send($to)     /* Ð·Ð°Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ñ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ðµ */ 
     {	
 		$text=$this->input->post('text', TRUE);
 		$from = $this->session->userdata('id');
@@ -28,7 +28,7 @@ class message extends CI_Controller
 		//redirect('/inbox');	
     } 
 	
-	public function posted()  //çàáèðàåì ñ ñèñåèè ÈÄ è îòäàéì åãî ìîäåëå(îòïðàâëåííûå)
+	public function posted()  //Ð·Ð°Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ñ ÑÐ¸ÑÐµÐ¸Ð¸ Ð˜Ð” Ð¸ Ð¾Ñ‚Ð´Ð°Ð¹Ð¼ ÐµÐ³Ð¾ Ð¼Ð¾Ð´ÐµÐ»Ðµ(Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ðµ)
     {
 		
 		
@@ -39,7 +39,7 @@ class message extends CI_Controller
         
     } 
 	
-	public function adopted()   //çàáèðàåì ñ ñèñåèè ÈÄ è îòäàéì åãî ìîäåëå (ïðèíÿòûå)
+	public function adopted()   //Ð·Ð°Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ñ ÑÐ¸ÑÐµÐ¸Ð¸ Ð˜Ð” Ð¸ Ð¾Ñ‚Ð´Ð°Ð¹Ð¼ ÐµÐ³Ð¾ Ð¼Ð¾Ð´ÐµÐ»Ðµ (Ð¿Ñ€Ð¸Ð½ÑÑ‚Ñ‹Ðµ)
     {
 		$to = $this->session->userdata('id');
 		$data['messages']= $this->message_model->adopted_message($to);

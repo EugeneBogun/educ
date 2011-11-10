@@ -1,10 +1,10 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+ï»¿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Display_lib
 {
 
-//data - ìàññèâ ñ ïåðåìåííûìè, name - íà÷àëî èìåíè ôàéëà âèäà    
-//äëÿ íåçàðåãèñòðèðîâàíûõ ïîëüçîâàòåëåé
+//data - Ð¼Ð°ÑÑÐ¸Ð² Ñ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ð¼Ð¸, name - Ð½Ð°Ñ‡Ð°Ð»Ð¾ Ð¸Ð¼ÐµÐ½Ð¸ Ñ„Ð°Ð¹Ð»Ð° Ð²Ð¸Ð´Ð°    
+//Ð´Ð»Ñ Ð½ÐµÐ·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹Ñ… Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÐµÐ¹
 public function welcome_page($name,$data)
 {
     $CI =& get_instance ();
