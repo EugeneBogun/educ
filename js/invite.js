@@ -75,14 +75,14 @@ $(document).ready(function(){
 		if($('#vuz_list_invite').val()!=0)
 			{
 			$.ajax({
-			url:	 'ajaxroleslist',
-			type:	 'POST', //что-нибудь получим
-			processData: false,
-			data:'univer_id='+$('#vuz_list_invite').val(),
-			success: function(data){
-				alert(data);
-				$('#invites_rols_list').html(data);}
-				});
+				url:	 'ajaxroleslist',
+				type:	 'POST', //что-нибудь получим
+				processData: false,
+				data:'univer_id='+$('#vuz_list_invite').val(),
+				success: function(data){
+					alert(data);
+					$('#invites_rols_list').html(data);}
+			});
 			}
 		else
 			{
@@ -140,7 +140,7 @@ $(document).ready(function(){
 						{
 						category_buffer = "U";
 						id_category_buffer = $('#vuz_list_invite').val();
-						$('#buffer_text').text(text+category_buffer+":"+id_category_buffer+":"+$('#invites_rols_list').val()+";");
+						$('#buffer_text').text(text+category_buffer+":"+id_category_buffer+":"+$('#invites_rols_list').val()+";\n");
 						//$('#vuz_list_invite').change
 						$('#vuz_list_invite').trigger('change');
 						}
@@ -169,4 +169,34 @@ $(document).ready(function(){
 			$('#validation').html("Выбирете универ");
 			}
 		});
+		
+		$('#dialog').dialog({
+					autoOpen: false,
+					modal:true
+					//width: 60
+				});
+			
+	$('#invites_list_open').click(function(){
+		$('#dialog').dialog('open');
+		$.ajax({
+			url:	 'ajaxinviteslist',
+			type:	 'POST', //что-нибудь получим
+			processData: false,
+			success: function(data){
+				$('#dialog').html(data);}
+			});
+		});
+	
+	$('#save_data').click(function(){
+		$('#dialog').dialog('open');
+		$.ajax({
+			url:	 'ajaxsaveinvites',
+			type:	 'POST', //что-нибудь получим
+			data:	 'roleslist='+$('#buffer_text').text(),
+			processData: false,
+			success: function(data){
+				$('#dialog').html(data);}
+			});
+		});
+	
 	});

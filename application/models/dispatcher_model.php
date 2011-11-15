@@ -279,6 +279,11 @@ class dispatcher_model extends CI_Model
        return $Users;  
     }
 	//invite
+	public function get_invite_list()
+	{
+		return $this->db->get('Invites')->result_array();
+	}
+	
 	public function get_univerroles_list($id)
 	{
 		return $this->db->where('Universities_id',$id)->get('UniversitiesRoles')->result_array();

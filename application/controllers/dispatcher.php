@@ -141,6 +141,14 @@ class dispatcher extends CI_Controller
         }
       }
 	  //invites	
+	  
+	public function ajaxinviteslist()
+	{
+		$invite_list= $this->dispatcher_model->get_invite_list();
+		echo '<tr><td>Инвайт</td><td>Роль</td><td>id Пользователя</td></tr>';
+		foreach ($invite_list as $invite) {  echo '<tr><td>'.$invite['invite'].'</td><td>'.$invite['option'].'</td><td>'.$invite['Users_id'].'</td></tr>';}
+	}
+	 
 	public function ajaxuniverlist()
     {
 		$univer_list = $this->dispatcher_model->get_univer_list();
@@ -159,6 +167,11 @@ class dispatcher extends CI_Controller
 		$roles = $this->db->where('id',$univerroles['Roles_id'])->get('Roles')->result_array();
 		echo('<option value="'.$roles['0']['id'].'">'.$roles['0']['name'].'</option>');
 	  }
+	}
+	
+	public function ajaxsaveinvites()
+	{
+		$roleslist=$_REQUEST['roleslist'];
 	}
 	
 	public function ajaxcategorylist()
