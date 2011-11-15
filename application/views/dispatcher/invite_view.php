@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div id="buffer">
-			<textarea rows="3" cols="50" id="buffer_text" disabled>
+			<textarea rows="3" cols="50" id="buffer_text" >
 			</textarea>
 		</div>
 		<div id="proces_data">

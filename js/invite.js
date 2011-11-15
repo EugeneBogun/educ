@@ -48,7 +48,6 @@ $(document).ready(function(){
 					processData: false,
 					data:'category='+$("#switch_category option:selected").val()+'&id_univer='+$("#vuz_list_invite option:selected").val(),
 					success: function(data){
-						alert(data);
 						$('#category_list_invite').html(data);
 						}
 					});
@@ -80,7 +79,6 @@ $(document).ready(function(){
 				processData: false,
 				data:'univer_id='+$('#vuz_list_invite').val(),
 				success: function(data){
-					alert(data);
 					$('#invites_rols_list').html(data);}
 			});
 			}
@@ -135,12 +133,13 @@ $(document).ready(function(){
 				{
 				if(selected2==1)
 					{
-					text = $('#buffer_text').text();
+					text = $('#buffer_text').val();
 					if(($('#switch_category').val()=="0")||($('#switch_category').val()=="U"))
 						{
 						category_buffer = "U";
 						id_category_buffer = $('#vuz_list_invite').val();
-						$('#buffer_text').text(text+category_buffer+":"+id_category_buffer+":"+$('#invites_rols_list').val()+";\n");
+						$('#buffer_text').val(text+category_buffer+":"+id_category_buffer+":"+$('#invites_rols_list').val()+";");
+						alert('дошло');
 						//$('#vuz_list_invite').change
 						$('#vuz_list_invite').trigger('change');
 						}
@@ -150,7 +149,9 @@ $(document).ready(function(){
 							{
 							category_buffer = $('#switch_category').val();
 							id_category_buffer = $('#category_list_invite').val();
-							$('#buffer_text').text(text+category_buffer+":"+id_category_buffer+":"+$('#invites_rols_list').val()+";");
+							$('#buffer_text').val(text+category_buffer+":"+id_category_buffer+":"+$('#invites_rols_list').val()+";");
+							alert('дошло2');
+							$('#vuz_list_invite').trigger('change');
 							}
 						else
 							{
