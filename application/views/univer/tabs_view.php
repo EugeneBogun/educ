@@ -1,4 +1,4 @@
 		<div id="menu_tab" >
-			<a href="/univer1"><div id="menu_tab_vuz" class="menu_tab_select">   Õ¿”</div></a>
+			<a href="/univer<?=$univer['id'];?>"><div class="menu_tab_select" id="menu_tab_vuz"><?=$univer['name'];?></div></a>
 			</div>
 		

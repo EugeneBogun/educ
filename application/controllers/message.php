@@ -21,7 +21,8 @@ class message extends CI_Controller
 	
 	public function send($to)     /* забираем с формы данные */ 
     {	
-		$text=$this->input->post('text', TRUE);
+	 
+		$text=$this->input->get('text', TRUE);
 		$from = $this->session->userdata('id');
 		$this->message_model->insert_message($from,$to,$text);	
 		redirect('/inbox');	

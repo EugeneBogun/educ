@@ -45,6 +45,7 @@ $route['logout']                  	= "user/logout";
 $route['ajaxuniverlist']			= "dispatcher/ajaxuniverlist";
 $route['ajaxcategorylist']			= "dispatcher/ajaxcategorylist";
 $route['ajaxroleslist']				= "dispatcher/ajaxroleslist";
+$route['ajaxinviteslist']			= "dispatcher/ajaxinviteslist";
 //расписание
 $route['ajaxtimetable']         = "user/ajaxtimetable";
 //группа

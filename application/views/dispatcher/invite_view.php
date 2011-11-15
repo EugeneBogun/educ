@@ -1,5 +1,11 @@
 <link href="/css/add_invites.css" rel="stylesheet" type="text/css" />
 <script src="/js/invite.js"></script>
+
+<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+
+
 <div id="main">
 	<div id="title">Создание инвайтов</div>
 	<div id="data_invites">
@@ -29,15 +35,19 @@
 			</div>
 		</div>
 		<div id="buffer">
-			<textarea rows="3" cols="50" id="buffer_text">
+			<textarea rows="3" cols="50" id="buffer_text" >
 			</textarea>
 		</div>
 		<div id="proces_data">
 			<div id="add_data">Добавить</div>
 			<div id="save_data">Создать</div>
+			<div id="invites_list_open">Инвайты</div>
 		</div>
 		<div id="validation">
 		</div>
 		<div id="rol_val">
 		</div>
 	</div>
+</div>
+<div id="dialog" title="Диалоговое окно">
+</div>

@@ -1,7 +1,6 @@
 		<div id="menu_tab" >
-			<a href="/univer1 "><div id="menu_tab_vuz">КК НАУ</div></a>
-			<a href="/departament1"><div id="menu_tab_dep">КПИ</div></a>
-			<a href="/group1"><div id="menu_tab_group">397</div></a>
-			<a ><div id="" class="menu_tab_select" >Бугай Максим</div></a>
+			<a href="/univer<?=$univer['id'];?>"><div id="menu_tab_vuz"><?=$univer['name'];?></div></a>
+			<a href="/departament<?=$departament['id'];?>"><div id="menu_tab_dep"><?=$departament['name'];?></div></a>
+			<a href="/group<?=$group['id'];?>"><div id="menu_tab_group"><?=$group['name'];?></div></a>
+			<a ><div id="id<?=$user['id'];?>" class="menu_tab_select" ><?=$user['name'];?></div></a>
 		</div>
-		
