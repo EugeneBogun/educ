@@ -5,14 +5,17 @@
 			</div>
 	</div>
 	<div id="content">
-	Состав:
-		<table>
+        <div class="table_constistof">
+        <div class="title_constistof">Состав группы:</div>
+		<table class="consistof">
 		<?foreach ($users as $user)
 		{
 		echo '<tr><td><a href="id'.$user['id'].'">'.$user['role'].' '.$user['surname'].'</a></td></tr>';
 		}
 		?>
 		</table>
+        </div>
+        
 	</div>
 </div>
 

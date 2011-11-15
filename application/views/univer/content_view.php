@@ -6,7 +6,8 @@
 		</div>
      </div>
 	 <div id="content">
-	Состав:
+        <div class="table_constistof">
+        <div class="title_constistof">Отделения</div>
 		<table class="consistof">
 		<?foreach ($departaments as $dep)
 		{
@@ -14,5 +15,18 @@
 		}
 		?>
 		</table>
+        </div>
+        <!--
+        <div class="table_constistof">
+        <div class="title_constistof">Руководство</div>
+		<table class="consistof">
+		<?foreach ($departaments as $dep)
+		{
+		echo '<tr><td><a href="departament'.$dep['id'].'">'.$dep['name'].'</a></td></tr>';
+		}
+		?>
+		</table>
+        </div>
+        -->
 </div>
 

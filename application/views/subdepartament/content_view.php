@@ -7,7 +7,7 @@
      </div>
 	 <div id="content">
         <div class="table_constistof">
-        <div class="title_constistof">Группы:</div>
+        <div class="title_constistof">Преподаватели:</div>
 		<table class="consistof">
 		<?foreach ($groups as $group)
 		{
