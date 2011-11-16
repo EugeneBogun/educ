@@ -171,7 +171,14 @@ class dispatcher extends CI_Controller
 	
 	public function ajaxsaveinvites()
 	{
-		$roleslist=$_REQUEST['roleslist'];
+		$optionlist=$_REQUEST['roleslist'];
+		$count = $_REQUEST['count'];
+		$randominvites_list = $this->dispatcher_model->create_randominvites($count,$optionlist);
+		echo('<tr><td>Инвайт<td><td>Роль</td></tr>');
+		foreach($randominvites_list as $randominvites)
+		{
+			echo ('<tr><td>'.$randominvites.'<td><td>'.$optionlist.'</td></tr>');
+		}
 	}
 	
 	public function ajaxcategorylist()

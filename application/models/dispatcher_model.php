@@ -284,6 +284,28 @@ class dispatcher_model extends CI_Model
 		return $this->db->get('Invites')->result_array();
 	}
 	
+	public function create_randominvites($count,$option)
+	{
+		$data = array();
+		for($i=1;$i<=$count;$i++)
+		{
+			$code = $this->generateCode(6);
+			$col = $this->db->count_all('Invites')+1;
+			$data[$i]= $code.$col;
+			$this->db->set('invite',$data[$i])->set('option',$option)->insert('Invites'); 
+		}
+		return($data);
+	}
+	
+	public function generateCode($length) { 
+        $chars = "0123456789abcdefghijklmnopqrstuvwxyz"; 
+        $code = ""; 
+        $clen = strlen($chars) - 1;   
+        while (strlen($code) < $length) {$code .= $chars[mt_rand(0,$clen)];} 
+        
+        return $code; 
+    }
+	
 	public function get_univerroles_list($id)
 	{
 		return $this->db->where('Universities_id',$id)->get('UniversitiesRoles')->result_array();

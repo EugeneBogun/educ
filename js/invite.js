@@ -142,6 +142,7 @@ $(document).ready(function(){
 						alert('дошло');
 						//$('#vuz_list_invite').change
 						$('#vuz_list_invite').trigger('change');
+						role=1;
 						}
 					else
 						{
@@ -152,6 +153,7 @@ $(document).ready(function(){
 							$('#buffer_text').val(text+category_buffer+":"+id_category_buffer+":"+$('#invites_rols_list').val()+";");
 							alert('дошло2');
 							$('#vuz_list_invite').trigger('change');
+							role=1;
 							}
 						else
 							{
@@ -176,7 +178,9 @@ $(document).ready(function(){
 					modal:true
 					//width: 60
 				});
-			
+	
+	role=0;
+	
 	$('#invites_list_open').click(function(){
 		$('#dialog').dialog('open');
 		$.ajax({
@@ -189,15 +193,21 @@ $(document).ready(function(){
 		});
 	
 	$('#save_data').click(function(){
-		$('#dialog').dialog('open');
-		$.ajax({
-			url:	 'ajaxsaveinvites',
-			type:	 'POST', //что-нибудь получим
-			data:	 'roleslist='+$('#buffer_text').text(),
-			processData: false,
-			success: function(data){
-				$('#dialog').html(data);}
-			});
+		if(role==1)
+		{
+			$('#dialog').dialog('open');
+			$.ajax({
+				url:	 'ajaxsaveinvites',
+				type:	 'POST', //что-нибудь получим
+				data:	 'roleslist='+$('#buffer_text').val()+'&count='+num,
+				processData: false,
+				success: function(data){
+					$('#dialog').html(data);}
+				});
+		}
+		else
+		{
+			$('#validation').html("Создайте роль");
+		}
 		});
-	
 	});
