@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 10, 2011 at 05:23 PM
+-- Generation Time: Nov 17, 2011 at 08:33 PM
 -- Server version: 5.1.40
--- PHP Version: 5.3.1
+-- PHP Version: 5.3.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -172,7 +172,7 @@ INSERT INTO `Departments` (`id`, `full_name`, `name`, `tel1`, `tel2`, `Universit
 (3, 'Організація авіаційних перевезень', 'Перевозки', NULL, NULL, 1),
 (4, 'Радіо', 'Радіо', NULL, NULL, 1),
 (5, 'Механіки', 'Механіки', NULL, NULL, 1),
-(6, 'Загальноосвітних дисциплін', 'ЗД', NULL, NULL, 1);
+(6, 'Загальноосвітних дисциплін', 'Загальноосвітні', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -277,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `Messages` (
   `Users_id_to` int(11) NOT NULL COMMENT 'Кому',
   PRIMARY KEY (`id`),
   KEY `fk_Messages_Users1` (`Users_id_from`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Личные сообщения' AUTO_INCREMENT=33 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Личные сообщения' AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `Messages`
@@ -313,7 +313,8 @@ INSERT INTO `Messages` (`id`, `Users_id_from`, `text`, `datetime`, `status`, `Us
 (29, 7, 'dssd', '2011-11-10 17:18:46', 1, 7),
 (30, 7, 'fddf', '2011-11-10 17:18:54', 1, 7),
 (31, 7, 'dssdds', '2011-11-10 17:19:18', 1, 7),
-(32, 7, '-', '2011-11-10 17:22:46', 1, 7);
+(32, 7, '-', '2011-11-10 17:22:46', 1, 7),
+(33, 7, 'вівфівфів', '2011-11-10 21:56:14', 1, 7);
 
 -- --------------------------------------------------------
 
@@ -533,8 +534,6 @@ INSERT INTO `Timetable` (`id`, `week`, `day`, `numder`, `Groups_id`, `Classrooms
 (15, 2, 1, 2, 1, 5, 8),
 (16, 2, 1, 3, 1, 9, 10),
 (17, 1, 1, 3, 1, 9, 10),
-(18, 1, 1, 3, 1, 3, 11),
-(19, 2, 1, 3, 1, 3, 11),
 (20, 1, 2, 1, 1, 3, 11),
 (21, 1, 2, 2, 1, 1, 2),
 (22, 2, 2, 2, 1, 1, 2),
@@ -694,8 +693,7 @@ CREATE TABLE IF NOT EXISTS `UsersGroups` (
 INSERT INTO `UsersGroups` (`id`, `description`, `Groups_id`, `Users_id`, `Roles_id`) VALUES
 (1, NULL, 1, 7, 1),
 (9, NULL, 3, 14, 1),
-(16, 'вручную', 1, 8, 1),
-(32, NULL, 1, 7, 1);
+(16, 'вручную', 1, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -748,11 +746,9 @@ INSERT INTO `UsersSubDepartments` (`id`, `SubDepartments_id`, `Users_id`, `Roles
 (5, 4, 15, 7),
 (6, 1, 17, 2),
 (7, 1, 20, 2),
-(8, 1, 21, 2),
 (9, 4, 19, 2),
 (10, 4, 18, 2),
 (11, 1, 21, 2),
-(12, 4, 14, 2),
 (13, 4, 12, 2);
 
 -- --------------------------------------------------------

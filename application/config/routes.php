@@ -48,6 +48,8 @@ $route['ajaxroleslist']				= "dispatcher/ajaxroleslist";
 $route['ajaxinviteslist']			= "dispatcher/ajaxinviteslist";
 //расписание
 $route['ajaxtimetable']         = "user/ajaxtimetable";
+$route['ajaxtimetable_subject_curricula']         = "user/ajaxtimetable_subject_curricula";
+
 //группа
 $route['univer(:num)']			= "univer/index/$1";
 $route['departament(:num)']		= "departament/index/$1";

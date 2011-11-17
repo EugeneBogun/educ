@@ -78,6 +78,25 @@ class profile_model extends CI_Model
 		return $data;
     }
 	
+	public function get_user_info($id)
+	{
+		
+		$info = $this->db->where('id',$id)->get('Users')->result_array();
+		$group = $this->db->where('Users_id',$id)->get('UsersGroups')->result_array();
+		$departament = $this->db->where('Users_id',$id)->get('UsersDepartments')->result_array();
+		$subdepartament = $this->db->where('Users_id',$id)->get('UsersSubDepartments')->result_array();
+		$univer = $this->db->where('Users_id',$id)->get('UsersUniversities')->result_array();
+		$subjects = $this->db->where('Users_id',$id)->get('UsersSubjectsCurricula')->result_array();
+		
+			if (isset($group[0])){$data['info_group'] = $group[0];}
+			if (isset($departament[0])){$data['info_departament'] = $departament[0];}
+			if (isset($subdepartament[0])){$data['info_subdepartament'] = $subdepartament[0];}
+			if (isset($univer[0])){$data['info_univer'] = $univer[0];}
+			if (isset($subjects[0])){$data['info_subjects'] = $subjects[0];}
+		$data['info'] = $info[0];
+		return $data;
+	}
+	
 	public function get_nav_info($id,$type)
 	{
 	$data = array();
@@ -105,7 +124,7 @@ class profile_model extends CI_Model
 		case 'subdepartament': {
 			 $subdepartament = $this->db->where('id',$id)->get('SubDepartments')->result_array();
 			  if (!isset($subdepartament[0])){redirect('/');}
-			 $Departament = $this->db->where('id',$id)->get('Departments')->result_array(); 
+			 $Departament = $this->db->where('id',$subdepartament[0]['Departments_id'])->get('Departments')->result_array(); 
 			 $Univer = $this->db->where('id',$Departament[0]['Universities_id'])->get('Universities')->result_array();
 			 
 			 $data['departament']['name'] = $Departament[0]['name'];
@@ -136,34 +155,65 @@ class profile_model extends CI_Model
 		case 'user': {
 		  
 			 $user = $this->db->where('id',$id)->get('Users')->result_array(); 
-			if (!isset($user[0])){redirect('/');}
+			//if (!isset($user[0])){redirect('/');}
 			 $usergroup = $this->db->where('Users_id',$user[0]['id'])->get('UsersGroups')->result_array();
 			 $usersubdepartments = $this->db->where('Users_id',$user[0]['id'])->get('UsersSubDepartments')->result_array(); 			 
 			 //Добавить ЦК, и ссылки на преподов под ЦК. ссылки на состав отделения и состав универа
-			if (!isset($usergroup[0])){ redirect('/');}
-			switch ($usergroup[0]['Roles_id'])
+			if (isset($usersubdepartments[0]))
 			{
-				case 1:	
+				switch ($usersubdepartments[0]['Roles_id'])
 				{
-				 $group = $this->db->where('id', $usergroup[0]['Groups_id'])->get('Groups')->result_array(); 
-				 $curricula = $this->db->where('id',$group[0]['Curricula_id'])->get('Curricula')->result_array(); 
-				 $dep_spec = $this->db->where('id',$curricula[0]['Dep_Spec_id'])->get('Dep_Spec')->result_array(); 
-				 $Departament = $this->db->where('id',$dep_spec[0]['Departments_id'])->get('Departments')->result_array(); 
-				 $Univer = $this->db->where('id',$Departament[0]['Universities_id'])->get('Universities')->result_array();
-				 $data['departament']['name'] = $Departament[0]['name'];
-				 $data['univer']['name'] = $Univer[0]['name'];
-				 $data['group']['name'] = $group[0]['name'];
-				 $data['user']['name'] = $user[0]['surname'].' '.$user[0]['name'];
-				 
-				 $data['departament']['id'] = $Departament[0]['id'];
-				 $data['univer']['id'] = $Univer[0]['id'];
-				 $data['group']['id'] = $group[0]['id'];
-				 $data['user']['id'] = $user[0]['id'];
-				 break;   
-				 }
-			 default:
-				{redirect('/');}
-			 }
+					case 1:	
+					case 2:
+					case 3:
+					case 7:	
+					{	
+					 $subdepartament = $this->db->where('id',$usersubdepartments[0]['SubDepartments_id'])->get('SubDepartments')->result_array();
+					 $Departament = $this->db->where('id', $subdepartament[0]['Departments_id'])->get('Departments')->result_array(); 
+					 $Univer = $this->db->where('id',$Departament[0]['Universities_id'])->get('Universities')->result_array();
+					 
+					 $data['departament']['name'] = $Departament[0]['name'];
+					 $data['subdepartament']['name'] = $subdepartament[0]['name'];
+					 $data['univer']['name'] = $Univer[0]['name'];
+					 $data['user']['name'] = $user[0]['surname'].' '.$user[0]['name'];
+					 
+					 $data['departament']['id'] = $Departament[0]['id'];
+					 $data['subdepartament']['id'] = $subdepartament[0]['id'];
+					 $data['univer']['id'] = $Univer[0]['id'];
+					 $data['user']['id'] = $user[0]['id'];
+					 break;   
+					 }
+				 default:
+					{redirect('/');}
+				}
+			}
+			if (isset($usergroup[0]))
+			{
+				switch ($usergroup[0]['Roles_id'])
+				{
+					case 1:	
+					{
+					 $group = $this->db->where('id', $usergroup[0]['Groups_id'])->get('Groups')->result_array(); 
+					 $curricula = $this->db->where('id',$group[0]['Curricula_id'])->get('Curricula')->result_array(); 
+					 $dep_spec = $this->db->where('id',$curricula[0]['Dep_Spec_id'])->get('Dep_Spec')->result_array(); 
+					 $Departament = $this->db->where('id',$dep_spec[0]['Departments_id'])->get('Departments')->result_array(); 
+					 $Univer = $this->db->where('id',$Departament[0]['Universities_id'])->get('Universities')->result_array();
+					 $data['departament']['name'] = $Departament[0]['name'];
+					 $data['univer']['name'] = $Univer[0]['name'];
+					 $data['group']['name'] = $group[0]['name'];
+					 $data['user']['name'] = $user[0]['surname'].' '.$user[0]['name'];
+					 
+					 $data['departament']['id'] = $Departament[0]['id'];
+					 $data['univer']['id'] = $Univer[0]['id'];
+					 $data['group']['id'] = $group[0]['id'];
+					 $data['user']['id'] = $user[0]['id'];
+					 break;   
+					 }
+				 default:
+					{redirect('/');}
+				}
+			}
+			
 		};
 	}
 	return $data;

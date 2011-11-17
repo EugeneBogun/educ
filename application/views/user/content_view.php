@@ -5,7 +5,7 @@
             <!--Иванов И.И. |  Курсант-->
 		</div>
 		<div id="message_button" style="width:auto; height:auto; margin-left:13px; margin-top:10px;">
-			<a href="message?to=<? echo $id ?>"><button class="button" style="width:150px; margin-left:-6px; margin-top:5px;">Отправить сообщение</button></a>
+			<a href="message?to=<?=$info['id'];?>"><button class="button" style="width:150px; margin-left:-6px; margin-top:5px;">Отправить сообщение</button></a>
 		</div>	
      </div>
 <div id="content">
@@ -28,13 +28,27 @@
 		</div>
 <div id="subjects_ajax"></div>
 <script language="JavaScript"> 
-		$.ajax({
+<?if (isset($info_group)){echo
+"$.ajax({
         	url:	 'ajaxtimetable',
         	type:	 'POST', //что-нибудь получим
             processData: false,
-            data: 'group='+$("#title_bar_group").val(),
+            data: 'id = ".$info['id']."',
         	success: function(data){
         		  $('#subjects_ajax').html(data);
                 }
-            });
+            });";
+			}
+if (isset($info_subjects)){echo
+"$.ajax({
+        	url:	 'ajaxtimetable_subject_curricula',
+        	type:	 'POST', //что-нибудь получим
+            processData: false,
+            data: 'Subjects_Curricula_id = ".$info_subjects['id']."',
+        	success: function(data){
+        		  $('#subjects_ajax').html(data);
+                }
+            });";
+			}?>
+		
 </script>

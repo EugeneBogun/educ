@@ -9,21 +9,15 @@ class user extends CI_Controller
 	  $this->load->model('profile_model');
     }    
     
-    public function index($id)
+   public function index($id)
     {
 		$sesion_id = $this->session->userdata('id');
-		if($sesion_id == $id)
+		if(isset($sesion_id)and($sesion_id!=NULL))
 			{
 			$week = 1;
 		    $data=$this->profile_model->get_nav_info($id, 'user');
-			$data['id'] = $id;
+			$data= array_merge($data,$this->profile_model->get_user_info($id));	
 			$this->display_lib->main_page('user',$data);
-			$run = $this->profile_model->runway($id);
-			$runway = array(
-				'category'=>$run['0'],
-				'ctegory_id'=>$run['1'],
-				'roles_id'=>$run['2']);
-			$this->session->set_userdata($runway);
 			}
 		else
 			{
@@ -42,16 +36,26 @@ class user extends CI_Controller
    	    $this->display_lib->task_add_page();
     }
 
-     public function ajaxtimetable()
+    public function ajaxtimetable()
     {
-       	 $id = 7;
-         $week = 1;
+	 $id = $_REQUEST['id_'];
+	 $week = 2;
 	 $this->load->model('timetable_model');
 	 $data['timetable'] = $this->timetable_model->timetable($id,$week);
-	 
+	 //echo var_dump();
 	 $CI =& get_instance ();
 	 $CI->load->view('ajax/timetable_view',$data);
     }
+	
+	public function ajaxtimetable_subject_curricula()
+	{
+	 $Subjects_Curricula_id = $_REQUEST['Subjects_Curricula_id_'];
+	 $week = 2;
+	 $this->load->model('timetable_model');
+	 $data['timetable'] = $this->timetable_model->timetable_for_subject($Subjects_Curricula_id,$week);
+	 $CI =& get_instance ();
+	 $CI->load->view('ajax/timetable_prepod_view',$data);
+	}
     
 }   
     

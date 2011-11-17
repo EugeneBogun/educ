@@ -7,7 +7,7 @@
 		{
 		  echo '<tr id="row">';
     		  for ($j=1;$j<7;$j++)//дни пары
-                { if (isset($timetable[$j][$i])) {echo '<td>'.$timetable[$j][$i]['subject'].'<br/>'.$timetable[$j][$i]['teacher'].'<br/> '.$timetable[$j][$i]['classroom'].'</td>';} else {echo '<td></td>';}}
+                { if (isset($timetable[$j][$i])) {echo '<td>'.$timetable[$j][$i]['subject'].'<br/> '.$timetable[$j][$i]['classroom'].'</td>';} else {echo '<td></td>';}}
           echo '</tr>';
             
         }

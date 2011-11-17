@@ -9,9 +9,28 @@ class timetable_model extends CI_Model
     
 	public function timetable($id,$week)
 	{
+		$data = array();
 		$UserGroups = $this->db->query('SELECT Groups_id FROM  UsersGroups WHERE Users_id='.$id)->result_array();
 			
 		$Timetable_list = $this->db->query('SELECT * FROM  Timetable WHERE Groups_id='.$UserGroups[0]['Groups_id'])->result_array();
+		$i = 0;
+		$univer = 1;
+
+		foreach ($Timetable_list as $lesson)
+         {
+            if ($lesson['week'] == $week) 
+            {
+                $data[$lesson['day']][$lesson['numder']] = $this->get_subject($lesson['UsersSubjectsCurricula_id']);
+                $data[$lesson['day']][$lesson['numder']]['classroom'] =  $this->get_classroom_name($lesson['Classrooms_id'],$univer);
+            }
+            
+         }
+		return $data;
+	}
+	public function timetable_for_subject($Subjects_Curricula_id,$week)
+	{	
+		$data = array();
+		$Timetable_list = $this->db->query('SELECT * FROM  Timetable WHERE UsersSubjectsCurricula_id='.$Subjects_Curricula_id)->result_array();
 		$i = 0;
 		$univer = 1;
 
