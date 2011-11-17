@@ -12,7 +12,7 @@ class user extends CI_Controller
     public function index($id)
     {
 		$sesion_id = $this->session->userdata('id');
-		if(isset($sesion_id)and($sesion_id!=NULL))
+		if($sesion_id == $id)
 			{
 			$week = 1;
 		    $data=$this->profile_model->get_nav_info($id, 'user');

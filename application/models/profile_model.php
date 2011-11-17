@@ -47,6 +47,28 @@ class profile_model extends CI_Model
 		$data['groups'] = $groups;
 		return $data;
     }
+	
+	public function get_subdepartament_info($id)
+    {
+		$data = array();
+		$data['info'] = $this->db->where('id',$id)->get('SubDepartments')->result_array(); //просто инфо
+		$UsersSubDepartments = $this->db->where('SubDepartments_id',$id)->get('UsersSubDepartments')->result_array(); // состав
+		$i = 0;
+		foreach ($UsersSubDepartments as $us)
+		{
+
+			$user = $this->db->where('id',$us['Users_id'])->get('Users')->result_array(); 
+			
+			$data['users'][$i]['id'] = $user[0]['id'];
+			$data['users'][$i]['fio'] = $user[0]['surname'].' '.substr($user[0]['name'],0,1).'. ';
+                if ($user[0]['patronymic']) {$data['users'][$i]['fio'] .= substr($user[0]['patronymic'], 0, 1).'.';}
+				
+			$role = $this->db->where('id',$us['Roles_id'])->get('Roles')->result_array(); 
+			$data['users'][$i]['role'] = $role[0]['name'];
+			$i++;
+		}
+		return $data;
+    }
 	public function get_univer_info($id)
     {
 		$Univer = $this->db->where('id',$id)->get('Universities')->result_array();
@@ -78,6 +100,21 @@ class profile_model extends CI_Model
              
 			 $data['departament']['id'] = $Departament[0]['id'];
 			 $data['univer']['id'] = $Univer[0]['id'];
+             break;   
+		}
+		case 'subdepartament': {
+			 $subdepartament = $this->db->where('id',$id)->get('SubDepartments')->result_array();
+			  if (!isset($subdepartament[0])){redirect('/');}
+			 $Departament = $this->db->where('id',$id)->get('Departments')->result_array(); 
+			 $Univer = $this->db->where('id',$Departament[0]['Universities_id'])->get('Universities')->result_array();
+			 
+			 $data['departament']['name'] = $Departament[0]['name'];
+			 $data['univer']['name'] = $Univer[0]['name'];
+			 $data['subdepartament']['name'] = $subdepartament[0]['name'];
+             
+			 $data['departament']['id'] = $Departament[0]['id'];
+			 $data['univer']['id'] = $Univer[0]['id'];
+			 $data['subdepartament']['id'] = $subdepartament[0]['id'];
              break;   
 		}
         case 'group': {

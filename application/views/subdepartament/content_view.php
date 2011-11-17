@@ -9,9 +9,12 @@
         <div class="table_constistof">
         <div class="title_constistof">Преподаватели:</div>
 		<table class="consistof">
-		<?foreach ($groups as $group)
+		<?
+		
+		foreach ($users as $user)
 		{
-		echo '<tr><td><a href="group'.$group['id'].'">'.$group['name'].'</a></td></tr>';
+
+		echo '<tr><td><a href="/id'.$user['id'].'">'.$user['fio'].'</a></td></tr>';
 		}
 		?>
 		</table>

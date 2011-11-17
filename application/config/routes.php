@@ -49,10 +49,11 @@ $route['ajaxinviteslist']			= "dispatcher/ajaxinviteslist";
 //расписание
 $route['ajaxtimetable']         = "user/ajaxtimetable";
 //группа
-$route['univer(:num)']			="univer/index/$1";
-$route['departament(:num)']			="departament/index/$1";
-$route['group(:num)']				="group/index/$1";
-$route['id(:num)']				="user/index/$1";
+$route['univer(:num)']			= "univer/index/$1";
+$route['departament(:num)']		= "departament/index/$1";
+$route['subdepartament(:num)']	= "subdepartament/index/$1";
+$route['group(:num)']			= "group/index/$1";
+$route['id(:num)']				= "user/index/$1";
 //оценки
 //$route['values/(:any)']              = "task/index/$1";
 //диспетчерская
