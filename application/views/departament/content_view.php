@@ -16,6 +16,16 @@
 		?>
 		</table>
         </div>
+		<div class="table_constistof">
+        <div class="title_constistof">Цикловые комиссии:</div>
+		<table class="consistof">
+		<?foreach ($subdepartaments as $subdepartament)
+		{
+		echo '<tr><td><a href="subdepartament'.$subdepartament['id'].'">'.$subdepartament['fullname'].'</a></td></tr>';
+		}
+		?>
+		</table>
+        </div>
 		
 		
 		</div>

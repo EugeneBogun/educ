@@ -28,7 +28,9 @@ class profile_model extends CI_Model
 	public function get_departament_info($id)
     {
 		$data['info'] = $this->db->where('id',$id)->get('Departments')->result_array(); //просто инфо
+		
 		$dep_spec = $this->db->where('Departments_id',$id)->get('Dep_Spec')->result_array();//специальности на отделении
+		
 		$spec = array();
 		$groups= array();
 		$Curricula = array();
@@ -45,6 +47,8 @@ class profile_model extends CI_Model
 			$groups = array_merge($groups,$this->db->where('Curricula_id',$с['id'])->get('Groups')->result_array());
 		}
 		$data['groups'] = $groups;
+		$data['subdepartaments'] = $this->db->where('Departments_id',$id)->get('SubDepartments')->result_array(); 
+		
 		return $data;
     }
 	
@@ -155,7 +159,7 @@ class profile_model extends CI_Model
 		case 'user': {
 		  
 			 $user = $this->db->where('id',$id)->get('Users')->result_array(); 
-			//if (!isset($user[0])){redirect('/');}
+			 //if (!isset($user[0])){redirect('/');}
 			 $usergroup = $this->db->where('Users_id',$user[0]['id'])->get('UsersGroups')->result_array();
 			 $usersubdepartments = $this->db->where('Users_id',$user[0]['id'])->get('UsersSubDepartments')->result_array(); 			 
 			 //Добавить ЦК, и ссылки на преподов под ЦК. ссылки на состав отделения и состав универа
@@ -166,7 +170,11 @@ class profile_model extends CI_Model
 					case 1:	
 					case 2:
 					case 3:
-					case 7:	
+					case 4:
+					case 5:
+					case 6:
+					case 7:
+					case 8:	
 					{	
 					 $subdepartament = $this->db->where('id',$usersubdepartments[0]['SubDepartments_id'])->get('SubDepartments')->result_array();
 					 $Departament = $this->db->where('id', $subdepartament[0]['Departments_id'])->get('Departments')->result_array(); 
@@ -181,10 +189,8 @@ class profile_model extends CI_Model
 					 $data['subdepartament']['id'] = $subdepartament[0]['id'];
 					 $data['univer']['id'] = $Univer[0]['id'];
 					 $data['user']['id'] = $user[0]['id'];
-					 break;   
+					 return $data;	
 					 }
-				 default:
-					{redirect('/');}
 				}
 			}
 			if (isset($usergroup[0]))
@@ -192,6 +198,13 @@ class profile_model extends CI_Model
 				switch ($usergroup[0]['Roles_id'])
 				{
 					case 1:	
+					case 2:
+					case 3:
+					case 4:
+					case 5:
+					case 6:
+					case 7:
+					case 8:	
 					{
 					 $group = $this->db->where('id', $usergroup[0]['Groups_id'])->get('Groups')->result_array(); 
 					 $curricula = $this->db->where('id',$group[0]['Curricula_id'])->get('Curricula')->result_array(); 
@@ -207,16 +220,14 @@ class profile_model extends CI_Model
 					 $data['univer']['id'] = $Univer[0]['id'];
 					 $data['group']['id'] = $group[0]['id'];
 					 $data['user']['id'] = $user[0]['id'];
-					 break;   
+					 return $data;   
 					 }
-				 default:
-					{redirect('/');}
 				}
 			}
-			
 		};
 	}
-	return $data;
+	return $data;   
+
 	}
 	//sesion roles
 	/*public function runway($id)

@@ -21,15 +21,15 @@ class user extends CI_Controller
 			}
 		else
 			{
-			redirect(base_url());
+			//redirect(base_url());
 			}
     }
     
 	public function logout()
     {
-				$array = array('id'=>'');
-				$this->session->unset_userdata($array); 
-				redirect(base_url());
+		$array = array('id'=>'');
+		$this->session->unset_userdata($array); 
+		redirect(base_url());
 	}
     public function task_add()
     {
@@ -42,7 +42,6 @@ class user extends CI_Controller
 	 $week = 2;
 	 $this->load->model('timetable_model');
 	 $data['timetable'] = $this->timetable_model->timetable($id,$week);
-	 //echo var_dump();
 	 $CI =& get_instance ();
 	 $CI->load->view('ajax/timetable_view',$data);
     }

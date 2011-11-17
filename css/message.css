@@ -18,8 +18,9 @@
 .table_message table td{
 	 border: #DDD solid 1px;}
 #to{
-	width:100px;
-	text-align:center;}
+	width:150px;
+	text-align:center;
+	}
 #text{
 	width:518px;
 	padding-left:10px;

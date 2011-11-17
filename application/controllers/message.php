@@ -33,6 +33,7 @@ class message extends CI_Controller
 		
 		
 		$from= $this->session->userdata('id');
+		//$data['messages']= $this->message_model->posted_message($from);
 		$data['messages']= $this->message_model->posted_message($from);
 		$this->display_lib->message_page($data,'posted'); 
 		 /*   */
