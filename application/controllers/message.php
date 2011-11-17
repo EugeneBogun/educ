@@ -48,6 +48,19 @@ class message extends CI_Controller
 		  /*   */
         
     } 
+	
+	public function answer()
+	{
+			$to=$this->input->get('to', TRUE);				//кароче это ИД где мы забираем когда идём по ветке message?to=7
+			$fio = $this->message_model->get_fio($to);		//переменная которая принимает с масива строку базы данных по айди!!! $to - это ИД
+			$data['to'] = $to;								//вбиваем в ассоциотивный массив ИД
+			$data['FIO'] = $fio[0]['name'].' '.$fio[0]['surname'];	//Вбиваем в тот же массив Имя и фамилию из базы
+			
+			
+			$data['text']= urldecode($this->input->get('text', TRUE));//$this->message_model->take_message($id_message);
+			
+			$this->display_lib->message_page($data,'answer');  /*  передайом на страничку вида данные */
+	}
     
 }   
     

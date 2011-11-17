@@ -32,7 +32,7 @@
 /*message*/
 
 #message{
-	height:265px;
+	height:285px;
 	width:500px;
 	border:3px solid #CCC;
 	-moz-border-radius: 4px;
@@ -95,6 +95,13 @@ background-color:#0033FF;
 #send_information
 {
 text-align:center;
+}
+
+/*answer*/
+#incoming_message
+{
+margin-left:10px;
+margin-bottom:10px;
 }
 /*menu*/
 

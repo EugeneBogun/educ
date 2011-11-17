@@ -78,6 +78,7 @@ $route['login']					= "welcome/login";
 $route['send/(:num)']                  = "message/send/$1";
 $route['outbox']                = "message/posted";
 $route['inbox']               = "message/adopted";
+$route['answer']               = "message/answer";
 
 $route['404_override'] = '';
 
