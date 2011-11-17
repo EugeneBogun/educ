@@ -15,10 +15,9 @@
 			</tr>
 			
 				<?php  	
-				//var_dump($messages);
 				 foreach($messages as $message)
 						{
-						echo '<tr><td id="to">'.$message['fio'].'</td><td id="text">'.$message['text'].'</td><td  id="datetime">'.$message['datetime'].'</font></td></tr>';
+						echo '<tr><td id="to"><a href="/id'.$message['Users_id_to'].'">'.$message['fio'].'</a></td><td id="text">'.$message['text'].'</td><td  id="datetime">'.$message['datetime'].'</font></td></tr>';
 						}		
 				?>
 		

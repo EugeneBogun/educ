@@ -5,12 +5,18 @@ class message_model extends CI_Model
     public function insert_message($from,$to,$text)   //обрабатуем данные формы и забиваем в базу
 	{
 		$insert_db = array(
-        'Users_id_from' => $from,
+        'Users_id_from' => $from, 
 		'text' => $text,
 		'Users_id_to' => $to,
 		);
 		
 		$this->db->insert('Messages',$insert_db);
+		
+	}
+	
+	public function take_message($id)   //забираем из базы по айдишнику сообщения, определённое сообщение и возвращаем  в контролер всю строку
+	{
+		return $this->db->where('id',$id)->get('Messages')->result_array();
 		
 	}
 	
@@ -30,7 +36,7 @@ class message_model extends CI_Model
 		
 	public function adopted_message($to)  //забираем из базы принятые сообщения
 		{
-$data = array();
+			$data = array();
 			$messages=$this->db->where('Users_id_to',$to)->get('Messages')->result_array();
 			$i=0;
 			foreach($messages as $message)

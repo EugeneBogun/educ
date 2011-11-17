@@ -16,12 +16,12 @@
 				<?php  	
 				 foreach($messages as $message)
 						{
-						echo '<tr><td align="center">'.$message['fio'].'</td><td align="center">'.$message['text'].'</td><td><font size="1">'.$message['datetime'].'</font></td></tr>';
+						echo '<tr><td align="center"><a href="/id'.$message['Users_id_to'].'">'.$message['fio'].'</td><td align="center"><a href="answer/?to='.$message['Users_id_from'].'&text='.$message['text'].'">'.$message['text'].'</a></td><td><font size="1">'.$message['datetime'].'</font></td></tr>';
 						}		
 				?>
 		
 		
-		</table>
+		</table 
 	</div>
 </div>
 
