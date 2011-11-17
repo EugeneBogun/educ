@@ -21,7 +21,7 @@
 				?>
 		
 		
-		</table 
+		</table>
 	</div>
 </div>
 
