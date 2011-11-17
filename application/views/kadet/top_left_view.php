@@ -8,7 +8,7 @@
   <div id="global">
   
   		<div id="Left_menu"> 
-               <menu>   <a href ="/id7"> Моя страница</a></menu>
+               <menu>   <a href ="/id<?echo $this->session->userdata('id')?>"> Моя страница</a></menu>
                <menu>   <a href ="/inbox"> Сообщения</a></menu>
                <menu>   <a href ="/values/add"> Оценки</a></menu>
                <!--<menu> 	<a href ="#"> Организации </a></menu>

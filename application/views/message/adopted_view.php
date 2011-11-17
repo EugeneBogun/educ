@@ -2,7 +2,7 @@
 <input type="hidden" id="tab" value="adopted"/>
 		<table>
 			<tr align="center">
-				<td id="to">
+				<td id="to" >
 				Êòî:
 				</td>
 				<td id="text">
@@ -16,7 +16,7 @@
 				<?php  	
 				 foreach($messages as $message)
 						{
-						echo '<tr><td>'.$message['Users_id_from'].'</td><td align="center">'.$message['text'].'</td><td><font size="1">'.$message['datetime'].'</font></td></tr>';
+						echo '<tr><td align="center">'.$message['fio'].'</td><td align="center">'.$message['text'].'</td><td><font size="1">'.$message['datetime'].'</font></td></tr>';
 						}		
 				?>
 		
