@@ -17,7 +17,7 @@
 				<?php  	
 				 foreach($messages as $message)
 						{
-						echo '<tr><td id="to"><a href="/id'.$message['Users_id_to'].'">'.$message['fio'].'</a></td><td id="text">'.$message['text'].'</td><td  id="datetime">'.$message['datetime'].'</font></td></tr>';
+						echo '<tr><td id="to"><a href="/id'.$message['Users_id_to'].'">'.$message['fio'].'</a></td><td id="text" align="center"><a href="message?to='.$message['Users_id_to'].'">'.$message['text'].'</a></td><td  id="datetime">'.$message['datetime'].'</font></td></tr>';
 						}		
 				?>
 		
