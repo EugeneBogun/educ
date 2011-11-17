@@ -59,10 +59,12 @@
 		border:#ccc solid 1px;
 		text-align:right;
 		padding-right:5px;
-		line-height:14px}
+		line-height:14px;}
 #inc{float:left;position:absolute;background:url(../img/inc.jpg)#ccc;margin-left:105px;height:16px;width:15px;cursor:pointer;}
 #proces_data{height:30px;}
 #add_data{width:80px;line-height:20px;background:#ddd;cursor:pointer;text-align:center;color:#000;float:left;margin:5px 20px 5px 65px;}
 #save_data{width:80px;line-height:20px;background:#ddd;cursor:pointer;text-align:center;color:#000;float:left;margin:5px 20px 5px 5px;}
 #validation,#rol_val{text-align:center;color:#f00;}
 #invites_list_open{width:80px;line-height:20px;background:#ddd;cursor:pointer;text-align:center;color:#000;float:left;margin:5px;}
+#dialog td{text-align:center;padding:0px 5px;}
+#print_button{width:100px;line-height:20px;background:#ddd;cursor:pointer;text-align:center;color:#000;float:bottom;margin-left:10px;margin-top:20px;}

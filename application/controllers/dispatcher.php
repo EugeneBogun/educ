@@ -145,8 +145,10 @@ class dispatcher extends CI_Controller
 	public function ajaxinviteslist()
 	{
 		$invite_list= $this->dispatcher_model->get_invite_list();
+		echo('<center> <table border="1" cellspacing="0" bordercolor="#ddd">');
 		echo '<tr><td>Инвайт</td><td>Роль</td><td>id Пользователя</td></tr>';
 		foreach ($invite_list as $invite) {  echo '<tr><td>'.$invite['invite'].'</td><td>'.$invite['option'].'</td><td>'.$invite['Users_id'].'</td></tr>';}
+		echo('</table></center>');
 	}
 	 
 	public function ajaxuniverlist()
@@ -174,11 +176,13 @@ class dispatcher extends CI_Controller
 		$optionlist=$_REQUEST['roleslist'];
 		$count = $_REQUEST['count'];
 		$randominvites_list = $this->dispatcher_model->create_randominvites($count,$optionlist);
-		echo('<tr><td>Инвайт<td><td>Роль</td></tr>');
+		echo('<center> <table border="1" cellspacing="0" id="new_invites">');
+		echo('<tr><td>Инвайт</td><td>Роль</td></tr>');
 		foreach($randominvites_list as $randominvites)
 		{
-			echo ('<tr><td>'.$randominvites.'<td><td>'.$optionlist.'</td></tr>');
+			echo ('<tr><td>'.$randominvites.'</td><td>'.$optionlist.'</td></tr>');
 		}
+		echo('</table><div id="print_button">На печать</div></center>');
 	}
 	
 	public function ajaxcategorylist()

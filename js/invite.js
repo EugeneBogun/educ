@@ -139,7 +139,6 @@ $(document).ready(function(){
 						category_buffer = "U";
 						id_category_buffer = $('#vuz_list_invite').val();
 						$('#buffer_text').val(text+category_buffer+":"+id_category_buffer+":"+$('#invites_rols_list').val()+";");
-						alert('дошло');
 						//$('#vuz_list_invite').change
 						$('#vuz_list_invite').trigger('change');
 						role=1;
@@ -151,7 +150,6 @@ $(document).ready(function(){
 							category_buffer = $('#switch_category').val();
 							id_category_buffer = $('#category_list_invite').val();
 							$('#buffer_text').val(text+category_buffer+":"+id_category_buffer+":"+$('#invites_rols_list').val()+";");
-							alert('дошло2');
 							$('#vuz_list_invite').trigger('change');
 							role=1;
 							}
@@ -174,9 +172,13 @@ $(document).ready(function(){
 		});
 		
 		$('#dialog').dialog({
-					autoOpen: false,
-					modal:true
-					//width: 60
+				width: 400,
+				height: 400,
+				draggable: false,
+				resizable: false,
+				modal: true,
+                closeOnEscape: true,
+                autoOpen: false
 				});
 	
 	role=0;
@@ -202,12 +204,27 @@ $(document).ready(function(){
 				data:	 'roleslist='+$('#buffer_text').val()+'&count='+num,
 				processData: false,
 				success: function(data){
-					$('#dialog').html(data);}
+					$('#dialog').html(data);
+						alert('done');
+						$('#print_button').click(function(){
+							var new_invites=$('#new_invites').html();
+							$('#dialog').dialog('close');
+							$('body').html('');
+							$('body').html('<center> <table border="1" cellspacing="0" >'+new_invites+
+							'<center> <table border="1" cellspacing="0" id="new_invites">');
+							
+						});
+					}
 				});
+				role=0;
+				$('#buffer_text').val('');
+				$('#vuz_list_invite').trigger('change');
 		}
 		else
 		{
-			$('#validation').html("Создайте роль");
+			$('#validation').html("Создайте Опцию");
 		}
 		});
+	
+
 	});

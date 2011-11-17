@@ -40,13 +40,13 @@
 
 $route['default_controller']    = "welcome";
 $route['user']                  = "user";
-$route['logout']                  	= "user/logout";
 //invite
 $route['ajaxuniverlist']			= "dispatcher/ajaxuniverlist";
 $route['ajaxcategorylist']			= "dispatcher/ajaxcategorylist";
 $route['ajaxroleslist']				= "dispatcher/ajaxroleslist";
 $route['ajaxinviteslist']			= "dispatcher/ajaxinviteslist";
 $route['ajaxsaveinvites']			= "dispatcher/ajaxsaveinvites";
+
 //расписание
 $route['ajaxtimetable']         = "user/ajaxtimetable";
 //группа

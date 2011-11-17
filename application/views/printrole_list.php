@@ -1,0 +1,3 @@
+<?
+echo $printrole_list;
+?>
