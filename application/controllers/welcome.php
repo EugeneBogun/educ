@@ -50,6 +50,12 @@ class welcome extends CI_Controller
 				$data->id=$this->Welcome_model->return_data($array);
 				$array = array('id'=>$data->id);
 				$this->session->set_userdata($array);
+				$run = $this->profile_model->runway($id);
+				$runway = array(
+					'category'=>$run['0'],
+					'ctegory_id'=>$run['1'],
+					'roles_id'=>$run['2']);
+				$this->session->set_userdata($runway);
 				redirect(base_url()."id".$data->id);
 				}
 			else

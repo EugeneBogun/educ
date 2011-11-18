@@ -18,12 +18,6 @@ class user extends CI_Controller
 			//$data=$this->profile_model->runway($id);
 			$data['id'] = $id;
 			$this->display_lib->main_page('user',$data);
-			$run = $this->profile_model->runway($id);
-			$runway = array(
-				'category'=>$run['0'],
-				'ctegory_id'=>$run['1'],
-				'roles_id'=>$run['2']);
-			$this->session->set_userdata($runway);
 			}
 		else
 			{
