@@ -40,6 +40,8 @@
 
 $route['default_controller']    = "welcome";
 $route['user']                  = "user";
+$route['logout']                  = "user/logout";
+
 //invite
 $route['ajaxuniverlist']			= "dispatcher/ajaxuniverlist";
 $route['ajaxcategorylist']			= "dispatcher/ajaxcategorylist";
